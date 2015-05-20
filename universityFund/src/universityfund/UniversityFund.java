@@ -5,6 +5,8 @@
  */
 package universityfund;
 
+import javax.persistence.Persistence;
+
 /**
  *
  * @author MiriamMarie
@@ -15,7 +17,15 @@ public class UniversityFund {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new UniversityFund().start();
+    }
+    
+    public void start() {
+        setUpJPA();
+    }
+    
+    private void setUpJPA() {
+        Persistence.createEntityManagerFactory("universityFundPU").createEntityManager();
     }
     
 }
