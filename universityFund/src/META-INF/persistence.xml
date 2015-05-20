@@ -3,7 +3,7 @@
   <persistence-unit name="universityFundPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/university_fund"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/university_fund;create=true"/>
       <property name="javax.persistence.jdbc.user" value=""/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
