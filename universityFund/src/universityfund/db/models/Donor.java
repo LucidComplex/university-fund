@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Donor extends Model implements Serializable {
-    private static final long serialVersionUID = 4746989291661330390L;
+    private static final long serialVersionUID = -6603935041905865231L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,6 +33,7 @@ public class Donor extends Model implements Serializable {
     private String firstName;
     private String lastName;
     private String contactNumber;
+    private int graduationYear;
     
     @OneToMany(mappedBy="donor")
     @JoinTable(
@@ -151,6 +152,20 @@ public class Donor extends Model implements Serializable {
      */
     public void setPledges(Collection<Funding> pledges) {
         this.pledges = pledges;
+    }
+
+    /**
+     * @return the graduationYear
+     */
+    public int getGraduationYear() {
+        return graduationYear;
+    }
+
+    /**
+     * @param graduationYear the graduationYear to set
+     */
+    public void setGraduationYear(int graduationYear) {
+        this.graduationYear = graduationYear;
     }
     
 }

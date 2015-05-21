@@ -2,6 +2,13 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="universityFundPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>universityfund.db.models.CashPayment</class>
+    <class>universityfund.db.models.DeferredPayment</class>
+    <class>universityfund.db.models.Donor</class>
+    <class>universityfund.db.models.Funding</class>
+    <class>universityfund.db.models.LumpPayment</class>
+    <class>universityfund.db.models.Matcher</class>
+    <class>universityfund.db.models.Payment</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/university_fund;create=true"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>

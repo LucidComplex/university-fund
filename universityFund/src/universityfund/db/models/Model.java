@@ -19,8 +19,13 @@ public abstract class Model {
         }
         EntityManager em = DbHelper.getEntityManager();
         em.getTransaction().begin();
-        em.persist(this);
-        em.flush();
+        if (em.contains(this)) {
+            em.merge(this);
+        }
+        else {
+            em.persist(this);
+        }
+        em.getTransaction().commit();
         em.close();
     }
 }

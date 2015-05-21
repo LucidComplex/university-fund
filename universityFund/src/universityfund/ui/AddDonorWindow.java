@@ -5,6 +5,8 @@
  */
 package universityfund.ui;
 
+import universityfund.db.models.Donor;
+
 /**
  *
  * @author MiriamMarie
@@ -32,8 +34,8 @@ public class AddDonorWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        address_text = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        address_text = new javax.swing.JTextArea();
         name_text = new javax.swing.JTextField();
         category_combo = new javax.swing.JComboBox();
         year_text = new javax.swing.JTextField();
@@ -67,13 +69,13 @@ public class AddDonorWindow extends javax.swing.JFrame {
         jLabel5.setText("Year of Graduation:");
         jLabel5.setName("jLabel5"); // NOI18N
 
-        address_text.setName("address_text"); // NOI18N
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setName("jTextArea1"); // NOI18N
-        address_text.setViewportView(jTextArea1);
+        address_text.setColumns(20);
+        address_text.setLineWrap(true);
+        address_text.setRows(5);
+        address_text.setName("address_text"); // NOI18N
+        jScrollPane1.setViewportView(address_text);
 
         name_text.setName("name_text"); // NOI18N
 
@@ -84,9 +86,19 @@ public class AddDonorWindow extends javax.swing.JFrame {
 
         save_button.setText("Save");
         save_button.setName("save_button"); // NOI18N
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         cancel_button.setText("Cancel");
         cancel_button.setName("cancel_button"); // NOI18N
+        cancel_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Contact Number:");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -115,7 +127,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(address_text, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,7 +177,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(address_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -203,8 +215,17 @@ public class AddDonorWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancel_buttonActionPerformed
+
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        saveDonor();
+        dispose();
+    }//GEN-LAST:event_save_buttonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane address_text;
+    private javax.swing.JTextArea address_text;
     private javax.swing.JButton cancel_button;
     private javax.swing.JComboBox category_combo;
     private javax.swing.JTextField email_text;
@@ -216,10 +237,19 @@ public class AddDonorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField name_text;
     private javax.swing.JTextField number_text;
     private javax.swing.JButton save_button;
     private javax.swing.JTextField year_text;
     // End of variables declaration//GEN-END:variables
+
+    private void saveDonor() {
+        Donor donor = new Donor();
+        donor.setAddress(address_text.getText());
+        donor.setContactNumber(number_text.getText());
+        donor.setFirstName(name_text.getText());
+        donor.setGraduationYear(Integer.valueOf(year_text.getText()));
+        donor.save();
+    }
 }
