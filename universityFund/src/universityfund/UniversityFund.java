@@ -5,7 +5,8 @@
  */
 package universityfund;
 
-import javax.persistence.Persistence;
+import universityfund.db.DbHelper;
+import universityfund.ui.MainWindow;
 
 /**
  *
@@ -22,10 +23,15 @@ public class UniversityFund {
     
     public void start() {
         setUpJPA();
+        showMainWindow();
     }
     
     private void setUpJPA() {
-        Persistence.createEntityManagerFactory("universityFundPU").createEntityManager();
+        DbHelper.setPersistenceUnitName("universityFundPU");
+    }
+    
+    private void showMainWindow() {
+        new MainWindow().setVisible(true);
     }
     
 }
