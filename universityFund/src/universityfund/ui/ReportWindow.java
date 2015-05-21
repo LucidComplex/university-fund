@@ -27,17 +27,87 @@ public class ReportWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        sol_panel = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        annual_panel = new javax.swing.JPanel();
+        monthly_panel = new javax.swing.JPanel();
+        class_panel = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 256, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout sol_panelLayout = new javax.swing.GroupLayout(sol_panel);
+        sol_panel.setLayout(sol_panelLayout);
+        sol_panelLayout.setHorizontalGroup(
+            sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        sol_panelLayout.setVerticalGroup(
+            sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Solicitation Letters", sol_panel);
+
+        javax.swing.GroupLayout annual_panelLayout = new javax.swing.GroupLayout(annual_panel);
+        annual_panel.setLayout(annual_panelLayout);
+        annual_panelLayout.setHorizontalGroup(
+            annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
+        annual_panelLayout.setVerticalGroup(
+            annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 256, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Annual Report to Donors", annual_panel);
+
+        javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
+        monthly_panel.setLayout(monthly_panelLayout);
+        monthly_panelLayout.setHorizontalGroup(
+            monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
+        monthly_panelLayout.setVerticalGroup(
+            monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 256, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Monthly Report", monthly_panel);
+
+        javax.swing.GroupLayout class_panelLayout = new javax.swing.GroupLayout(class_panel);
+        class_panel.setLayout(class_panelLayout);
+        class_panelLayout.setHorizontalGroup(
+            class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
+        class_panelLayout.setVerticalGroup(
+            class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 256, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Class Rep Contact List", class_panel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -80,5 +150,11 @@ public class ReportWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel annual_panel;
+    private javax.swing.JPanel class_panel;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel monthly_panel;
+    private javax.swing.JPanel sol_panel;
     // End of variables declaration//GEN-END:variables
 }

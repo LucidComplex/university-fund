@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package universityfund;
-
 /**
  *
  * @author MiriamMarie
@@ -16,6 +15,7 @@ public class UniversityFund {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
     }
     
 }
