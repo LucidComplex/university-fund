@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class Donor implements Serializable {
+public class Donor extends Model implements Serializable {
     private static final long serialVersionUID = 4746989291661330390L;
 
     @Id

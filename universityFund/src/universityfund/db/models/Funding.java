@@ -19,7 +19,7 @@ import javax.persistence.PreUpdate;
  * @author tan
  */
 @Entity
-public class Funding implements Serializable {
+public class Funding extends Model implements Serializable {
     private static final long serialVersionUID = 1181465477122132198L;
     
     private int amount;

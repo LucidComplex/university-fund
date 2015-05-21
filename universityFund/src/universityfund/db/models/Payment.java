@@ -17,7 +17,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public abstract class Payment implements Serializable {
+public abstract class Payment extends Model implements Serializable {
     private static final long serialVersionUID = -3191645214995387441L;
        
     @Id

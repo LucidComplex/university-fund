@@ -15,12 +15,18 @@ import javax.persistence.Persistence;
  */
 public class DbHelper {
     private static EntityManagerFactory emf;
+    private static boolean ready = false;
     
     public static void setPersistenceUnitName(String puName) {
         emf = Persistence.createEntityManagerFactory(puName);
+        ready = true;
     }
     
-    public static EntityManager getEntityManager(String puName) {
+    public static boolean isReady() {
+        return ready;
+    }
+    
+    public static EntityManager getEntityManager() {
         if (emf == null) {
             throw new IllegalStateException("Persistence Unit not set.");
         }

@@ -17,7 +17,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Matcher implements Serializable {
+public class Matcher extends Model implements Serializable {
     private static final long serialVersionUID = 7871242346605941402L;
     
     @Id
