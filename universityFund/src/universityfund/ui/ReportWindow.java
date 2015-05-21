@@ -32,27 +32,37 @@ public class ReportWindow extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         annual_panel = new javax.swing.JPanel();
         monthly_panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        rep_combo = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Form"); // NOI18N
         setResizable(false);
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
 
         sol_panel.setName("sol_panel"); // NOI18N
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setName("jPanel5"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
+            .addGap(0, 218, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout sol_panelLayout = new javax.swing.GroupLayout(sol_panel);
@@ -68,47 +78,117 @@ public class ReportWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Solicitation Letters", sol_panel);
 
+        annual_panel.setBackground(new java.awt.Color(255, 255, 255));
         annual_panel.setName("annual_panel"); // NOI18N
 
         javax.swing.GroupLayout annual_panelLayout = new javax.swing.GroupLayout(annual_panel);
         annual_panel.setLayout(annual_panelLayout);
         annual_panelLayout.setHorizontalGroup(
             annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 433, Short.MAX_VALUE)
         );
         annual_panelLayout.setVerticalGroup(
             annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
+            .addGap(0, 218, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Annual Report to Donors", annual_panel);
 
+        monthly_panel.setBackground(new java.awt.Color(255, 255, 255));
         monthly_panel.setName("monthly_panel"); // NOI18N
+
+        jLabel1.setText("Month of:");
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabel2.setText("**TO DO USER CODE**");
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jLabel3.setText("Total pledges:");
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        jLabel4.setText("Total gifts:");
+        jLabel4.setName("jLabel4"); // NOI18N
 
         javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
         monthly_panel.setLayout(monthly_panelLayout);
         monthly_panelLayout.setHorizontalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGroup(monthly_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(monthly_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         monthly_panelLayout.setVerticalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
+            .addGroup(monthly_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Monthly Report", monthly_panel);
 
+        class_panel.setBackground(new java.awt.Color(255, 255, 255));
         class_panel.setName("class_panel"); // NOI18N
+
+        jLabel5.setText("Class Representative:");
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        rep_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rep_combo.setName("rep_combo"); // NOI18N
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setName("jTable1"); // NOI18N
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout class_panelLayout = new javax.swing.GroupLayout(class_panel);
         class_panel.setLayout(class_panelLayout);
         class_panelLayout.setHorizontalGroup(
             class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGroup(class_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(class_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         class_panelLayout.setVerticalGroup(
             class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
+            .addGroup(class_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Class Rep Contact List", class_panel);
@@ -117,11 +197,15 @@ public class ReportWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,9 +250,17 @@ public class ReportWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
     private javax.swing.JPanel class_panel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel monthly_panel;
+    private javax.swing.JComboBox rep_combo;
     private javax.swing.JPanel sol_panel;
     // End of variables declaration//GEN-END:variables
 }
