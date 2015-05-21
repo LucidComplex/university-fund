@@ -6,10 +6,14 @@
 package universityfund.db.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,7 +22,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Donor implements Serializable {
-    private static final long serialVersionUID = -6430492718694057417L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -29,6 +32,20 @@ public class Donor implements Serializable {
     private String firstName;
     private String lastName;
     private String contactNumber;
+    
+    @OneToMany(mappedBy="donor")
+    @JoinTable(
+            name="Donates", joinColumns=@JoinColumn(name="donor_id"),
+            inverseJoinColumns=@JoinColumn(name="funding_id")
+    )
+    private Collection<Funding> donations;
+    
+    @OneToMany(mappedBy="donor")
+    @JoinTable(
+            name="Pledges", joinColumns=@JoinColumn(name="donor_id"),
+            inverseJoinColumns=@JoinColumn(name="funding_id")
+    )
+    private Collection<Funding> pledges;
 
     /**
      * @return the id
@@ -105,6 +122,34 @@ public class Donor implements Serializable {
      */
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    /**
+     * @return the donations
+     */
+    public Collection<Funding> getDonations() {
+        return donations;
+    }
+
+    /**
+     * @param donations the donations to set
+     */
+    public void setDonations(Collection<Funding> donations) {
+        this.donations = donations;
+    }
+
+    /**
+     * @return the pledges
+     */
+    public Collection<Funding> getPledges() {
+        return pledges;
+    }
+
+    /**
+     * @param pledges the pledges to set
+     */
+    public void setPledges(Collection<Funding> pledges) {
+        this.pledges = pledges;
     }
     
 }
