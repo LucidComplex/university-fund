@@ -37,7 +37,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         address_text = new javax.swing.JTextArea();
         name_text = new javax.swing.JTextField();
-        category_combo = new javax.swing.JComboBox();
+        category_combo = new javax.swing.JComboBox(createCategoryArray());
         year_text = new javax.swing.JTextField();
         save_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
@@ -79,7 +79,6 @@ public class AddDonorWindow extends javax.swing.JFrame {
 
         name_text.setName("name_text"); // NOI18N
 
-        category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         category_combo.setName("category_combo"); // NOI18N
 
         year_text.setName("year_text"); // NOI18N
@@ -220,8 +219,9 @@ public class AddDonorWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        saveDonor();
-        dispose();
+        if (saveDonor())
+            dispose();
+        // TODO: else show message something is wrong
     }//GEN-LAST:event_save_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -244,12 +244,24 @@ public class AddDonorWindow extends javax.swing.JFrame {
     private javax.swing.JTextField year_text;
     // End of variables declaration//GEN-END:variables
 
-    private void saveDonor() {
+    private boolean saveDonor() {
         Donor donor = new Donor();
+        boolean valid = true;
         donor.setAddress(address_text.getText());
         donor.setContactNumber(number_text.getText());
         donor.setFirstName(name_text.getText());
-        donor.setGraduationYear(Integer.valueOf(year_text.getText()));
-        donor.save();
+        if (year_text.getText().matches("^[0-9]{4}$"))
+            donor.setGraduationYear(Integer.valueOf(year_text.getText()));
+        else
+            valid = false;
+        if (valid)
+            donor.save();
+        return valid;
+        
+            
+    }
+    
+    private String[] createCategoryArray() {
+        return new String[] {"Alumnus/Alumna", "Administrator", "Parent", "Senior"};
     }
 }
