@@ -35,7 +35,14 @@ public class ReportWindow extends javax.swing.JFrame {
         class_panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("Form"); // NOI18N
         setResizable(false);
+
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+
+        sol_panel.setName("sol_panel"); // NOI18N
+
+        jPanel5.setName("jPanel5"); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -61,6 +68,8 @@ public class ReportWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Solicitation Letters", sol_panel);
 
+        annual_panel.setName("annual_panel"); // NOI18N
+
         javax.swing.GroupLayout annual_panelLayout = new javax.swing.GroupLayout(annual_panel);
         annual_panel.setLayout(annual_panelLayout);
         annual_panelLayout.setHorizontalGroup(
@@ -74,6 +83,8 @@ public class ReportWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Annual Report to Donors", annual_panel);
 
+        monthly_panel.setName("monthly_panel"); // NOI18N
+
         javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
         monthly_panel.setLayout(monthly_panelLayout);
         monthly_panelLayout.setHorizontalGroup(
@@ -86,6 +97,8 @@ public class ReportWindow extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Monthly Report", monthly_panel);
+
+        class_panel.setName("class_panel"); // NOI18N
 
         javax.swing.GroupLayout class_panelLayout = new javax.swing.GroupLayout(class_panel);
         class_panel.setLayout(class_panelLayout);

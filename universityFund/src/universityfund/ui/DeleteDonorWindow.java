@@ -37,14 +37,23 @@ public class DeleteDonorWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DELETE DONOR");
+        setName("Form"); // NOI18N
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("Delete Donor");
+        jLabel1.setName("jLabel1"); // NOI18N
 
         jLabel2.setText("Input Name:");
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        name_text.setName("name_text"); // NOI18N
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -57,11 +66,14 @@ public class DeleteDonorWindow extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setName("jTable1"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
 
         delete_button.setText("Confirm Delete");
+        delete_button.setName("delete_button"); // NOI18N
 
         jButton1.setText("Cancel");
+        jButton1.setName("jButton1"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

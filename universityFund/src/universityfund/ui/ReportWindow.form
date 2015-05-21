@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -11,7 +12,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
@@ -35,10 +36,16 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jTabbedPane1" noResource="true"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="sol_panel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="sol_panel" noResource="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Solicitation Letters">
@@ -61,6 +68,9 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel5">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jPanel5" noResource="true"/>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -78,6 +88,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="annual_panel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="annual_panel" noResource="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Annual Report to Donors">
@@ -100,6 +113,9 @@
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="monthly_panel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="monthly_panel" noResource="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Monthly Report">
@@ -122,6 +138,9 @@
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="class_panel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="class_panel" noResource="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Class Rep Contact List">

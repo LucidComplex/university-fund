@@ -10,6 +10,7 @@
     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="cc" green="ff" red="cc" type="rgb"/>
     </Property>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -18,7 +19,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
@@ -46,6 +47,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="name" type="java.lang.String" value="jPanel1" noResource="true"/>
       </Properties>
 
       <Layout>
@@ -167,24 +169,31 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name:"/>
+            <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Address:"/>
+            <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Category:"/>
+            <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Year of Graduation:"/>
+            <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="address_text">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="address_text" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -196,11 +205,15 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="jTextArea1" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="name_text">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="name_text" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="category_combo">
           <Properties>
@@ -212,37 +225,52 @@
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+            <Property name="name" type="java.lang.String" value="category_combo" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="year_text">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="year_text" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="save_button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Save"/>
+            <Property name="name" type="java.lang.String" value="save_button" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="cancel_button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancel"/>
+            <Property name="name" type="java.lang.String" value="cancel_button" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="text" type="java.lang.String" value="Contact Number:"/>
+            <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="number_text">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="number_text" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Email Address:"/>
+            <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="email_text">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="email_text" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="text" type="java.lang.String" value="Input the following details:"/>
+            <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

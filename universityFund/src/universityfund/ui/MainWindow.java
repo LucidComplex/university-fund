@@ -43,14 +43,18 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("Form"); // NOI18N
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setName("background"); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("University Annual Fund");
+        jLabel1.setName("jLabel1"); // NOI18N
 
         add_button.setText("Add");
+        add_button.setName("add_button"); // NOI18N
         add_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_buttonActionPerformed(evt);
@@ -58,6 +62,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         pledge_button.setText("New pledge");
+        pledge_button.setName("pledge_button"); // NOI18N
         pledge_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pledge_buttonActionPerformed(evt);
@@ -65,8 +70,10 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         donation_button.setText("New Donation");
+        donation_button.setName("donation_button"); // NOI18N
 
         assign_button.setText("Assign Class Representative");
+        assign_button.setName("assign_button"); // NOI18N
         assign_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assign_buttonActionPerformed(evt);
@@ -74,6 +81,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         reports_button.setText("View Reports");
+        reports_button.setName("reports_button"); // NOI18N
         reports_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reports_buttonActionPerformed(evt);
@@ -81,6 +89,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         update_button.setText("Update");
+        update_button.setName("update_button"); // NOI18N
         update_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 update_buttonActionPerformed(evt);
@@ -88,6 +97,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         delete_button.setText("Delete");
+        delete_button.setName("delete_button"); // NOI18N
         delete_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delete_buttonActionPerformed(evt);
@@ -95,10 +105,13 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Donors");
+        jLabel2.setName("jLabel2"); // NOI18N
 
         jLabel3.setText("Transactions");
+        jLabel3.setName("jLabel3"); // NOI18N
 
         jLabel4.setText("Other Transactions");
+        jLabel4.setName("jLabel4"); // NOI18N
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);

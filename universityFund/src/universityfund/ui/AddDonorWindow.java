@@ -49,34 +49,57 @@ public class AddDonorWindow extends javax.swing.JFrame {
         setTitle("ADD DONOR");
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 255, 204));
+        setName("Form"); // NOI18N
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel2.setText("Name:");
+        jLabel2.setName("jLabel2"); // NOI18N
 
         jLabel3.setText("Address:");
+        jLabel3.setName("jLabel3"); // NOI18N
 
         jLabel4.setText("Category:");
+        jLabel4.setName("jLabel4"); // NOI18N
 
         jLabel5.setText("Year of Graduation:");
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        address_text.setName("address_text"); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setName("jTextArea1"); // NOI18N
         address_text.setViewportView(jTextArea1);
 
+        name_text.setName("name_text"); // NOI18N
+
         category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        category_combo.setName("category_combo"); // NOI18N
+
+        year_text.setName("year_text"); // NOI18N
 
         save_button.setText("Save");
+        save_button.setName("save_button"); // NOI18N
 
         cancel_button.setText("Cancel");
+        cancel_button.setName("cancel_button"); // NOI18N
 
         jLabel8.setText("Contact Number:");
+        jLabel8.setName("jLabel8"); // NOI18N
+
+        number_text.setName("number_text"); // NOI18N
 
         jLabel6.setText("Email Address:");
+        jLabel6.setName("jLabel6"); // NOI18N
+
+        email_text.setName("email_text"); // NOI18N
 
         jLabel7.setText("Input the following details:");
+        jLabel7.setName("jLabel7"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

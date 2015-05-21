@@ -35,11 +35,18 @@ public class AssignWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("Form"); // NOI18N
         setResizable(false);
 
+        jPanel1.setName("jPanel1"); // NOI18N
+
         jLabel1.setText("Batch:");
+        jLabel1.setName("jLabel1"); // NOI18N
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setName("jComboBox1"); // NOI18N
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -52,9 +59,11 @@ public class AssignWindow extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setName("jTable1"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
+        jButton1.setName("jButton1"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
