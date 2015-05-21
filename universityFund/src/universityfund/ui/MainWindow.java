@@ -43,6 +43,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -175,7 +176,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
         // TODO add your handling code here:
-        window = new NewDonorWindow();
+        window = new AddDonorWindow();
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
