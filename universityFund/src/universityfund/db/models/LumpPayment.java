@@ -18,4 +18,18 @@ public class LumpPayment extends Payment implements Serializable {
     private static final long serialVersionUID = 3719665699856917067L;
     
     private String creditCardNumber;
+
+    /**
+     * @return the creditCardNumber
+     */
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    /**
+     * @param creditCardNumber the creditCardNumber to set
+     */
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
 }

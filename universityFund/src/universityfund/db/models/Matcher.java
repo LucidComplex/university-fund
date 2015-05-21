@@ -18,6 +18,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Matcher implements Serializable {
+    private static final long serialVersionUID = 7871242346605941402L;
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
