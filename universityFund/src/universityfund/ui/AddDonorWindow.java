@@ -263,24 +263,16 @@ public class AddDonorWindow extends javax.swing.JFrame {
 
     private void saveDonor() throws FieldBlankException {
         Donor donor = new Donor();
-        boolean valid = true;
         donor.setAddress(address_text.getText());
+        donor.setCategory(category_combo.getSelectedItem().toString());
         donor.setContactNumber(number_text.getText());
+        donor.setEmail(email_text.getText());
+        donor.setGraduationYear(Integer.valueOf(year_text.getText()));
         donor.setName(name_text.getText());
-        if (year_text.getText().matches("^[0-9]{4}$")) {
-            donor.setGraduationYear(Integer.valueOf(year_text.getText()));
-        }
-        else {
-            valid = false;
-        }
-        if (valid)
-            donor.save();
-        else {
-            throw new FieldBlankException();
-        }
+        donor.save();
     }
     
     private String[] createCategoryArray() {
-        return new String[] {"Alumnus/Alumna", "Administrator", "Parent", "Senior"};
+        return new String[] {"--------", "Alumnus/Alumna", "Administrator", "Parent", "Senior"};
     }
 }
