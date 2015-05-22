@@ -5,6 +5,8 @@
  */
 package universityfund.ui;
 
+import java.awt.Color;
+
 /**
  *
  * @author MiriamMarie
@@ -28,22 +30,28 @@ public class AddDonorWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        address_text = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        name_label = new javax.swing.JLabel();
+        address_label = new javax.swing.JLabel();
+        category_label = new javax.swing.JLabel();
+        year_label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        address_text = new javax.swing.JTextArea();
         name_text = new javax.swing.JTextField();
         category_combo = new javax.swing.JComboBox();
         year_text = new javax.swing.JTextField();
         save_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        number_label = new javax.swing.JLabel();
         number_text = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        email_label = new javax.swing.JLabel();
         email_text = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        name_symbol = new javax.swing.JLabel();
+        address_symbol = new javax.swing.JLabel();
+        number_symbol = new javax.swing.JLabel();
+        email_symbol = new javax.swing.JLabel();
+        year_symbol = new javax.swing.JLabel();
+        category_symbol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ADD DONOR");
@@ -55,25 +63,25 @@ public class AddDonorWindow extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setName("jPanel1"); // NOI18N
 
-        jLabel2.setText("Name:");
-        jLabel2.setName("jLabel2"); // NOI18N
+        name_label.setText("Name:");
+        name_label.setName("name_label"); // NOI18N
 
-        jLabel3.setText("Address:");
-        jLabel3.setName("jLabel3"); // NOI18N
+        address_label.setText("Address:");
+        address_label.setName("address_label"); // NOI18N
 
-        jLabel4.setText("Category:");
-        jLabel4.setName("jLabel4"); // NOI18N
+        category_label.setText("Category:");
+        category_label.setName("category_label"); // NOI18N
 
-        jLabel5.setText("Year of Graduation:");
-        jLabel5.setName("jLabel5"); // NOI18N
+        year_label.setText("Year of Graduation:");
+        year_label.setName("year_label"); // NOI18N
 
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        address_text.setColumns(20);
+        address_text.setLineWrap(true);
+        address_text.setRows(5);
         address_text.setName("address_text"); // NOI18N
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setName("jTextArea1"); // NOI18N
-        address_text.setViewportView(jTextArea1);
+        jScrollPane1.setViewportView(address_text);
 
         name_text.setName("name_text"); // NOI18N
 
@@ -84,22 +92,51 @@ public class AddDonorWindow extends javax.swing.JFrame {
 
         save_button.setText("Save");
         save_button.setName("save_button"); // NOI18N
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         cancel_button.setText("Cancel");
         cancel_button.setName("cancel_button"); // NOI18N
 
-        jLabel8.setText("Contact Number:");
-        jLabel8.setName("jLabel8"); // NOI18N
+        number_label.setText("Contact Number:");
+        number_label.setName("number_label"); // NOI18N
 
         number_text.setName("number_text"); // NOI18N
 
-        jLabel6.setText("Email Address:");
-        jLabel6.setName("jLabel6"); // NOI18N
+        email_label.setText("Email Address:");
+        email_label.setName("email_label"); // NOI18N
 
         email_text.setName("email_text"); // NOI18N
 
-        jLabel7.setText("Input the following details:");
+        jLabel7.setText("Donor Information");
         jLabel7.setName("jLabel7"); // NOI18N
+
+        name_symbol.setForeground(new java.awt.Color(255, 0, 0));
+        name_symbol.setText("*");
+        name_symbol.setName("name_symbol"); // NOI18N
+
+        address_symbol.setForeground(new java.awt.Color(255, 0, 0));
+        address_symbol.setText("*");
+        address_symbol.setName("address_symbol"); // NOI18N
+
+        number_symbol.setForeground(new java.awt.Color(255, 0, 0));
+        number_symbol.setText("*");
+        number_symbol.setName("number_symbol"); // NOI18N
+
+        email_symbol.setForeground(new java.awt.Color(255, 0, 0));
+        email_symbol.setText("*");
+        email_symbol.setName("email_symbol"); // NOI18N
+
+        year_symbol.setForeground(new java.awt.Color(255, 0, 0));
+        year_symbol.setText("*");
+        year_symbol.setName("year_symbol"); // NOI18N
+
+        category_symbol.setForeground(new java.awt.Color(255, 0, 0));
+        category_symbol.setText("*");
+        category_symbol.setName("category_symbol"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,51 +144,64 @@ public class AddDonorWindow extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(address_text, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(year_text, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(36, 36, 36)
-                                    .addComponent(save_button)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(cancel_button)
-                                    .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGap(10, 10, 10)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(address_label)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(name_label)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addGap(15, 15, 15)
+                                                    .addComponent(jLabel7))))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
+                                    .addContainerGap()
+                                    .addComponent(year_label)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(category_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(year_text, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(36, 36, 36)
+                                        .addComponent(save_button)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cancel_button)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(category_label)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(category_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name_symbol)
+                            .addComponent(address_symbol)
+                            .addComponent(year_symbol)
+                            .addComponent(category_symbol)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(number_label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(number_text, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(email_label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(email_text)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(number_text, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(email_text)))
-                            .addComponent(jLabel7))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(number_symbol)
+                            .addComponent(email_symbol))))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,28 +210,37 @@ public class AddDonorWindow extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name_label)
+                    .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_symbol))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(address_text, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(address_label)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(address_symbol)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(number_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(number_label)
+                    .addComponent(number_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number_symbol))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(email_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email_label)
+                    .addComponent(email_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email_symbol))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(year_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(year_label)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(year_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(year_symbol)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(category_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(category_label)
+                    .addComponent(category_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(category_symbol))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(save_button)
@@ -193,7 +252,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +262,39 @@ public class AddDonorWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        // TODO add your handling code here:
+        check();
+    }//GEN-LAST:event_save_buttonActionPerformed
+
+    public void check(){
+        if(hasMissing()){
+            if(name_text.getText().isEmpty())
+                name_label.setForeground(Color.RED);
+            if(address_text.getText().isEmpty())
+                address_label.setForeground(Color.RED);
+            if(email_text.getText().isEmpty())
+                email_label.setForeground(Color.RED);
+            if(number_text.getText().isEmpty())
+                number_label.setForeground(Color.RED);
+            if(year_text.getText().isEmpty())
+                year_label.setForeground(Color.RED);
+            if(category_combo.getSelectedItem().toString().isEmpty())
+                category_label.setForeground(Color.RED);
+        }
+    }
+    
+    public boolean hasMissing(){
+        if(name_text.getText().isEmpty()
+          || address_text.getText().isEmpty()
+          || email_text.getText().isEmpty()
+          || number_text.getText().isEmpty()
+          || year_text.getText().isEmpty()
+          || category_combo.getSelectedItem().toString().isEmpty())
+            return true;
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -240,22 +332,28 @@ public class AddDonorWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane address_text;
+    private javax.swing.JLabel address_label;
+    private javax.swing.JLabel address_symbol;
+    private javax.swing.JTextArea address_text;
     private javax.swing.JButton cancel_button;
     private javax.swing.JComboBox category_combo;
+    private javax.swing.JLabel category_label;
+    private javax.swing.JLabel category_symbol;
+    private javax.swing.JLabel email_label;
+    private javax.swing.JLabel email_symbol;
     private javax.swing.JTextField email_text;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel name_label;
+    private javax.swing.JLabel name_symbol;
     private javax.swing.JTextField name_text;
+    private javax.swing.JLabel number_label;
+    private javax.swing.JLabel number_symbol;
     private javax.swing.JTextField number_text;
     private javax.swing.JButton save_button;
+    private javax.swing.JLabel year_label;
+    private javax.swing.JLabel year_symbol;
     private javax.swing.JTextField year_text;
     // End of variables declaration//GEN-END:variables
 }
