@@ -71,6 +71,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         donation_button.setText("New Donation");
         donation_button.setName("donation_button"); // NOI18N
+        donation_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donation_buttonActionPerformed(evt);
+            }
+        });
 
         assign_button.setText("Assign Class Representative");
         assign_button.setName("assign_button"); // NOI18N
@@ -205,6 +210,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void pledge_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pledge_buttonActionPerformed
         // TODO add your handling code here:
+        window = new PledgeWindow();
     }//GEN-LAST:event_pledge_buttonActionPerformed
 
     private void assign_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assign_buttonActionPerformed
@@ -216,6 +222,11 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         window = new ReportWindow();
     }//GEN-LAST:event_reports_buttonActionPerformed
+
+    private void donation_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donation_buttonActionPerformed
+        // TODO add your handling code here:
+        window = new DonationWindow();
+    }//GEN-LAST:event_donation_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_button;
