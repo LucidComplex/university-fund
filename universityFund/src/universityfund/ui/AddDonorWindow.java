@@ -283,26 +283,38 @@ public class AddDonorWindow extends javax.swing.JFrame {
         if(name_text.getText().isEmpty()) {
             name_label.setForeground(Color.RED);
             valid = false;
+        } else {
+            name_label.setForeground(Color.BLACK);
         }
         if(address_text.getText().isEmpty()) {
             address_label.setForeground(Color.RED);
             valid = false;
+        } else {
+            address_label.setForeground(Color.BLACK);
         }
         if(email_text.getText().isEmpty()) {
             email_label.setForeground(Color.RED);
             valid = false;
+        } else {
+            email_label.setForeground(Color.BLACK);
         }
         if(number_text.getText().isEmpty()) {
             number_label.setForeground(Color.RED);
             valid = false;
+        } else {
+            number_label.setForeground(Color.BLACK);
         }
         if(year_text.getText().isEmpty()) {
             year_label.setForeground(Color.RED);
             valid = false;
+        } else {
+            year_label.setForeground(Color.BLACK);
         }
-        if(category_combo.getSelectedItem().toString().isEmpty()) {
+        if(category_combo.getSelectedItem().toString().matches("^--------$")) {
             category_label.setForeground(Color.RED);
             valid = false;
+        } else {
+            category_label.setForeground(Color.BLACK);
         }
         return valid;
     }
