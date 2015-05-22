@@ -33,7 +33,7 @@ public class AssignWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         directory_table = new javax.swing.JTable();
         cancel_button = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        assign_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Form"); // NOI18N
@@ -72,8 +72,8 @@ public class AssignWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Save");
-        jButton1.setName("jButton1"); // NOI18N
+        assign_button.setText("Assign as Class Representative");
+        assign_button.setName("assign_button"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,7 +83,7 @@ public class AssignWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(assign_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancel_button))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +106,7 @@ public class AssignWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel_button)
-                    .addComponent(jButton1))
+                    .addComponent(assign_button))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -165,10 +165,10 @@ public class AssignWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assign_button;
     private javax.swing.JComboBox batch_combo;
     private javax.swing.JButton cancel_button;
     private javax.swing.JTable directory_table;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
