@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Donor extends Model implements Serializable {
-    private static final long serialVersionUID = -6603935041905865231L;
+    private static final long serialVersionUID = 5685414599899853806L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -30,10 +30,10 @@ public class Donor extends Model implements Serializable {
     
     private String address;
     private String category;
-    private String firstName;
-    private String lastName;
     private String contactNumber;
+    private String email;
     private int graduationYear;
+    private String name;
     
     @OneToMany(mappedBy="donor")
     @JoinTable(
@@ -82,34 +82,6 @@ public class Donor extends Model implements Serializable {
      */
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    /**
-     * @return the firstName
-     */
-    public String getFirstName() {
-        return firstName;
-    }
-
-    /**
-     * @param firstName the firstName to set
-     */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    /**
-     * @return the lastName
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * @param lastName the lastName to set
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     /**
@@ -166,6 +138,34 @@ public class Donor extends Model implements Serializable {
      */
     public void setGraduationYear(int graduationYear) {
         this.graduationYear = graduationYear;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
     
 }
