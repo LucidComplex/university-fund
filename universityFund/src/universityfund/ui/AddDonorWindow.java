@@ -47,7 +47,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
         email_text = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("ADD DONOR");
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 255, 204));

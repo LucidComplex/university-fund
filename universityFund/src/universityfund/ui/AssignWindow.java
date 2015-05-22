@@ -36,6 +36,7 @@ public class AssignWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ASSIGN CLASS REP");
         setName("Form"); // NOI18N
         setResizable(false);
 
