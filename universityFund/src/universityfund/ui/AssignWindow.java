@@ -5,11 +5,15 @@
  */
 package universityfund.ui;
 
+import java.awt.event.ItemEvent;
 import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import universityfund.db.DbHelper;
+import universityfund.db.models.ClassRepresentative;
+import static universityfund.db.models.ClassRepresentative_.representative;
 import universityfund.db.models.Donor;
 import universityfund.ui.tablemodels.BatchMembersTableModel;
 
@@ -77,6 +81,11 @@ public class AssignWindow extends javax.swing.JFrame {
 
         assign_button.setText("Assign as Class Representative");
         assign_button.setName("assign_button"); // NOI18N
+        assign_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assign_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,14 +141,33 @@ public class AssignWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void batch_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_batch_comboItemStateChanged
+        // don't go through if event is not selection
+        if (evt.getStateChange() != ItemEvent.SELECTED)
+            return;
         try {
             int selectedYear;
             selectedYear = Integer.valueOf(batch_combo.getSelectedItem().toString());
-            directory_table.setModel(new BatchMembersTableModel(selectedYear));
+            updateTable(selectedYear);
         } catch (NumberFormatException e) {
             directory_table.setModel(new BatchMembersTableModel());
         }
     }//GEN-LAST:event_batch_comboItemStateChanged
+
+    private void assign_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assign_buttonActionPerformed
+        assignClassRepresentative();
+    }//GEN-LAST:event_assign_buttonActionPerformed
+    
+    private void assignClassRepresentative() {
+        int selectedIndex = directory_table.getSelectedRow();
+        BatchMembersTableModel model = (BatchMembersTableModel) directory_table.getModel();
+        long id = model.getDonorIdByRowIndex(selectedIndex);
+        ClassRepresentative rep = new ClassRepresentative();
+        rep.setBatchYear(Integer.valueOf(batch_combo.getSelectedItem().toString()));
+        EntityManager em = DbHelper.getEntityManager();
+        rep.setRepresentative(em.find(Donor.class, id));
+        em.close();
+        rep.save();
+    }
     
     private Object[] loadAvailableBatches() {
         SortedSet<Object> yearSet = new TreeSet<>(new Comparator() {
@@ -161,6 +189,25 @@ public class AssignWindow extends javax.swing.JFrame {
         em.close();
         return yearSet.toArray();
     }
+    
+    private void updateTable(int selectedYear) {
+        directory_table.setModel(new BatchMembersTableModel(selectedYear));
+        EntityManager em = DbHelper.getEntityManager();
+        try {
+            Donor representative;
+            representative = em.createQuery(
+                    "SELECT r FROM ClassRepresentative r WHERE r.batchYear = :year", ClassRepresentative.class
+            ).setParameter("year", selectedYear).getSingleResult().getRepresentative();
+            BatchMembersTableModel tableModel = (BatchMembersTableModel) directory_table.getModel();
+            int rowIndex = tableModel.getRowIndexByDonorId(representative.getId());
+            directory_table.setRowSelectionInterval(rowIndex, rowIndex);
+        } catch (NoResultException e) {
+            // do nothing
+        } finally {
+            em.close();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assign_button;
     private javax.swing.JComboBox batch_combo;

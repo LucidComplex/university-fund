@@ -19,4 +19,9 @@ public class DeferredPayment extends Payment implements Serializable {
     
     private int numberOfPayments;
     private int paymentsCompleted;
+
+    @Override
+    public void setPK() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

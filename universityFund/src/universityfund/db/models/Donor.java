@@ -22,8 +22,17 @@ import javax.persistence.Transient;
  */
 
 @Entity
-public class Donor extends Model implements Serializable {
+public class Donor extends Model implements Serializable, myEntity {
     private static final long serialVersionUID = 5685414599899853806L;
+    
+    public Donor() {
+        this.classType = Donor.class;
+    }
+    
+    @Override
+    public void setPK() {
+        this.pk = id;
+    }
     
     @Transient
     public static String[] COLUMN_NAMES = {"Name", "Address", "Contact Number", "Email Address", "Category", "Batch"};
@@ -188,6 +197,19 @@ public class Donor extends Model implements Serializable {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public void load(Object entity) {
+        Donor donor = (Donor) entity;
+        this.address = donor.getAddress();
+        this.category = donor.getCategory();
+        this.contactNumber = donor.getContactNumber();
+        this.donations = donor.getDonations();
+        this.email = donor.getEmail();
+        this.graduationYear = donor.getGraduationYear();
+        this.name = donor.getName();
+        this.pledges = donor.getPledges();
     }
     
 }

@@ -140,6 +140,9 @@
             <Property name="text" type="java.lang.String" value="Assign as Class Representative"/>
             <Property name="name" type="java.lang.String" value="assign_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assign_buttonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
