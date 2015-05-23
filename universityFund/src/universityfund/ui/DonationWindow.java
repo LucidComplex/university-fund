@@ -5,12 +5,16 @@
  */
 package universityfund.ui;
 
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
+import universityfund.db.models.Donor;
+
 /**
  *
  * @author MiriamMarie
  */
-public class DonationWindow extends javax.swing.JFrame {
-
+public class DonationWindow extends javax.swing.JFrame implements UI {
+    private Donor selectedDonor;
     /**
      * Creates new form DonationWindow
      */
@@ -53,14 +57,13 @@ public class DonationWindow extends javax.swing.JFrame {
         name_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         setButton.setText("Set...");
-
-        jLabel4.setText("Amount:");
-
-        amount_text.addActionListener(new java.awt.event.ActionListener() {
+        setButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                amount_textActionPerformed(evt);
+                setButtonActionPerformed(evt);
             }
         });
+
+        jLabel4.setText("Amount:");
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("*");
@@ -138,45 +141,10 @@ public class DonationWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void amount_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amount_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_amount_textActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DonationWindow().setVisible(true);
-            }
-        });
-    }
-
+    private void setButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setButtonActionPerformed
+        new SelectDonorWindow(this).setVisible(true);
+    }//GEN-LAST:event_setButtonActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amount_text;
     private javax.swing.JButton cancel_button;
@@ -190,4 +158,11 @@ public class DonationWindow extends javax.swing.JFrame {
     private javax.swing.JButton save_button;
     private javax.swing.JButton setButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void receiveIntent(Object intent) {
+        EntityManager em = DbHelper.getEntityManager();
+        selectedDonor = em.find(Donor.class, (long) intent);
+        name_text.setText(selectedDonor.getName());
+    }
 }
