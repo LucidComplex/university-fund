@@ -31,6 +31,8 @@ public class ReportWindow extends javax.swing.JFrame {
         sol_panel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         annual_panel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         monthly_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,7 +64,7 @@ public class ReportWindow extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 218, Short.MAX_VALUE)
+            .addGap(0, 302, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout sol_panelLayout = new javax.swing.GroupLayout(sol_panel);
@@ -81,15 +83,37 @@ public class ReportWindow extends javax.swing.JFrame {
         annual_panel.setBackground(new java.awt.Color(255, 255, 255));
         annual_panel.setName("annual_panel"); // NOI18N
 
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.setName("jTable2"); // NOI18N
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout annual_panelLayout = new javax.swing.GroupLayout(annual_panel);
         annual_panel.setLayout(annual_panelLayout);
         annual_panelLayout.setHorizontalGroup(
             annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGroup(annual_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         annual_panelLayout.setVerticalGroup(
             annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 218, Short.MAX_VALUE)
+            .addGroup(annual_panelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Annual Report to Donors", annual_panel);
@@ -135,7 +159,7 @@ public class ReportWindow extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Monthly Report", monthly_panel);
@@ -188,7 +212,7 @@ public class ReportWindow extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Class Rep Contact List", class_panel);
@@ -203,9 +227,7 @@ public class ReportWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
         );
 
         pack();
@@ -257,8 +279,10 @@ public class ReportWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel monthly_panel;
     private javax.swing.JComboBox rep_combo;
     private javax.swing.JPanel sol_panel;
