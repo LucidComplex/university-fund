@@ -5,6 +5,14 @@
  */
 package universityfund.ui;
 
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
+import universityfund.db.models.Donor;
+import universityfund.ui.tablemodels.BatchMembersTableModel;
+
 /**
  *
  * @author MiriamMarie
@@ -29,7 +37,7 @@ public class AssignWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        batch_combo = new javax.swing.JComboBox();
+        batch_combo = new javax.swing.JComboBox(loadAvailableBatches());
         jScrollPane1 = new javax.swing.JScrollPane();
         directory_table = new javax.swing.JTable();
         cancel_button = new javax.swing.JButton();
@@ -46,22 +54,16 @@ public class AssignWindow extends javax.swing.JFrame {
         jLabel1.setText("Batch:");
         jLabel1.setName("jLabel1"); // NOI18N
 
-        batch_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         batch_combo.setName("batch_combo"); // NOI18N
+        batch_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                batch_comboItemStateChanged(evt);
+            }
+        });
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        directory_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        directory_table.setModel(new BatchMembersTableModel());
         directory_table.setName("directory_table"); // NOI18N
         jScrollPane1.setViewportView(directory_table);
 
@@ -126,45 +128,39 @@ public class AssignWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void batch_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_batch_comboItemStateChanged
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AssignWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AssignWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AssignWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AssignWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            int selectedYear;
+            selectedYear = Integer.valueOf(batch_combo.getSelectedItem().toString());
+            directory_table.setModel(new BatchMembersTableModel(selectedYear));
+        } catch (NumberFormatException e) {
+            directory_table.setModel(new BatchMembersTableModel());
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AssignWindow().setVisible(true);
+    }//GEN-LAST:event_batch_comboItemStateChanged
+    
+    private Object[] loadAvailableBatches() {
+        SortedSet<Object> yearSet = new TreeSet<>(new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof String) {
+                    return -1;
+                } else if (o2 instanceof String){
+                    return 1;
+                }
+                return Integer.compare((int) o1, (int) o2);
             }
         });
+        EntityManager em = DbHelper.getEntityManager();
+        yearSet.add("----");
+        for (Donor d : em.createQuery("SELECT d FROM Donor d", Donor.class).getResultList()) {
+            yearSet.add(d.getGraduationYear());
+        }
+        em.close();
+        return yearSet.toArray();
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assign_button;
     private javax.swing.JComboBox batch_combo;

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 /**
  *
@@ -23,6 +24,27 @@ import javax.persistence.OneToMany;
 @Entity
 public class Donor extends Model implements Serializable {
     private static final long serialVersionUID = 5685414599899853806L;
+    
+    @Transient
+    public static String[] COLUMN_NAMES = {"Name", "Address", "Contact Number", "Email Address", "Category", "Batch"};
+    
+    public Object getValue(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return name;
+            case 1:
+                return address;
+            case 2:
+                return contactNumber;
+            case 3:
+                return email;
+            case 4:
+                return category;
+            case 5:
+                return graduationYear;
+        }
+        return null;
+    }
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
