@@ -8,6 +8,7 @@ package universityfund.db.models;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -18,6 +19,7 @@ import javax.persistence.Id;
 public class ClassRepresentative implements Serializable {
     @Id
     private int year;
+    @OneToOne
     private Donor representative;
 
     /**
