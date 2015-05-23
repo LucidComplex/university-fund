@@ -60,11 +60,6 @@ public class AssignWindow extends javax.swing.JFrame {
                 batch_comboItemStateChanged(evt);
             }
         });
-        batch_combo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                batch_comboPropertyChange(evt);
-            }
-        });
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
@@ -135,10 +130,6 @@ public class AssignWindow extends javax.swing.JFrame {
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancel_buttonActionPerformed
-
-    private void batch_comboPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_batch_comboPropertyChange
-        
-    }//GEN-LAST:event_batch_comboPropertyChange
 
     private void batch_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_batch_comboItemStateChanged
         try {
