@@ -5,6 +5,7 @@
  */
 package universityfund.ui;
 
+import java.awt.Color;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
@@ -25,6 +26,7 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
      */
     public DonationWindow() {
         initComponents();
+        selectedDonor = null;
     }
 
     /**
@@ -38,10 +40,10 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        name_label = new javax.swing.JLabel();
         name_text = new javax.swing.JLabel();
         setButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        amount_label = new javax.swing.JLabel();
         amount_text = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -55,7 +57,7 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Donation");
 
-        jLabel2.setText("Name:");
+        name_label.setText("Name:");
 
         name_text.setText(" ");
         name_text.setToolTipText("");
@@ -68,7 +70,7 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
             }
         });
 
-        jLabel4.setText("Amount:");
+        amount_label.setText("Amount:");
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("*");
@@ -104,13 +106,13 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
                         .addComponent(cancel_button))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(name_label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(setButton))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
+                            .addComponent(amount_label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(amount_text))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,13 +128,13 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(name_label)
                     .addComponent(name_text)
                     .addComponent(setButton)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(amount_label)
                     .addComponent(amount_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,6 +167,8 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        if (!valid())
+            return;
         createDonation();
         dispose();
     }//GEN-LAST:event_save_buttonActionPerformed
@@ -178,15 +182,32 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
         funding.save();
     }
     
+    private boolean valid() {
+        boolean valid = true;
+        if (selectedDonor == null) {
+            name_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            name_label.setForeground(Color.BLACK);
+        }
+        if (!amount_text.getText().matches("^[0-9]+$")) {
+            amount_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            amount_label.setForeground(Color.BLACK);
+        }
+        return valid;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amount_label;
     private javax.swing.JTextField amount_text;
     private javax.swing.JButton cancel_button;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel name_label;
     private javax.swing.JLabel name_text;
     private javax.swing.JButton save_button;
     private javax.swing.JButton setButton;
