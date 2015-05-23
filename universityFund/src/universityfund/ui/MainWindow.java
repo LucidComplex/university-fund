@@ -215,7 +215,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void assign_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assign_buttonActionPerformed
         // TODO add your handling code here:
-        window = new AssignWindow();
+        new AssignWindow().setVisible(true);
     }//GEN-LAST:event_assign_buttonActionPerformed
 
     private void reports_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reports_buttonActionPerformed
