@@ -200,17 +200,17 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
         // TODO add your handling code here:
-        window = new UpdateDonorWindow();
+        new UpdateDonorWindow().setVisible(true);
     }//GEN-LAST:event_update_buttonActionPerformed
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
         // TODO add your handling code here:
-        window = new DeleteDonorWindow();
+        new DeleteDonorWindow().setVisible(true);
     }//GEN-LAST:event_delete_buttonActionPerformed
 
     private void pledge_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pledge_buttonActionPerformed
         // TODO add your handling code here:
-        window = new PledgeWindow();
+        new PledgeWindow().setVisible(true);
     }//GEN-LAST:event_pledge_buttonActionPerformed
 
     private void assign_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assign_buttonActionPerformed
@@ -220,12 +220,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void reports_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reports_buttonActionPerformed
         // TODO add your handling code here:
-        window = new ReportWindow();
+        new ReportWindow().setVisible(true);
     }//GEN-LAST:event_reports_buttonActionPerformed
 
     private void donation_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donation_buttonActionPerformed
         // TODO add your handling code here:
-        window = new DonationWindow();
+        new DonationWindow().setVisible(true);
     }//GEN-LAST:event_donation_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
