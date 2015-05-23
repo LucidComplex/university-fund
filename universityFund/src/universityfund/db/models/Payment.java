@@ -17,10 +17,19 @@ import javax.persistence.Id;
  */
 
 @Entity
-public abstract class Payment extends Model implements Serializable {
+public class Payment extends Model implements Serializable {
     private static final long serialVersionUID = -3191645214995387441L;
+    
+    public Payment() {
+        this.classType = Payment.class;
+    }
        
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+
+    @Override
+    public void setPK() {
+        this.pk = id;
+    }
 }

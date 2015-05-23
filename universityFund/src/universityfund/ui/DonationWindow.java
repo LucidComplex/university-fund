@@ -5,9 +5,14 @@
  */
 package universityfund.ui;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
+import universityfund.db.models.Funding;
+import universityfund.db.models.Payment;
 
 /**
  *
@@ -72,8 +77,18 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
         jLabel5.setText("*");
 
         cancel_button.setText("Cancel");
+        cancel_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_buttonActionPerformed(evt);
+            }
+        });
 
         save_button.setText("Save");
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,6 +159,24 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
     private void setButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setButtonActionPerformed
         new SelectDonorWindow(this).setVisible(true);
     }//GEN-LAST:event_setButtonActionPerformed
+
+    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancel_buttonActionPerformed
+
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        createDonation();
+        dispose();
+    }//GEN-LAST:event_save_buttonActionPerformed
+    
+    private void createDonation() {
+        Funding funding = new Funding();
+        funding.setAmount(Integer.valueOf(amount_text.getText()));
+        funding.setDonor(selectedDonor);
+        // TODO: payment
+        funding.setPayment(null);
+        funding.save();
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amount_text;
