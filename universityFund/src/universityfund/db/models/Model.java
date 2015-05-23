@@ -11,19 +11,25 @@ import universityfund.db.DbHelper;
 /**
  *
  * @author tan
+ * @param <T>
  */
-public abstract class Model {
+public abstract class Model<T extends myEntity> {
+    protected Class<T> classType;
+    protected Object pk;
+    public abstract void setPK();
     public void save() {
         if (!DbHelper.isReady()) {
             DbHelper.setPersistenceUnitName("universityFundPU");
         }
+        this.setPK();
         EntityManager em = DbHelper.getEntityManager();
         em.getTransaction().begin();
-        if (em.contains(this)) {
-            em.merge(this);
-        }
-        else {
+        
+        T entity = em.find(classType, pk);
+        if (entity == null) {
             em.persist(this);
+        } else {
+            entity.load(this);
         }
         em.getTransaction().commit();
         em.close();

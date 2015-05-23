@@ -16,24 +16,34 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
-public class ClassRepresentative implements Serializable {
+public class ClassRepresentative extends Model implements Serializable, myEntity {
+    public ClassRepresentative() {
+        this.classType = ClassRepresentative.class;
+    }
+    
+    @Override
+    public void setPK() {
+        this.pk = batchYear;
+    }
+    
     @Id
-    private int year;
+    private int batchYear;
     @OneToOne
     private Donor representative;
 
     /**
      * @return the year
      */
-    public int getYear() {
-        return year;
+    public int getBatchYear() {
+        return batchYear;
     }
 
     /**
      * @param year the year to set
      */
-    public void setYear(int year) {
-        this.year = year;
+    public void setBatchYear(int year) {
+        this.batchYear = year;
+        this.pk = year;
     }
 
     /**
@@ -49,6 +59,12 @@ public class ClassRepresentative implements Serializable {
     public void setRepresentative(Donor representative) {
         this.representative = representative;
     }
-    
-    
+
+    @Override
+    public void load(Object entity) {
+        ClassRepresentative rep = (ClassRepresentative) entity;
+        this.batchYear = rep.getBatchYear();
+        this.representative = rep.getRepresentative();
+    }
+
 }

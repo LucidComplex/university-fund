@@ -32,4 +32,9 @@ public class LumpPayment extends Payment implements Serializable {
     public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
+
+    @Override
+    public void setPK() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

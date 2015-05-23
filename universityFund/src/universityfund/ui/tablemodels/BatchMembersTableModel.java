@@ -18,9 +18,10 @@ import universityfund.db.models.Donor;
  */
 public class BatchMembersTableModel extends AbstractTableModel {
     private List<Donor> classMemberList;
-    private int cachedIndex = -1;
+    private int cachedIndex;
     private Donor cachedDonor;
     public BatchMembersTableModel(int year) {
+        this();
         EntityManager em = DbHelper.getEntityManager();
         classMemberList = em.createQuery(
                 "SELECT d FROM Donor d WHERE d.graduationYear = :year", Donor.class
@@ -30,6 +31,8 @@ public class BatchMembersTableModel extends AbstractTableModel {
     
     public BatchMembersTableModel() {
         classMemberList = new Vector<>();
+        cachedIndex = -1;
+        cachedDonor = null;
     }
 
     @Override
@@ -58,6 +61,21 @@ public class BatchMembersTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         return cacheDonor(rowIndex).getValue(columnIndex);
+    }
+    
+    public int getRowIndexByDonorId(long id){
+        int index = 0;
+        for (Donor d : classMemberList) {
+            if (d.getId() == id) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+    
+    public long getDonorIdByRowIndex(int row) {
+        return classMemberList.get(row).getId();
     }
     
 }

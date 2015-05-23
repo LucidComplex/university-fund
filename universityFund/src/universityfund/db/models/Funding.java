@@ -113,5 +113,10 @@ public class Funding extends Model implements Serializable {
     public void setDonor(Donor donor) {
         this.donor = donor;
     }
+
+    @Override
+    public void setPK() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

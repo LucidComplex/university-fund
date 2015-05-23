@@ -76,4 +76,9 @@ public class Matcher extends Model implements Serializable {
     public void setNameOfSpouse(String nameOfSpouse) {
         this.nameOfSpouse = nameOfSpouse;
     }
+
+    @Override
+    public void setPK() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
