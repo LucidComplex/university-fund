@@ -13,7 +13,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import universityfund.db.DbHelper;
 import universityfund.db.models.ClassRepresentative;
-import static universityfund.db.models.ClassRepresentative_.representative;
 import universityfund.db.models.Donor;
 import universityfund.ui.tablemodels.BatchMembersTableModel;
 

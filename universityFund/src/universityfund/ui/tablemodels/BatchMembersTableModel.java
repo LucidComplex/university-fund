@@ -23,7 +23,6 @@ public class BatchMembersTableModel extends AbstractTableModel {
     public BatchMembersTableModel(int year) {
         this();
         EntityManager em = DbHelper.getEntityManager();
-        System.out.println(year);
         classMemberList = em.createQuery(
                 "SELECT d FROM Donor d WHERE d.graduationYear = :year", Donor.class
         ).setParameter("year", year).getResultList();
