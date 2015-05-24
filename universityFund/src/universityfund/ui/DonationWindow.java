@@ -6,9 +6,11 @@
 package universityfund.ui;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
-import universityfund.db.models.CashPayment;
+import universityfund.db.models.Donates;
 import universityfund.db.models.Donor;
 import universityfund.db.models.Funding;
 
@@ -171,12 +173,21 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
     }//GEN-LAST:event_save_buttonActionPerformed
     
     private void createDonation() {
+        Funding funding = createFunding();
+        Donates donates = new Donates();
+        donates.setDonor(selectedDonor);
+        donates.setFunding(funding);
+        donates.save();
+    }
+    
+    private Funding createFunding() {
         Funding funding = new Funding();
         funding.setAmount(Integer.valueOf(amount_text.getText()));
-        funding.setDonor(selectedDonor);
-        // TODO: payment
-        funding.setPayment(new CashPayment());
+        funding.setCompletedPayments(1);
+        funding.setNumberOfPayments(1);
+        funding.setDate(Date.valueOf(LocalDate.now()));
         funding.save();
+        return funding;
     }
     
     private boolean valid() {
