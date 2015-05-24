@@ -7,13 +7,10 @@ package universityfund.db.models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDate;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
 
 /**
  *
@@ -21,24 +18,48 @@ import javax.persistence.PrePersist;
  */
 @Entity
 public class Funding extends Model implements Serializable {
-    private static final long serialVersionUID = 1181465477122132198L;
     
     public Funding() {
         this.classType = Funding.class;
     }
     
-    private int amount;
-    private Date date;
-    
     @Id
-    @OneToOne(cascade=CascadeType.ALL)
-    private Payment payment;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
     
-    @OneToOne
-    private Matcher matcher;
+    private int amount;
+    private int completedPayments;
+    private String creditCardNumber;;
+    private Date dateFunded;
+    private int numberOfPayments;
     
-    @ManyToOne
-    private Donor donor;
+    public String getCircle() {
+        String[] circleGroups = {
+            "President's", "Platinum", "Diamond", "Golden", "Silver",
+            "Porcelain", "Crystal", "Ivory", "Lace", "Silk"
+        };
+        for (int ii = 50000, jj = 0; jj < 10; ii /= 2, jj++) {
+            if (getAmount() / ii >= 1 && getAmount() >= 100)
+                return circleGroups[jj] + " Circle";
+        }
+        return "";
+    }
+    
+    public boolean isComplete() {
+        return getNumberOfPayments() == getCompletedPayments();
+    }
+
+    @Override
+    public void setPK() {
+        this.pk = this.id;
+    }
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
 
     /**
      * @return the amount
@@ -55,73 +76,59 @@ public class Funding extends Model implements Serializable {
     }
 
     /**
-     * @return the date
+     * @return the completedPayments
+     */
+    public int getCompletedPayments() {
+        return completedPayments;
+    }
+
+    /**
+     * @param completedPayments the completedPayments to set
+     */
+    public void setCompletedPayments(int completedPayments) {
+        this.completedPayments = completedPayments;
+    }
+
+    /**
+     * @return the creditCardNumber
+     */
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    /**
+     * @param creditCardNumber the creditCardNumber to set
+     */
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
+    /**
+     * @return the dateFunded
      */
     public Date getDate() {
-        return date;
+        return dateFunded;
     }
 
     /**
-     * @param date the date to set
+     * @param _date the dateFunded to set
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date _date) {
+        this.dateFunded = _date;
     }
 
     /**
-     * @return the payment
+     * @return the numberOfPayments
      */
-    public Payment getPayment() {
-        return payment;
+    public int getNumberOfPayments() {
+        return numberOfPayments;
     }
 
     /**
-     * @param payment the payment to set
+     * @param numberOfPayments the numberOfPayments to set
      */
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
-    
-    @PrePersist
-    void setInitialDate() {
-        this.setDate(Date.valueOf(LocalDate.now()));
-    }
-    
-    public boolean isCompleted() {
-        return true;
-    }
-
-    /**
-     * @return the matcher
-     */
-    public Matcher getMatcher() {
-        return matcher;
-    }
-
-    /**
-     * @param matcher the matcher to set
-     */
-    public void setMatcher(Matcher matcher) {
-        this.matcher = matcher;
-    }
-
-    /**
-     * @return the donor
-     */
-    public Donor getDonor() {
-        return donor;
-    }
-
-    /**
-     * @param donor the donor to set
-     */
-    public void setDonor(Donor donor) {
-        this.donor = donor;
-    }
-
-    @Override
-    public void setPK() {
-        this.pk = this.payment.id;
+    public void setNumberOfPayments(int numberOfPayments) {
+        this.numberOfPayments = numberOfPayments;
     }
     
 }

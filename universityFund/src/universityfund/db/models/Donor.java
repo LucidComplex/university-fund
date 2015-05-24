@@ -29,31 +29,8 @@ public class Donor extends Model implements Serializable, myEntity {
         this.classType = Donor.class;
     }
     
-    @Override
-    public void setPK() {
-        this.pk = id;
-    }
-    
     @Transient
     public static String[] COLUMN_NAMES = {"Name", "Address", "Contact Number", "Email Address", "Category", "Batch"};
-    
-    public Object getValue(int columnIndex) {
-        switch (columnIndex) {
-            case 0:
-                return name;
-            case 1:
-                return address;
-            case 2:
-                return contactNumber;
-            case 3:
-                return email;
-            case 4:
-                return category;
-            case 5:
-                return graduationYear;
-        }
-        return null;
-    }
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -67,18 +44,10 @@ public class Donor extends Model implements Serializable, myEntity {
     private String name;
     
     @OneToMany(mappedBy="donor")
-    @JoinTable(
-            name="Donates", joinColumns=@JoinColumn(name="donor_id"),
-            inverseJoinColumns=@JoinColumn(name="funding_id")
-    )
-    private Collection<Funding> donations;
+    private Collection<Donates> donations;
     
     @OneToMany(mappedBy="donor")
-    @JoinTable(
-            name="Pledges", joinColumns=@JoinColumn(name="donor_id"),
-            inverseJoinColumns=@JoinColumn(name="funding_id")
-    )
-    private Collection<Funding> pledges;
+    private Collection<Pledges> pledges;
 
     /**
      * @return the id
@@ -132,28 +101,28 @@ public class Donor extends Model implements Serializable, myEntity {
     /**
      * @return the donations
      */
-    public Collection<Funding> getDonations() {
+    public Collection<Donates> getDonations() {
         return donations;
     }
 
     /**
      * @param donations the donations to set
      */
-    public void setDonations(Collection<Funding> donations) {
+    public void setDonations(Collection<Donates> donations) {
         this.donations = donations;
     }
 
     /**
      * @return the pledges
      */
-    public Collection<Funding> getPledges() {
+    public Collection<Pledges> getPledges() {
         return pledges;
     }
 
     /**
      * @param pledges the pledges to set
      */
-    public void setPledges(Collection<Funding> pledges) {
+    public void setPledges(Collection<Pledges> pledges) {
         this.pledges = pledges;
     }
 
@@ -210,6 +179,29 @@ public class Donor extends Model implements Serializable, myEntity {
         this.graduationYear = donor.getGraduationYear();
         this.name = donor.getName();
         this.pledges = donor.getPledges();
+    }
+    
+    public Object getValue(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return name;
+            case 1:
+                return address;
+            case 2:
+                return contactNumber;
+            case 3:
+                return email;
+            case 4:
+                return category;
+            case 5:
+                return graduationYear;
+        }
+        return null;
+    }
+    
+    @Override
+    public void setPK() {
+        this.pk = id;
     }
     
 }

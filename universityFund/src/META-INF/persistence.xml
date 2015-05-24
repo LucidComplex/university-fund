@@ -10,6 +10,8 @@
     <class>universityfund.db.models.Matcher</class>
     <class>universityfund.db.models.Payment</class>
     <class>universityfund.db.models.ClassRepresentative</class>
+    <class>universityfund.db.models.Donates</class>
+    <class>universityfund.db.models.Pledges</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/university_fund;create=true"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>
