@@ -9,6 +9,8 @@ import java.text.DateFormatSymbols;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
 
 /**
  *
@@ -295,7 +297,7 @@ public class ReportWindow extends javax.swing.JFrame {
         jTable2.setName("jTable2"); // NOI18N
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel11.setText("Total amount here");
+        jLabel11.setText(getSum());
         jLabel11.setName("jLabel11"); // NOI18N
 
         javax.swing.GroupLayout annual_panelLayout = new javax.swing.GroupLayout(annual_panel);
@@ -501,6 +503,13 @@ public class ReportWindow extends javax.swing.JFrame {
             month = months[num];
         }
         return month;
+    }
+    
+    public String getSum(){
+        EntityManager em = DbHelper.getEntityManager();
+        return em.createQuery(
+           "SELECT SUM (f.amount) FROM Funding f "
+        ).getSingleResult().toString();
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
