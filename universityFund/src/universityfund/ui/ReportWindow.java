@@ -34,8 +34,8 @@ public class ReportWindow extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         sol_panel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        solicit_button = new javax.swing.JButton();
+        thanks_button = new javax.swing.JButton();
         thank_panel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -57,7 +57,7 @@ public class ReportWindow extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         eachDonor_button = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        classDonor_button = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
@@ -84,16 +84,16 @@ public class ReportWindow extends javax.swing.JFrame {
         sol_panel.setBackground(new java.awt.Color(255, 255, 255));
         sol_panel.setName("sol_panel"); // NOI18N
 
-        jButton1.setText("Send Solicitation Letter");
-        jButton1.setName("jButton1"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        solicit_button.setText("Send Solicitation Letter");
+        solicit_button.setName("solicit_button"); // NOI18N
+        solicit_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                solicit_buttonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Send Thanking Letter");
-        jButton2.setName("jButton2"); // NOI18N
+        thanks_button.setText("Send Thanking Letter");
+        thanks_button.setName("thanks_button"); // NOI18N
 
         thank_panel.setBackground(new java.awt.Color(255, 255, 204));
         thank_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -131,7 +131,7 @@ public class ReportWindow extends javax.swing.JFrame {
                     .addGroup(thank_panelLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thank_panelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +189,7 @@ public class ReportWindow extends javax.swing.JFrame {
                     .addGroup(invitation_panelLayout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,15 +218,15 @@ public class ReportWindow extends javax.swing.JFrame {
             .addGroup(sol_panelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(thank_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(sol_panelLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(thanks_button, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(61, 61, 61))
+                .addComponent(solicit_button)
+                .addGap(77, 77, 77))
         );
         sol_panelLayout.setVerticalGroup(
             sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,8 +237,8 @@ public class ReportWindow extends javax.swing.JFrame {
                     .addComponent(invitation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(solicit_button)
+                    .addComponent(thanks_button))
                 .addContainerGap())
         );
 
@@ -252,6 +252,11 @@ public class ReportWindow extends javax.swing.JFrame {
 
         eachClass_button.setText("Proceed>>");
         eachClass_button.setName("eachClass_button"); // NOI18N
+        eachClass_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eachClass_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Total for each class:");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -261,6 +266,11 @@ public class ReportWindow extends javax.swing.JFrame {
 
         eachCategory_button.setText("Proceed>>");
         eachCategory_button.setName("eachCategory_button"); // NOI18N
+        eachCategory_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eachCategory_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Total for each donor circle:");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -276,8 +286,8 @@ public class ReportWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Proceed>>");
-        jButton6.setName("jButton6"); // NOI18N
+        classDonor_button.setText("Proceed>>");
+        classDonor_button.setName("classDonor_button"); // NOI18N
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
@@ -319,7 +329,7 @@ public class ReportWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel10)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6))
+                                .addComponent(classDonor_button))
                             .addGroup(annual_panelLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(24, 24, 24)
@@ -351,7 +361,7 @@ public class ReportWindow extends javax.swing.JFrame {
                     .addComponent(eachCategory_button)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10)
-                    .addComponent(jButton6))
+                    .addComponent(classDonor_button))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -503,13 +513,24 @@ public class ReportWindow extends javax.swing.JFrame {
         return month;
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void solicit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicit_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_solicit_buttonActionPerformed
 
     private void eachDonor_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachDonor_buttonActionPerformed
         // TODO add your handling code here:
+        new TotalEachDonorCircle().setVisible(true);
     }//GEN-LAST:event_eachDonor_buttonActionPerformed
+
+    private void eachClass_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachClass_buttonActionPerformed
+        // TODO add your handling code here:
+        new TotalEachClassWindow().setVisible(true);
+    }//GEN-LAST:event_eachClass_buttonActionPerformed
+
+    private void eachCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachCategory_buttonActionPerformed
+        // TODO add your handling code here:
+        new TotalEachCategoryWindow().setVisible(true);
+    }//GEN-LAST:event_eachCategory_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -549,14 +570,12 @@ public class ReportWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
+    private javax.swing.JButton classDonor_button;
     private javax.swing.JPanel class_panel;
     private javax.swing.JButton eachCategory_button;
     private javax.swing.JButton eachClass_button;
     private javax.swing.JButton eachDonor_button;
     private javax.swing.JPanel invitation_panel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -588,6 +607,8 @@ public class ReportWindow extends javax.swing.JFrame {
     private javax.swing.JPanel monthly_panel;
     private javax.swing.JComboBox rep_combo;
     private javax.swing.JPanel sol_panel;
+    private javax.swing.JButton solicit_button;
     private javax.swing.JPanel thank_panel;
+    private javax.swing.JButton thanks_button;
     // End of variables declaration//GEN-END:variables
 }

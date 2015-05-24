@@ -41,7 +41,6 @@ public class AddDonorWindow extends javax.swing.JFrame {
         category_combo = new javax.swing.JComboBox(createCategoryList());
         year_text = new javax.swing.JTextField();
         save_button = new javax.swing.JButton();
-        cancel_button = new javax.swing.JButton();
         number_label = new javax.swing.JLabel();
         number_text = new javax.swing.JTextField();
         email_label = new javax.swing.JLabel();
@@ -54,7 +53,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
         year_symbol = new javax.swing.JLabel();
         category_symbol = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADD DONOR");
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 255, 204));
@@ -98,14 +97,6 @@ public class AddDonorWindow extends javax.swing.JFrame {
             }
         });
 
-        cancel_button.setText("Cancel");
-        cancel_button.setName("cancel_button"); // NOI18N
-        cancel_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancel_buttonActionPerformed(evt);
-            }
-        });
-
         number_label.setText("Contact Number:");
         number_label.setName("number_label"); // NOI18N
 
@@ -116,6 +107,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
 
         email_text.setName("email_text"); // NOI18N
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Donor Information");
         jLabel7.setName("jLabel7"); // NOI18N
 
@@ -162,11 +154,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(name_label)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGap(15, 15, 15)
-                                                    .addComponent(jLabel7))))))
+                                            .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addComponent(year_label)
@@ -174,17 +162,9 @@ public class AddDonorWindow extends javax.swing.JFrame {
                                     .addComponent(year_text, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(save_button)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cancel_button)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(category_label)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(category_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(category_label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(category_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(name_symbol)
@@ -206,7 +186,16 @@ public class AddDonorWindow extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(number_symbol)
                             .addComponent(email_symbol))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(save_button)
+                        .addGap(84, 84, 84))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,11 +235,9 @@ public class AddDonorWindow extends javax.swing.JFrame {
                     .addComponent(category_label)
                     .addComponent(category_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(category_symbol))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(save_button)
-                    .addComponent(cancel_button))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(save_button)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -273,10 +260,6 @@ public class AddDonorWindow extends javax.swing.JFrame {
            dispose();
        }
     }//GEN-LAST:event_save_buttonActionPerformed
-
-    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        dispose();
-    }//GEN-LAST:event_cancel_buttonActionPerformed
     
     private boolean check(){
         boolean valid = true;
@@ -339,7 +322,6 @@ public class AddDonorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel address_label;
     private javax.swing.JLabel address_symbol;
     private javax.swing.JTextArea address_text;
-    private javax.swing.JButton cancel_button;
     private javax.swing.JComboBox category_combo;
     private javax.swing.JLabel category_label;
     private javax.swing.JLabel category_symbol;
