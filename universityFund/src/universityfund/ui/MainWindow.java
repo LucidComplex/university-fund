@@ -202,6 +202,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
 //        new DeleteDonorWindow().setVisible(true);
+        new DeleteDonorWindow().setVisible(true);
     }//GEN-LAST:event_delete_buttonActionPerformed
 
     private void pledge_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pledge_buttonActionPerformed

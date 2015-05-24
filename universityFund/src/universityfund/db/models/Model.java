@@ -16,7 +16,22 @@ import universityfund.db.DbHelper;
 public abstract class Model<T extends myEntity> {
     protected Class<T> classType;
     protected Object pk;
-    public abstract void setPK();
+    public abstract void setPK(); 
+
+    public void delete(){
+        if (!DbHelper.isReady()) {
+            DbHelper.setPersistenceUnitName("universityFundPU");
+        }
+        this.setPK();
+        EntityManager em = DbHelper.getEntityManager();
+        em.getTransaction().begin();
+        
+        T entity = em.find(classType, pk);
+        em.remove(entity);
+        em.getTransaction().commit();
+        em.close();
+    }
+    
     public void save() {
         if (!DbHelper.isReady()) {
             DbHelper.setPersistenceUnitName("universityFundPU");
