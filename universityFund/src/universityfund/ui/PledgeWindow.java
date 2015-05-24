@@ -44,15 +44,15 @@ public class PledgeWindow extends javax.swing.JFrame {
         corpAdd_text = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         spouse_text = new javax.swing.JTextField();
+        cancel_button = new javax.swing.JButton();
         save_button = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("ADD PLEDGE");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add Pledge");
+        jLabel1.setText("New Pledge");
 
         name_label.setText("Name:");
 
@@ -95,6 +95,8 @@ public class PledgeWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(corpAdd_text);
 
         jLabel7.setText("Name of Spouse:");
+
+        cancel_button.setText("Cancel");
 
         save_button.setText("Save");
 
@@ -139,7 +141,8 @@ public class PledgeWindow extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(save_button)
-                        .addGap(75, 75, 75)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancel_button)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,12 +151,11 @@ public class PledgeWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(name_label)
-                        .addComponent(select_button)
-                        .addComponent(jLabel3)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name_label)
+                    .addComponent(select_button)
+                    .addComponent(jLabel3)
+                    .addComponent(name_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(amount_label)
@@ -174,7 +176,9 @@ public class PledgeWindow extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(spouse_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(save_button)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancel_button)
+                    .addComponent(save_button))
                 .addContainerGap())
         );
 
@@ -238,6 +242,7 @@ public class PledgeWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amount_label;
     private javax.swing.JTextField amount_text;
+    private javax.swing.JButton cancel_button;
     private javax.swing.JTextArea corpAdd_text;
     private javax.swing.JTextField corpName_text;
     private javax.swing.JLabel jLabel1;
