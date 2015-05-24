@@ -252,6 +252,11 @@ public class ReportWindow extends javax.swing.JFrame {
 
         eachClass_button.setText("Proceed>>");
         eachClass_button.setName("eachClass_button"); // NOI18N
+        eachClass_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eachClass_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Total for each class:");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -261,6 +266,11 @@ public class ReportWindow extends javax.swing.JFrame {
 
         eachCategory_button.setText("Proceed>>");
         eachCategory_button.setName("eachCategory_button"); // NOI18N
+        eachCategory_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eachCategory_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Total for each donor circle:");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -510,6 +520,16 @@ public class ReportWindow extends javax.swing.JFrame {
     private void eachDonor_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachDonor_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eachDonor_buttonActionPerformed
+
+    private void eachClass_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachClass_buttonActionPerformed
+        // TODO add your handling code here:
+        new TotalEachClassWindow().setVisible(true);
+    }//GEN-LAST:event_eachClass_buttonActionPerformed
+
+    private void eachCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachCategory_buttonActionPerformed
+        // TODO add your handling code here:
+        new TotalEachCategoryWindow().setVisible(true);
+    }//GEN-LAST:event_eachCategory_buttonActionPerformed
 
     /**
      * @param args the command line arguments
