@@ -5,17 +5,25 @@
  */
 package universityfund.ui;
 
+import java.awt.Color;
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
+import universityfund.db.models.CashPayment;
+import universityfund.db.models.Donor;
+import universityfund.db.models.Funding;
+
 /**
  *
  * @author MiriamMarie
  */
-public class DonationWindow extends javax.swing.JFrame {
-
+public class DonationWindow extends javax.swing.JFrame implements UI {
+    private Donor selectedDonor;
     /**
      * Creates new form DonationWindow
      */
     public DonationWindow() {
         initComponents();
+        selectedDonor = null;
     }
 
     /**
@@ -29,10 +37,10 @@ public class DonationWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        name_label = new javax.swing.JLabel();
         name_text = new javax.swing.JLabel();
         setButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        amount_label = new javax.swing.JLabel();
         amount_text = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -46,21 +54,20 @@ public class DonationWindow extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Donation");
 
-        jLabel2.setText("Name:");
+        name_label.setText("Name:");
 
         name_text.setText(" ");
         name_text.setToolTipText("");
         name_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         setButton.setText("Set...");
-
-        jLabel4.setText("Amount:");
-
-        amount_text.addActionListener(new java.awt.event.ActionListener() {
+        setButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                amount_textActionPerformed(evt);
+                setButtonActionPerformed(evt);
             }
         });
+
+        amount_label.setText("Amount:");
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("*");
@@ -69,6 +76,11 @@ public class DonationWindow extends javax.swing.JFrame {
         jLabel5.setText("*");
 
         save_button.setText("Save");
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,13 +93,13 @@ public class DonationWindow extends javax.swing.JFrame {
                     .addComponent(save_button)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(name_label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(setButton))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
+                            .addComponent(amount_label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(amount_text))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -103,13 +115,13 @@ public class DonationWindow extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(name_label)
                     .addComponent(name_text)
                     .addComponent(setButton)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(amount_label)
                     .addComponent(amount_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,55 +143,64 @@ public class DonationWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void amount_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amount_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_amount_textActionPerformed
+    private void setButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setButtonActionPerformed
+        new SelectDonorWindow(this).setVisible(true);
+    }//GEN-LAST:event_setButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancel_buttonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DonationWindow().setVisible(true);
-            }
-        });
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        if (!valid())
+            return;
+        createDonation();
+        dispose();
+    }//GEN-LAST:event_save_buttonActionPerformed
+    
+    private void createDonation() {
+        Funding funding = new Funding();
+        funding.setAmount(Integer.valueOf(amount_text.getText()));
+        funding.setDonor(selectedDonor);
+        // TODO: payment
+        funding.setPayment(new CashPayment());
+        funding.save();
     }
-
+    
+    private boolean valid() {
+        boolean valid = true;
+        if (selectedDonor == null) {
+            name_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            name_label.setForeground(Color.BLACK);
+        }
+        if (!amount_text.getText().matches("^[0-9]+$")) {
+            amount_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            amount_label.setForeground(Color.BLACK);
+        }
+        return valid;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amount_label;
     private javax.swing.JTextField amount_text;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel name_label;
     private javax.swing.JLabel name_text;
     private javax.swing.JButton save_button;
     private javax.swing.JButton setButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void receiveIntent(Object intent) {
+        EntityManager em = DbHelper.getEntityManager();
+        selectedDonor = em.find(Donor.class, (long) intent);
+        name_text.setText(selectedDonor.getName());
+    }
 }

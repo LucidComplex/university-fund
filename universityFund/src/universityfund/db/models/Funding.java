@@ -8,11 +8,12 @@ package universityfund.db.models;
 import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PreUpdate;
+import javax.persistence.PrePersist;
 
 /**
  *
@@ -22,11 +23,15 @@ import javax.persistence.PreUpdate;
 public class Funding extends Model implements Serializable {
     private static final long serialVersionUID = 1181465477122132198L;
     
+    public Funding() {
+        this.classType = Funding.class;
+    }
+    
     private int amount;
     private Date date;
     
     @Id
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Payment payment;
     
     @OneToOne
@@ -77,7 +82,7 @@ public class Funding extends Model implements Serializable {
         this.payment = payment;
     }
     
-    @PreUpdate
+    @PrePersist
     void setInitialDate() {
         this.setDate(Date.valueOf(LocalDate.now()));
     }
@@ -116,7 +121,7 @@ public class Funding extends Model implements Serializable {
 
     @Override
     public void setPK() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.pk = this.payment.id;
     }
     
 }
