@@ -121,7 +121,7 @@ public class Funding extends Model implements Serializable {
 
     @Override
     public void setPK() {
-        this.pk = this.payment;
+        this.pk = this.payment.id;
     }
     
 }

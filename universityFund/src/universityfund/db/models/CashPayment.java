@@ -16,10 +16,5 @@ import javax.persistence.Entity;
 @Entity
 public class CashPayment extends Payment implements Serializable {
     private static final long serialVersionUID = -1828802661701583184L;
-
-    @Override
-    public void setPK() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

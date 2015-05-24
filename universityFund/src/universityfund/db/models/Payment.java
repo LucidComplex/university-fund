@@ -26,7 +26,7 @@ public class Payment extends Model implements Serializable {
        
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
+    protected long id;
 
     @Override
     public void setPK() {

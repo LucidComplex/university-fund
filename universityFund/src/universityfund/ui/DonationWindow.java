@@ -6,14 +6,11 @@
 package universityfund.ui;
 
 import java.awt.Color;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
+import universityfund.db.models.CashPayment;
 import universityfund.db.models.Donor;
 import universityfund.db.models.Funding;
-import universityfund.db.models.Payment;
 
 /**
  *
@@ -178,7 +175,7 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
         funding.setAmount(Integer.valueOf(amount_text.getText()));
         funding.setDonor(selectedDonor);
         // TODO: payment
-        funding.setPayment(null);
+        funding.setPayment(new CashPayment());
         funding.save();
     }
     
