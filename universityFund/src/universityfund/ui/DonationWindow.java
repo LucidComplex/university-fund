@@ -69,6 +69,11 @@ public class DonationWindow extends javax.swing.JFrame {
         jLabel5.setText("*");
 
         save_button.setText("Save");
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,6 +139,10 @@ public class DonationWindow extends javax.swing.JFrame {
     private void amount_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amount_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_amount_textActionPerformed
+
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_save_buttonActionPerformed
 
     /**
      * @param args the command line arguments

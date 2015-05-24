@@ -120,10 +120,12 @@ public class DeleteDonorWindow extends javax.swing.JFrame {
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
         // TODO add your handling code here:
+        new SelectDonorWindow().setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_delete_buttonActionPerformed
 
     /**
