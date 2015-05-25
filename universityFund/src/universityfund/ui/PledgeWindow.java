@@ -9,6 +9,8 @@ import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
+import universityfund.db.models.Funding;
+import universityfund.db.models.Pledges;
 
 /**
  *
@@ -342,7 +344,12 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }//GEN-LAST:event_save_buttonActionPerformed
     
     private void createPledge() {
-        
+        Pledges pledge = new Pledges();
+        pledge.setDonor(selectedDonor);
+        Funding funding;
+        if (deffered_rButton.isSelected())
+            funding = Funding.createFunding(
+                    Integer.valueOf(amount_text.getText()), 1);
     }
     
     private boolean valid() {
