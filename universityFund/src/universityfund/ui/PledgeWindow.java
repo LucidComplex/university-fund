@@ -6,9 +6,12 @@
 package universityfund.ui;
 
 import java.awt.Color;
+import java.awt.event.ItemEvent;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
+import universityfund.db.models.Funding;
+import universityfund.db.models.Pledges;
 
 /**
  *
@@ -48,7 +51,7 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         corpName_text = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        corpAdd_panel = new javax.swing.JScrollPane();
         corpAdd_text = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         spouse_text = new javax.swing.JTextField();
@@ -63,6 +66,8 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         number_spinner = new javax.swing.JSpinner();
+        cc_label = new javax.swing.JLabel();
+        cc_text = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NEW PLEDGE");
@@ -106,13 +111,30 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
 
         jLabel6.setText("Corporation Address:");
 
+        corpName_text.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                corpName_textKeyTyped(evt);
+            }
+        });
+
         corpAdd_text.setColumns(20);
         corpAdd_text.setLineWrap(true);
         corpAdd_text.setRows(5);
         corpAdd_text.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(corpAdd_text);
+        corpAdd_text.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                corpAdd_textKeyTyped(evt);
+            }
+        });
+        corpAdd_panel.setViewportView(corpAdd_text);
 
         jLabel7.setText("Name of Spouse:");
+
+        spouse_text.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                spouse_textKeyTyped(evt);
+            }
+        });
 
         save_button.setText("Save");
         save_button.addActionListener(new java.awt.event.ActionListener() {
@@ -136,11 +158,21 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         methodGroup.add(card_rButton);
         card_rButton.setText("Credit Card");
         card_rButton.setEnabled(false);
+        card_rButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                card_rButtonItemStateChanged(evt);
+            }
+        });
 
         cash_rButton.setBackground(new java.awt.Color(255, 255, 255));
         methodGroup.add(cash_rButton);
         cash_rButton.setText("Cash");
         cash_rButton.setEnabled(false);
+        cash_rButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cash_rButtonItemStateChanged(evt);
+            }
+        });
 
         single_rButton.setBackground(new java.awt.Color(255, 255, 255));
         paymentGroup.add(single_rButton);
@@ -164,6 +196,11 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         jLabel8.setText("Number of Payments:");
 
         number_spinner.setModel(new javax.swing.SpinnerNumberModel(2, 2, 12, 1));
+        number_spinner.setEnabled(false);
+
+        cc_label.setText("CC#:");
+
+        cc_text.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -184,7 +221,7 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
+                        .addComponent(corpAdd_panel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -192,7 +229,7 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -219,7 +256,7 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                                             .addComponent(payment_label)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel10)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(method_label)
@@ -228,12 +265,15 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(cash_rButton)
                                             .addGap(10, 10, 10)
-                                            .addComponent(card_rButton)))))
+                                            .addComponent(card_rButton))))
+                                .addComponent(cc_text, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(number_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(number_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cc_label)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -269,7 +309,9 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(number_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(number_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cc_label)
+                    .addComponent(cc_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -279,7 +321,7 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(corpAdd_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -304,7 +346,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }// </editor-fold>//GEN-END:initComponents
 
     private void select_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_buttonActionPerformed
-        // TODO add your handling code here:
         new SelectDonorWindow(this).setVisible(true);
     }//GEN-LAST:event_select_buttonActionPerformed
 
@@ -313,7 +354,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }//GEN-LAST:event_amount_textActionPerformed
 
     private void deffered_rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deffered_rButtonActionPerformed
-        // TODO add your handling code here:
         if(deffered_rButton.isSelected()){
             cash_rButton.setEnabled(true);
             card_rButton.setEnabled(true);
@@ -337,10 +377,75 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }//GEN-LAST:event_single_rButtonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
-        valid();
+        if (!valid()) 
+            return;
+        createPledge();
+        dispose();
     }//GEN-LAST:event_save_buttonActionPerformed
 
+    private void card_rButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_card_rButtonItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            cc_text.setEnabled(true);
+        } else {
+            cc_text.setEnabled(false);
+        }
+    }//GEN-LAST:event_card_rButtonItemStateChanged
+
+    private void spouse_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spouse_textKeyTyped
+        if (spouse_text.getText().trim().length() == 0) {
+            corpName_text.setEnabled(true);
+            corpAdd_text.setEnabled(true);
+        } else {
+            corpName_text.setEnabled(false);
+            corpAdd_text.setEnabled(false);
+        }
+    }//GEN-LAST:event_spouse_textKeyTyped
+
+    private void corpName_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpName_textKeyTyped
+        spouse_text.setEnabled(
+                corpName_text.getText().trim().length() == 0
+                        && corpAdd_text.getText().trim().length() == 0
+        );
+    }//GEN-LAST:event_corpName_textKeyTyped
+
+    private void corpAdd_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpAdd_textKeyTyped
+        spouse_text.setEnabled(
+                corpAdd_text.getText().trim().length() == 0
+                        && corpName_text.getText().trim().length() == 0
+        );
+    }//GEN-LAST:event_corpAdd_textKeyTyped
+
+    private void cash_rButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cash_rButtonItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            cc_text.setEnabled(false);
+        } else {
+            cc_text.setEnabled(true);
+        }
+    }//GEN-LAST:event_cash_rButtonItemStateChanged
+    
+    private void createPledge() {
+        Pledges pledge = new Pledges();
+        pledge.setDonor(selectedDonor);
+        Funding funding;
+        if (deffered_rButton.isSelected())
+            funding = Funding.createFunding(
+                    Integer.valueOf(amount_text.getText()),
+                    (int) number_spinner.getValue()
+            );
+        else
+            funding = Funding.createFunding(
+                    Integer.valueOf(amount_text.getText())
+            );
+        pledge.setFunding(funding);
+        if (corpName_text.isEnabled() && corpName_text.getText().trim().length() != 0) {
+            pledge.setCorporationAddress(corpAdd_text.getText());
+            pledge.setCorporationName(corpName_text.getText());
+        } else {
+            pledge.setNameOfSpouse(spouse_text.getText());
+        }
+        pledge.save();
+    }
+    
     private boolean valid() {
         boolean valid = true;
         if (selectedDonor == null) {
@@ -367,15 +472,25 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         } else {
             method_label.setForeground(Color.BLACK);
         }
+        if (card_rButton.isSelected()) {
+            if ("".equals(cc_text.getText().trim()) || !cc_text.getText().matches("^[0-9]+$")) {
+                cc_label.setForeground(Color.RED);
+                valid = false;
+            } else {
+                cc_label.setForeground(Color.BLACK);
+            }
+        }
         return valid;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amount_label;
     private javax.swing.JTextField amount_text;
     private javax.swing.JRadioButton card_rButton;
     private javax.swing.JRadioButton cash_rButton;
+    private javax.swing.JLabel cc_label;
+    private javax.swing.JTextField cc_text;
+    private javax.swing.JScrollPane corpAdd_panel;
     private javax.swing.JTextArea corpAdd_text;
     private javax.swing.JTextField corpName_text;
     private javax.swing.JRadioButton deffered_rButton;
@@ -390,7 +505,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup methodGroup;
     private javax.swing.JLabel method_label;
     private javax.swing.JLabel name_label;

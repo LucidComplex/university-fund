@@ -58,6 +58,7 @@ public class Pledges extends Model implements Serializable {
      */
     public void setDonor(Donor donor) {
         this.donor = donor;
+        this.donorId = donor.getId();
     }
 
     /**
@@ -72,6 +73,7 @@ public class Pledges extends Model implements Serializable {
      */
     public void setFunding(Funding funding) {
         this.funding = funding;
+        this.fundingId = funding.getId();
     }
 
     /**

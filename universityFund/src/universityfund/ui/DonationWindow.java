@@ -159,21 +159,12 @@ public class DonationWindow extends javax.swing.JFrame implements UI {
     }//GEN-LAST:event_save_buttonActionPerformed
     
     private void createDonation() {
-        Funding funding = createFunding();
         Donates donates = new Donates();
         donates.setDonor(selectedDonor);
-        donates.setFunding(funding);
+        donates.setFunding(
+                Funding.createFunding(Integer.valueOf(amount_text.getText()))
+        );
         donates.save();
-    }
-    
-    private Funding createFunding() {
-        Funding funding = new Funding();
-        funding.setAmount(Integer.valueOf(amount_text.getText()));
-        funding.setCompletedPayments(1);
-        funding.setNumberOfPayments(1);
-        funding.setDate(Date.valueOf(LocalDate.now()));
-        funding.save();
-        return funding;
     }
     
     private boolean valid() {
