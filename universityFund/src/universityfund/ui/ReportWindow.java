@@ -61,6 +61,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         rep_combo = new javax.swing.JComboBox();
@@ -255,6 +257,12 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel23.setText(getSumForThisMonth());
         jLabel23.setName("jLabel23"); // NOI18N
 
+        jLabel27.setText(getSumPledges());
+        jLabel27.setName("jLabel27"); // NOI18N
+
+        jLabel28.setText(getPercentPledges());
+        jLabel28.setName("jLabel28"); // NOI18N
+
         javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
         monthly_panel.setLayout(monthly_panelLayout);
         monthly_panelLayout.setHorizontalGroup(
@@ -266,12 +274,18 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2))
-                    .addComponent(jLabel3)
+                    .addGroup(monthly_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel27))
                     .addGroup(monthly_panelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel20))
-                    .addComponent(jLabel18)
+                    .addGroup(monthly_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel28))
                     .addGroup(monthly_panelLayout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -290,9 +304,13 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel27))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel28))
                 .addGap(15, 15, 15)
                 .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -502,9 +520,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel16)))))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -640,6 +656,25 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
            "SELECT SUM (f.amount) FROM Funding f "
         ).getSingleResult().toString();
     }
+    
+    public String getSumPledges(){
+        EntityManager em = DbHelper.getEntityManager();
+        return em.createNativeQuery(
+              "SELECT SUM(AMOUNT) " +
+                "FROM FUNDING JOIN PLEDGES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
+                "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
+                "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
+        ).setParameter(1, java.time.Year.now().getValue()).
+                setParameter(2, java.time.MonthDay.now().
+                        getMonthValue()).getSingleResult().toString();
+    }
+    
+    public String getPercentPledges(){
+        String pledges = getSumPledges();
+        String all = getSum();
+        return String.format("%.2f", ((Double.valueOf(pledges)/
+                                        Double.valueOf(all))*100))+"%";
+    }
 
     public String getSumGifts(){
         EntityManager em = DbHelper.getEntityManager();
@@ -668,8 +703,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     public String getPercentGifts(){
         String donations = getSumGifts();
         String all = getSum();
+        return String.format("%.2f", (Double.valueOf(donations).floatValue()/Double.valueOf(all).floatValue())*100)+"%";
         
-        return (Integer.valueOf(donations)/Integer.valueOf(all))*100 + "%";
     }
     
     private void solicit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicit_buttonActionPerformed
@@ -730,6 +765,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
