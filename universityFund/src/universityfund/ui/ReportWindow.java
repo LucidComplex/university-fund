@@ -11,18 +11,20 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
+import universityfund.db.models.Donor;
 
 /**
  *
  * @author MiriamMarie
  */
-public class ReportWindow extends javax.swing.JFrame {
-
+public class ReportWindow extends javax.swing.JFrame implements UI {
+    Donor selectedDonor;
     /**
      * Creates new form ReportWindown
      */
     public ReportWindow() {
         initComponents();
+        selectedDonor = null;
     }
 
     /**
@@ -35,21 +37,6 @@ public class ReportWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        sol_panel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        thank_panel = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        invitation_panel = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         annual_panel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         eachClass_button = new javax.swing.JButton();
@@ -79,6 +66,29 @@ public class ReportWindow extends javax.swing.JFrame {
         rep_combo = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        sol_panel = new javax.swing.JPanel();
+        solicit_button = new javax.swing.JButton();
+        thanks_button = new javax.swing.JButton();
+        thank_panel = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        name1_text = new javax.swing.JLabel();
+        invitation_panel = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        form_button = new javax.swing.JButton();
+        name2_text = new javax.swing.JLabel();
+        set_button = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        name_text = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("REPORTS");
@@ -87,169 +97,6 @@ public class ReportWindow extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
-
-        sol_panel.setBackground(new java.awt.Color(255, 255, 255));
-        sol_panel.setName("sol_panel"); // NOI18N
-
-        jButton1.setText("Send Solicitation Letter");
-        jButton1.setName("jButton1"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Send Thanking Letter");
-        jButton2.setName("jButton2"); // NOI18N
-
-        thank_panel.setBackground(new java.awt.Color(255, 255, 204));
-        thank_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        thank_panel.setName("thank_panel"); // NOI18N
-
-        jLabel12.setText("Dear ____________________,");
-        jLabel12.setName("jLabel12"); // NOI18N
-
-        jScrollPane3.setName("jScrollPane3"); // NOI18N
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("This letter is to inform you that we have received the promised pledge and gift from you.\n\nThe Beta University would like to send you our deepest gratitudes for choosing to pledge this fiscal year. Hope you would continue pledging pledges to the next pledgable years.\n\n");
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea1.setBorder(null);
-        jTextArea1.setName("jTextArea1"); // NOI18N
-        jScrollPane3.setViewportView(jTextArea1);
-
-        jLabel13.setText("Yours truly,");
-        jLabel13.setName("jLabel13"); // NOI18N
-
-        jLabel14.setText("Suzanne Hayes");
-        jLabel14.setName("jLabel14"); // NOI18N
-
-        javax.swing.GroupLayout thank_panelLayout = new javax.swing.GroupLayout(thank_panel);
-        thank_panel.setLayout(thank_panelLayout);
-        thank_panelLayout.setHorizontalGroup(
-            thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(thank_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(thank_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thank_panelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-        );
-        thank_panelLayout.setVerticalGroup(
-            thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(thank_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
-        invitation_panel.setBackground(new java.awt.Color(204, 255, 204));
-        invitation_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        invitation_panel.setName("invitation_panel"); // NOI18N
-
-        jLabel15.setText("Dear ____________________,");
-        jLabel15.setName("jLabel15"); // NOI18N
-
-        jScrollPane4.setName("jScrollPane4"); // NOI18N
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("This letter is to inform you that you are invited to place a pledge for this fiscal year for you are found to have close-ties with Beta University.\n\nAttached is a form, together with an envelope, for your response letter. The form is for you to fill up certain details about your pledge.\n\nHoping you would consider yourself to be part of the pledging people this pledgable year, and to the next pledgable years to come.");
-        jTextArea2.setWrapStyleWord(true);
-        jTextArea2.setBorder(null);
-        jTextArea2.setName("jTextArea2"); // NOI18N
-        jScrollPane4.setViewportView(jTextArea2);
-
-        jLabel16.setText("Yours truly,");
-        jLabel16.setName("jLabel16"); // NOI18N
-
-        jLabel17.setText("Suzanne Hayes");
-        jLabel17.setName("jLabel17"); // NOI18N
-
-        javax.swing.GroupLayout invitation_panelLayout = new javax.swing.GroupLayout(invitation_panel);
-        invitation_panel.setLayout(invitation_panelLayout);
-        invitation_panelLayout.setHorizontalGroup(
-            invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(invitation_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(invitation_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-        );
-        invitation_panelLayout.setVerticalGroup(
-            invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(invitation_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout sol_panelLayout = new javax.swing.GroupLayout(sol_panel);
-        sol_panel.setLayout(sol_panelLayout);
-        sol_panelLayout.setHorizontalGroup(
-            sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sol_panelLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(thank_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-            .addGroup(sol_panelLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(99, 99, 99))
-        );
-        sol_panelLayout.setVerticalGroup(
-            sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sol_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(thank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(invitation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Solicitation Letters", sol_panel);
 
         annual_panel.setBackground(new java.awt.Color(255, 255, 255));
         annual_panel.setName("annual_panel"); // NOI18N
@@ -345,7 +192,7 @@ public class ReportWindow extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addGap(44, 44, 44)
                                 .addComponent(eachDonor_button)))
-                        .addGap(0, 105, Short.MAX_VALUE)))
+                        .addGap(0, 136, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         annual_panelLayout.setVerticalGroup(
@@ -433,7 +280,7 @@ public class ReportWindow extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23)))
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         monthly_panelLayout.setVerticalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +305,7 @@ public class ReportWindow extends javax.swing.JFrame {
                 .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jLabel23))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Monthly Report", monthly_panel);
@@ -500,7 +347,7 @@ public class ReportWindow extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 259, Short.MAX_VALUE)))
+                        .addGap(0, 290, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         class_panelLayout.setVerticalGroup(
@@ -511,26 +358,261 @@ public class ReportWindow extends javax.swing.JFrame {
                     .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Class Rep Contact List", class_panel);
 
+        sol_panel.setBackground(new java.awt.Color(255, 255, 255));
+        sol_panel.setName("sol_panel"); // NOI18N
+
+        solicit_button.setText("Send Solicitation Letter");
+        solicit_button.setName("solicit_button"); // NOI18N
+        solicit_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solicit_buttonActionPerformed(evt);
+            }
+        });
+
+        thanks_button.setText("Send Thanking Letter");
+        thanks_button.setName("thanks_button"); // NOI18N
+        thanks_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thanks_buttonActionPerformed(evt);
+            }
+        });
+
+        thank_panel.setBackground(new java.awt.Color(255, 255, 204));
+        thank_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        thank_panel.setName("thank_panel"); // NOI18N
+
+        jLabel12.setText("Dear");
+        jLabel12.setName("jLabel12"); // NOI18N
+
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("This letter is to inform you that we have received the promised pledge and gift from you.\n\nThe Beta University would like to send you our deepest gratitudes for choosing to pledge this fiscal year. Hope you would continue pledging pledges to the next pledgable years.\n\n");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setBorder(null);
+        jTextArea1.setName("jTextArea1"); // NOI18N
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jLabel13.setText("Yours truly,");
+        jLabel13.setName("jLabel13"); // NOI18N
+
+        jLabel14.setText("Suzanne Hayes");
+        jLabel14.setName("jLabel14"); // NOI18N
+
+        name1_text.setText(" ");
+        name1_text.setName("name1_text"); // NOI18N
+
+        javax.swing.GroupLayout thank_panelLayout = new javax.swing.GroupLayout(thank_panel);
+        thank_panel.setLayout(thank_panelLayout);
+        thank_panelLayout.setHorizontalGroup(
+            thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(thank_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(thank_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(name1_text)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thank_panelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+        );
+        thank_panelLayout.setVerticalGroup(
+            thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(thank_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(name1_text))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        invitation_panel.setBackground(new java.awt.Color(204, 255, 204));
+        invitation_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        invitation_panel.setName("invitation_panel"); // NOI18N
+
+        jLabel15.setText("Dear ");
+        jLabel15.setName("jLabel15"); // NOI18N
+
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(5);
+        jTextArea2.setText("This letter is to inform you that you are invited to place a pledge for this fiscal year for you are found to have close-ties with Beta University.\n\nAttached is a form, together with an envelope, for your response letter. The form is for you to fill up certain details about your pledge.\n\nHoping you would consider yourself to be part of the pledging people this pledgable year, and to the next pledgable years to come.");
+        jTextArea2.setWrapStyleWord(true);
+        jTextArea2.setBorder(null);
+        jTextArea2.setName("jTextArea2"); // NOI18N
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jLabel16.setText("Yours truly,");
+        jLabel16.setName("jLabel16"); // NOI18N
+
+        jLabel17.setText("Suzanne Hayes");
+        jLabel17.setName("jLabel17"); // NOI18N
+
+        form_button.setText("View Attached Form");
+        form_button.setName("form_button"); // NOI18N
+        form_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                form_buttonActionPerformed(evt);
+            }
+        });
+
+        name2_text.setText(" ");
+        name2_text.setName("name2_text"); // NOI18N
+
+        javax.swing.GroupLayout invitation_panelLayout = new javax.swing.GroupLayout(invitation_panel);
+        invitation_panel.setLayout(invitation_panelLayout);
+        invitation_panelLayout.setHorizontalGroup(
+            invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(invitation_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addGroup(invitation_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(name2_text)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel16)))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(form_button)
+                .addGap(42, 42, 42))
+        );
+        invitation_panelLayout.setVerticalGroup(
+            invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(invitation_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(name2_text))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(form_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17)
+                .addContainerGap())
+        );
+
+        set_button.setText("Set...");
+        set_button.setName("set_button"); // NOI18N
+        set_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                set_buttonActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setText("Recipient:");
+        jLabel24.setName("jLabel24"); // NOI18N
+
+        name_text.setText(" ");
+        name_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        name_text.setName("name_text"); // NOI18N
+
+        jLabel25.setText("Sample Thanking Letter");
+        jLabel25.setName("jLabel25"); // NOI18N
+
+        jLabel26.setText("Sample Solicitation Letter");
+        jLabel26.setName("jLabel26"); // NOI18N
+
+        javax.swing.GroupLayout sol_panelLayout = new javax.swing.GroupLayout(sol_panel);
+        sol_panel.setLayout(sol_panelLayout);
+        sol_panelLayout.setHorizontalGroup(
+            sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sol_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(sol_panelLayout.createSequentialGroup()
+                        .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(set_button)
+                            .addComponent(thanks_button, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(solicit_button))
+                        .addGap(0, 9, Short.MAX_VALUE)))
+                .addGap(8, 8, 8)
+                .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(thank_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addContainerGap())
+        );
+        sol_panelLayout.setVerticalGroup(
+            sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sol_panelLayout.createSequentialGroup()
+                .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sol_panelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(name_text)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(set_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(thanks_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(solicit_button))
+                    .addGroup(sol_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26))
+                        .addGap(7, 7, 7)
+                        .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(invitation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(thank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Solicitation Letters", sol_panel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -590,9 +672,9 @@ public class ReportWindow extends javax.swing.JFrame {
         return (Integer.valueOf(donations)/Integer.valueOf(all))*100 + "%";
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void solicit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicit_buttonActionPerformed
+        new MessageSent().setVisible(true);
+    }//GEN-LAST:event_solicit_buttonActionPerformed
 
     private void eachDonor_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachDonor_buttonActionPerformed
         // TODO add your handling code here:
@@ -606,15 +688,28 @@ public class ReportWindow extends javax.swing.JFrame {
         new TotalEachClassWindow().setVisible(true);
     }//GEN-LAST:event_eachClass_buttonActionPerformed
 
+    private void thanks_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thanks_buttonActionPerformed
+        new MessageSent().setVisible(true);
+        
+    }//GEN-LAST:event_thanks_buttonActionPerformed
+
+    private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
+        // TODO add your handling code here:
+        new SelectDonorWindow(this).setVisible(true);
+    }//GEN-LAST:event_set_buttonActionPerformed
+
+    private void form_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_form_buttonActionPerformed
+        new SampleForm().setVisible(true);
+    }//GEN-LAST:event_form_buttonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
     private javax.swing.JPanel class_panel;
     private javax.swing.JButton eachCategory_button;
     private javax.swing.JButton eachClass_button;
     private javax.swing.JButton eachDonor_button;
+    private javax.swing.JButton form_button;
     private javax.swing.JPanel invitation_panel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -632,6 +727,9 @@ public class ReportWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -649,8 +747,23 @@ public class ReportWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JPanel monthly_panel;
+    private javax.swing.JLabel name1_text;
+    private javax.swing.JLabel name2_text;
+    private javax.swing.JLabel name_text;
     private javax.swing.JComboBox rep_combo;
+    private javax.swing.JButton set_button;
     private javax.swing.JPanel sol_panel;
+    private javax.swing.JButton solicit_button;
     private javax.swing.JPanel thank_panel;
+    private javax.swing.JButton thanks_button;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void receiveIntent(Object intent) {
+        EntityManager em = DbHelper.getEntityManager();
+        selectedDonor = em.find(Donor.class, (long) intent);
+        name_text.setText(selectedDonor.getName());
+        name1_text.setText(selectedDonor.getName()+",");
+        name2_text.setText(selectedDonor.getName()+",");
+    }
 }
