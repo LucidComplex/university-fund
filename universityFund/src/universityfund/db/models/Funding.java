@@ -131,4 +131,20 @@ public class Funding extends Model implements Serializable {
         this.numberOfPayments = numberOfPayments;
     }
     
+    public static Funding createFunding(int amount) {
+        Funding funding = new Funding();
+        funding.setAmount(amount);
+        funding.setCompletedPayments(1);
+        funding.setDate(Date.valueOf(java.time.LocalDate.now()));
+        funding.setNumberOfPayments(1);
+        funding.save();
+        return funding;
+    }
+    
+    public static Funding createFunding(int amount, int numberOfPayments) {
+        Funding funding = createFunding(amount);
+        funding.setNumberOfPayments(numberOfPayments);
+        funding.save();
+        return funding;
+    }
 }

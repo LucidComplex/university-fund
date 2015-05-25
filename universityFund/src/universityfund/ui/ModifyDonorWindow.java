@@ -276,21 +276,18 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void address_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_boxActionPerformed
-        // TODO add your handling code here:
         if(address_box.isSelected())
             address_text.setEnabled(true);
         else address_text.setEnabled(false);
     }//GEN-LAST:event_address_boxActionPerformed
 
     private void year_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_year_boxActionPerformed
-        // TODO add your handling code here:
         if(year_box.isSelected())
             year_text.setEnabled(true);
         else year_text.setEnabled(false);
     }//GEN-LAST:event_year_boxActionPerformed
 
     private void name_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_boxActionPerformed
-        // TODO add your handling code here:
         if(name_box.isSelected()){
             name_text.setEnabled(true);
         }
@@ -298,33 +295,28 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     }//GEN-LAST:event_name_boxActionPerformed
 
     private void number_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number_boxActionPerformed
-        // TODO add your handling code here:
         if(number_box.isSelected())
             number_text.setEnabled(true);
         else number_text.setEnabled(false);
     }//GEN-LAST:event_number_boxActionPerformed
 
     private void email_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_boxActionPerformed
-        // TODO add your handling code here:
         if(email_box.isSelected())
             email_text.setEnabled(true);
         else email_text.setEnabled(false);
     }//GEN-LAST:event_email_boxActionPerformed
 
     private void category_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_category_boxActionPerformed
-        // TODO add your handling code here:
         if(category_box.isSelected())
             category_combo.setEnabled(true);
         else category_combo.setEnabled(false);
     }//GEN-LAST:event_category_boxActionPerformed
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
-        // TODO add your handling code here:
         new SelectDonorWindow(this).setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
         if(valid()){
             updateDonor();
             dispose();            

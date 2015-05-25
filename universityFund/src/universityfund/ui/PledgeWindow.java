@@ -304,7 +304,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }// </editor-fold>//GEN-END:initComponents
 
     private void select_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_buttonActionPerformed
-        // TODO add your handling code here:
         new SelectDonorWindow(this).setVisible(true);
     }//GEN-LAST:event_select_buttonActionPerformed
 
@@ -313,7 +312,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }//GEN-LAST:event_amount_textActionPerformed
 
     private void deffered_rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deffered_rButtonActionPerformed
-        // TODO add your handling code here:
         if(deffered_rButton.isSelected()){
             cash_rButton.setEnabled(true);
             card_rButton.setEnabled(true);
@@ -337,10 +335,16 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     }//GEN-LAST:event_single_rButtonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
-        valid();
+        if (!valid()) 
+            return;
+        createPledge();
+        dispose();
     }//GEN-LAST:event_save_buttonActionPerformed
-
+    
+    private void createPledge() {
+        
+    }
+    
     private boolean valid() {
         boolean valid = true;
         if (selectedDonor == null) {
@@ -369,7 +373,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         }
         return valid;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amount_label;
