@@ -52,7 +52,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         corpAdd_text = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         spouse_text = new javax.swing.JTextField();
-        cancel_button = new javax.swing.JButton();
         save_button = new javax.swing.JButton();
         payment_label = new javax.swing.JLabel();
         deffered_rButton = new javax.swing.JRadioButton();
@@ -63,12 +62,13 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("NEW PLEDGE");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("New Pledge");
+        jLabel1.setText("Add Pledge");
 
         name_label.setText("Name:");
 
@@ -111,8 +111,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
         jScrollPane1.setViewportView(corpAdd_text);
 
         jLabel7.setText("Name of Spouse:");
-
-        cancel_button.setText("Cancel");
 
         save_button.setText("Save");
         save_button.addActionListener(new java.awt.event.ActionListener() {
@@ -181,11 +179,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spouse_text))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(save_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancel_button))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -227,6 +220,10 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(save_button)
+                .addGap(199, 199, 199))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,9 +269,7 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
                     .addComponent(jLabel7)
                     .addComponent(spouse_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel_button)
-                    .addComponent(save_button))
+                .addComponent(save_button)
                 .addContainerGap())
         );
 
@@ -395,7 +390,6 @@ public class PledgeWindow extends javax.swing.JFrame implements UI{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amount_label;
     private javax.swing.JTextField amount_text;
-    private javax.swing.JButton cancel_button;
     private javax.swing.JRadioButton card_rButton;
     private javax.swing.JRadioButton cash_rButton;
     private javax.swing.JTextArea corpAdd_text;

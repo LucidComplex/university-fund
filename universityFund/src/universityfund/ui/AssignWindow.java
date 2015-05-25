@@ -43,10 +43,9 @@ public class AssignWindow extends javax.swing.JFrame {
         batch_combo = new javax.swing.JComboBox(loadAvailableBatches());
         jScrollPane1 = new javax.swing.JScrollPane();
         directory_table = new javax.swing.JTable();
-        cancel_button = new javax.swing.JButton();
         assign_button = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ASSIGN CLASS REP");
         setName("Form"); // NOI18N
         setResizable(false);
@@ -70,14 +69,6 @@ public class AssignWindow extends javax.swing.JFrame {
         directory_table.setName("directory_table"); // NOI18N
         jScrollPane1.setViewportView(directory_table);
 
-        cancel_button.setText("Cancel");
-        cancel_button.setName("cancel_button"); // NOI18N
-        cancel_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancel_buttonActionPerformed(evt);
-            }
-        });
-
         assign_button.setText("Assign as Class Representative");
         assign_button.setName("assign_button"); // NOI18N
         assign_button.addActionListener(new java.awt.event.ActionListener() {
@@ -93,10 +84,7 @@ public class AssignWindow extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(assign_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancel_button))
+                    .addComponent(assign_button)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
@@ -114,11 +102,9 @@ public class AssignWindow extends javax.swing.JFrame {
                     .addComponent(batch_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel_button)
-                    .addComponent(assign_button))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(assign_button)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,10 +120,6 @@ public class AssignWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void batch_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_batch_comboItemStateChanged
         // don't go through if event is not selection
@@ -210,7 +192,6 @@ public class AssignWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assign_button;
     private javax.swing.JComboBox batch_combo;
-    private javax.swing.JButton cancel_button;
     private javax.swing.JTable directory_table;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
