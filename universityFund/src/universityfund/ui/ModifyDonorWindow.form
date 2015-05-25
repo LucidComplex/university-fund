@@ -83,7 +83,7 @@
                                   <Component id="name_text" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="name_label" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="nameSelected_text" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="nameSelected_text" alignment="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_label" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="set_button" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -159,10 +159,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="name_label">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name:"/>
-            <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="name_label" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="nameSelected_text">

@@ -5,6 +5,7 @@
  */
 package universityfund.ui;
 
+import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
@@ -33,7 +34,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        name_label = new javax.swing.JLabel();
         nameSelected_text = new javax.swing.JLabel();
         name_box = new javax.swing.JCheckBox();
         address_box = new javax.swing.JCheckBox();
@@ -61,8 +62,8 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setName("jPanel1"); // NOI18N
 
-        jLabel1.setText("Name:");
-        jLabel1.setName("jLabel1"); // NOI18N
+        name_label.setText("Name:");
+        name_label.setName("name_label"); // NOI18N
 
         nameSelected_text.setText(" ");
         nameSelected_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -203,7 +204,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(name_text))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(name_label)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nameSelected_text, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -228,7 +229,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nameSelected_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
+                        .addComponent(name_label)
                         .addComponent(set_button)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -324,10 +325,23 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         // TODO add your handling code here:
-        updateDonor();
-        dispose();
+        if(valid()){
+            updateDonor();
+            dispose();            
+        }
     }//GEN-LAST:event_save_buttonActionPerformed
 
+    public boolean valid(){
+        boolean valid = true;
+        if(name_text.getText().isEmpty()){
+            name_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            name_label.setForeground(Color.BLACK);
+        }
+        return valid;
+    }
+    
     private void updateDonor(){
         Donor donor = selectedDonor;
         if(name_box.isSelected())
@@ -352,13 +366,13 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JComboBox category_combo;
     private javax.swing.JCheckBox email_box;
     private javax.swing.JTextField email_text;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameSelected_text;
     private javax.swing.JCheckBox name_box;
+    private javax.swing.JLabel name_label;
     private javax.swing.JTextField name_text;
     private javax.swing.JCheckBox number_box;
     private javax.swing.JTextField number_text;
