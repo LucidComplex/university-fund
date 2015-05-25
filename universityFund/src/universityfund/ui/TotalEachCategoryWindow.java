@@ -6,6 +6,7 @@
 package universityfund.ui;
 
 import javax.swing.table.TableModel;
+import universityfund.ui.tablemodels.CategoryTotalsTableModel;
 
 /**
  *
@@ -71,7 +72,7 @@ public class TotalEachCategoryWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private TableModel createTableModel() {
-        
+        return new CategoryTotalsTableModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

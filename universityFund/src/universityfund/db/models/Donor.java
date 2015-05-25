@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -24,6 +22,10 @@ import javax.persistence.Transient;
 @Entity
 public class Donor extends Model implements Serializable, myEntity {
     private static final long serialVersionUID = 5685414599899853806L;
+    public static final String[] CATEGORY_NAMES = {
+        "--------", "Alumna/Alumnus", "Administrator", "Freshman", "Junior",
+        "Parent", "Senior", "Sophomore"
+    };
     
     public Donor() {
         this.classType = Donor.class;
