@@ -125,7 +125,7 @@ public class ReportWindow extends javax.swing.JFrame {
         jLabel13.setText("Yours truly,");
         jLabel13.setName("jLabel13"); // NOI18N
 
-        jLabel14.setText("Suzzane");
+        jLabel14.setText("Suzanne Hayes");
         jLabel14.setName("jLabel14"); // NOI18N
 
         javax.swing.GroupLayout thank_panelLayout = new javax.swing.GroupLayout(thank_panel);
@@ -183,7 +183,7 @@ public class ReportWindow extends javax.swing.JFrame {
         jLabel16.setText("Yours truly,");
         jLabel16.setName("jLabel16"); // NOI18N
 
-        jLabel17.setText("Suzzane");
+        jLabel17.setText("Suzanne Hayes");
         jLabel17.setName("jLabel17"); // NOI18N
 
         javax.swing.GroupLayout invitation_panelLayout = new javax.swing.GroupLayout(invitation_panel);
@@ -223,17 +223,17 @@ public class ReportWindow extends javax.swing.JFrame {
         sol_panelLayout.setHorizontalGroup(
             sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sol_panelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(thank_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(sol_panelLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
+                .addComponent(thank_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
+            .addGroup(sol_panelLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(61, 61, 61))
+                .addGap(99, 99, 99))
         );
         sol_panelLayout.setVerticalGroup(
             sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
