@@ -34,7 +34,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nameSelected_text = new javax.swing.JLabel();
         name_box = new javax.swing.JCheckBox();
         address_box = new javax.swing.JCheckBox();
         number_box = new javax.swing.JCheckBox();
@@ -47,7 +47,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
         number_text = new javax.swing.JTextField();
         email_text = new javax.swing.JTextField();
         year_text = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        save_button = new javax.swing.JButton();
         category_combo = new javax.swing.JComboBox();
         set_button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -64,9 +64,9 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
         jLabel1.setText("Name:");
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setText(" ");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel2.setName("jLabel2"); // NOI18N
+        nameSelected_text.setText(" ");
+        nameSelected_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        nameSelected_text.setName("nameSelected_text"); // NOI18N
 
         name_box.setBackground(new java.awt.Color(255, 255, 255));
         name_box.setText("Name:");
@@ -142,8 +142,13 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
         year_text.setEnabled(false);
         year_text.setName("year_text"); // NOI18N
 
-        jButton2.setText("Save");
-        jButton2.setName("jButton2"); // NOI18N
+        save_button.setText("Save");
+        save_button.setName("save_button"); // NOI18N
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         category_combo.setEnabled(false);
@@ -201,14 +206,14 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nameSelected_text, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(set_button)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(jButton2)))
+                        .addComponent(save_button)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -221,11 +226,12 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(set_button)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameSelected_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(set_button)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_box)
@@ -251,7 +257,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
                     .addComponent(category_box)
                     .addComponent(category_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(save_button)
                 .addGap(16, 16, 16))
         );
 
@@ -317,6 +323,29 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
         new SelectDonorWindow(this).setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        // TODO add your handling code here:
+        updateDonor();
+        dispose();
+    }//GEN-LAST:event_save_buttonActionPerformed
+
+    private void updateDonor(){
+        Donor donor = selectedDonor;
+        if(name_box.isSelected())
+            donor.setName(name_text.getText());
+        if(address_box.isSelected())
+            donor.setAddress(address_text.getText());
+        if(email_box.isSelected())
+            donor.setEmail(email_text.getText());
+        if(number_box.isSelected())
+            donor.setContactNumber(number_text.getText());
+        if(year_box.isSelected())
+            donor.setGraduationYear(Integer.valueOf(year_text.getText()));
+        if(category_box.isSelected())
+            donor.setCategory(category_combo.getSelectedItem().toString());
+        donor.save();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox address_box;
     private javax.swing.JTextArea address_text;
@@ -324,17 +353,17 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JComboBox category_combo;
     private javax.swing.JCheckBox email_box;
     private javax.swing.JTextField email_text;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameSelected_text;
     private javax.swing.JCheckBox name_box;
     private javax.swing.JTextField name_text;
     private javax.swing.JCheckBox number_box;
     private javax.swing.JTextField number_text;
+    private javax.swing.JButton save_button;
     private javax.swing.JButton set_button;
     private javax.swing.JCheckBox year_box;
     private javax.swing.JTextField year_text;
@@ -344,6 +373,6 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     public void receiveIntent(Object intent) {
         EntityManager em = DbHelper.getEntityManager();
         selectedDonor = em.find(Donor.class, (long) intent);
-        name_text.setText(selectedDonor.getName());
+        nameSelected_text.setText(selectedDonor.getName());
     }
 }
