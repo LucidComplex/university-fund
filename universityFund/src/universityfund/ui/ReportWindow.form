@@ -420,6 +420,9 @@
                 <Property name="text" type="java.lang.String" value="Proceed&gt;&gt;"/>
                 <Property name="name" type="java.lang.String" value="eachClass_button" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eachClass_buttonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>

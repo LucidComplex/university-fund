@@ -5,7 +5,6 @@
  */
 package universityfund.ui.tablemodels;
 
-import java.time.YearMonth;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 
@@ -13,13 +12,13 @@ import universityfund.db.DbHelper;
  *
  * @author tan
  */
-public class CategoryTotalsTableModel extends TotalsTableModel {
+public class ClassTotalsTableModel extends TotalsTableModel {
     
-    public CategoryTotalsTableModel() {
-        columnNames = new String[] {"Category", "Total Amount Raised"};
+    public ClassTotalsTableModel() {
+        columnNames = new String[] {"Batch Year", "Total Amount Raised"};
         EntityManager em = DbHelper.getEntityManager();
         rows = em.createQuery(
-                "SELECT DISTINCT d.category FROM Donor d"
+                "SELECT DISTINCT d.graduationYear FROM Donor d"
         ).getResultList();
         dataArray = new Object[rows.size()][columnNames.length];
         int ii = 0;
@@ -30,11 +29,10 @@ public class CategoryTotalsTableModel extends TotalsTableModel {
                     "SELECT SUM(AMOUNT) FROM FUNDING JOIN DONATES ON "
                             + "FUNDINGID = FUNDING.ID JOIN DONOR ON "
                             + "DONORID = DONOR.ID "
-                            + "WHERE DONOR.CATEGORY = ?1"
+                            + "WHERE DONOR.GRADUATIONYEAR = ?1"
             ).setParameter(1, category).getSingleResult();
             dataArray[ii++][jj--] = total;
         }
-        em.close();
     }
     
 }
