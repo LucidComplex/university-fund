@@ -41,7 +41,8 @@ public class DeleteDonorWindow extends javax.swing.JFrame implements UI {
         delete_button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("DELETE DONOR");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

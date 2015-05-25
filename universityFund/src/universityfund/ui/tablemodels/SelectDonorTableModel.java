@@ -56,4 +56,8 @@ public class SelectDonorTableModel extends AbstractTableModel {
         return donorList.get(selectedRow).getId();
     }
     
+    @Override
+    public String getColumnName(int col) {
+        return Donor.COLUMN_NAMES[col];
+    }
 }

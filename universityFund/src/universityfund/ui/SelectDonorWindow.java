@@ -45,8 +45,8 @@ public class SelectDonorWindow extends javax.swing.JFrame {
         select_button = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DELETE DONOR");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SELECT DONOR");
         setName("Form"); // NOI18N
         setResizable(false);
 

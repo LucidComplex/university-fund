@@ -8,7 +8,8 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="NEW PLEDGE"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -68,12 +69,6 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="spouse_text" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="save_button" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="cancel_button" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -131,6 +126,11 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="save_button" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -185,10 +185,7 @@
                       <Component id="spouse_text" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cancel_button" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="save_button" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="save_button" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -198,7 +195,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="New Pledge"/>
+            <Property name="text" type="java.lang.String" value="Add Pledge"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="name_label">
@@ -292,11 +289,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="spouse_text">
-        </Component>
-        <Component class="javax.swing.JButton" name="cancel_button">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cancel"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="save_button">
           <Properties>
