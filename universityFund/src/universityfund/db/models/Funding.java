@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author tan
  */
 @Entity
-public class Funding extends Model implements Serializable {
+public class Funding extends Model implements Serializable, myEntity {
     
     public Funding() {
         this.classType = Funding.class;
@@ -146,5 +146,16 @@ public class Funding extends Model implements Serializable {
         funding.setNumberOfPayments(numberOfPayments);
         funding.save();
         return funding;
+    }
+
+    @Override
+    public void load(Object entity) {
+        Funding funding = (Funding) entity;
+        this.amount = funding.getAmount();
+        this.completedPayments = funding.getCompletedPayments();
+        this.creditCardNumber = funding.getCreditCardNumber();
+        this.dateFunded = funding.getDate();
+        this.numberOfPayments = funding.getNumberOfPayments();
+        this.id = funding.getId();
     }
 }
