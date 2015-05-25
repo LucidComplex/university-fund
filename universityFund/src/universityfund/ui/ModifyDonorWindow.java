@@ -5,17 +5,22 @@
  */
 package universityfund.ui;
 
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
+import universityfund.db.models.Donor;
+
 /**
  *
  * @author MiriamMarie
  */
-public class ModifyDonorWindow extends javax.swing.JFrame {
-
+public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
+    Donor selectedDonor;
     /**
      * Creates new form ModifyDonorWindow
      */
     public ModifyDonorWindow() {
         initComponents();
+        selectedDonor = null;
     }
 
     /**
@@ -29,7 +34,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nameSelected_text = new javax.swing.JLabel();
         name_box = new javax.swing.JCheckBox();
         address_box = new javax.swing.JCheckBox();
         number_box = new javax.swing.JCheckBox();
@@ -42,11 +47,13 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
         number_text = new javax.swing.JTextField();
         email_text = new javax.swing.JTextField();
         year_text = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        save_button = new javax.swing.JButton();
         category_combo = new javax.swing.JComboBox();
+        set_button = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("UPDATE DONOR");
         setName("Form"); // NOI18N
         setResizable(false);
@@ -57,8 +64,9 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
         jLabel1.setText("Name:");
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setText("**TO DO USER CODE**");
-        jLabel2.setName("jLabel2"); // NOI18N
+        nameSelected_text.setText(" ");
+        nameSelected_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        nameSelected_text.setName("nameSelected_text"); // NOI18N
 
         name_box.setBackground(new java.awt.Color(255, 255, 255));
         name_box.setText("Name:");
@@ -134,68 +142,96 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
         year_text.setEnabled(false);
         year_text.setName("year_text"); // NOI18N
 
-        jButton1.setText("Cancel");
-        jButton1.setName("jButton1"); // NOI18N
-
-        jButton2.setText("Save");
-        jButton2.setName("jButton2"); // NOI18N
+        save_button.setText("Save");
+        save_button.setName("save_button"); // NOI18N
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         category_combo.setEnabled(false);
         category_combo.setName("category_combo"); // NOI18N
+
+        set_button.setText("Set...");
+        set_button.setName("set_button"); // NOI18N
+        set_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                set_buttonActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("*");
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Modify Donor");
+        jLabel4.setName("jLabel4"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(address_box)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(name_box)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(name_text))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(number_box)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(number_text))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(email_box)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(email_text))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(year_box)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(year_text))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(year_box)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(year_text))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(category_box)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(category_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(email_box)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(email_text))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(number_box)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(number_text))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(address_box)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(name_box)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(name_text))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jButton2)
+                                .addComponent(nameSelected_text, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
-                        .addGap(0, 35, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(category_box)
+                                .addComponent(set_button)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(category_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(save_button)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameSelected_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(set_button)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_box)
@@ -221,21 +257,19 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
                     .addComponent(category_box)
                     .addComponent(category_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(save_button)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -284,6 +318,34 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
         else category_combo.setEnabled(false);
     }//GEN-LAST:event_category_boxActionPerformed
 
+    private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
+        // TODO add your handling code here:
+        new SelectDonorWindow(this).setVisible(true);
+    }//GEN-LAST:event_set_buttonActionPerformed
+
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        // TODO add your handling code here:
+        updateDonor();
+        dispose();
+    }//GEN-LAST:event_save_buttonActionPerformed
+
+    private void updateDonor(){
+        Donor donor = selectedDonor;
+        if(name_box.isSelected())
+            donor.setName(name_text.getText());
+        if(address_box.isSelected())
+            donor.setAddress(address_text.getText());
+        if(email_box.isSelected())
+            donor.setEmail(email_text.getText());
+        if(number_box.isSelected())
+            donor.setContactNumber(number_text.getText());
+        if(year_box.isSelected())
+            donor.setGraduationYear(Integer.valueOf(year_text.getText()));
+        if(category_box.isSelected())
+            donor.setCategory(category_combo.getSelectedItem().toString());
+        donor.save();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox address_box;
     private javax.swing.JTextArea address_text;
@@ -291,17 +353,26 @@ public class ModifyDonorWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox category_combo;
     private javax.swing.JCheckBox email_box;
     private javax.swing.JTextField email_text;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameSelected_text;
     private javax.swing.JCheckBox name_box;
     private javax.swing.JTextField name_text;
     private javax.swing.JCheckBox number_box;
     private javax.swing.JTextField number_text;
+    private javax.swing.JButton save_button;
+    private javax.swing.JButton set_button;
     private javax.swing.JCheckBox year_box;
     private javax.swing.JTextField year_text;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void receiveIntent(Object intent) {
+        EntityManager em = DbHelper.getEntityManager();
+        selectedDonor = em.find(Donor.class, (long) intent);
+        nameSelected_text.setText(selectedDonor.getName());
+    }
 }

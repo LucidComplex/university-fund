@@ -43,6 +43,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("UNIVERSITY FUND");
         setName("Form"); // NOI18N
         setResizable(false);
 
@@ -197,7 +198,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
-        new UpdateDonorWindow().setVisible(true);
+        new ModifyDonorWindow().setVisible(true);
     }//GEN-LAST:event_update_buttonActionPerformed
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed

@@ -77,6 +77,7 @@ public class ReportWindow extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("REPORTS");
         setName("Form"); // NOI18N
         setResizable(false);
 
