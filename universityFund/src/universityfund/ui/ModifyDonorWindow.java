@@ -48,7 +48,7 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
         email_text = new javax.swing.JTextField();
         year_text = new javax.swing.JTextField();
         save_button = new javax.swing.JButton();
-        category_combo = new javax.swing.JComboBox();
+        category_combo = new javax.swing.JComboBox(Donor.CATEGORY_NAMES);
         set_button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -150,7 +150,6 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
             }
         });
 
-        category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         category_combo.setEnabled(false);
         category_combo.setName("category_combo"); // NOI18N
 
