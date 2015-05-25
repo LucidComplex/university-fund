@@ -7,6 +7,7 @@ package universityfund.ui;
 
 import java.awt.Color;
 import universityfund.db.models.Donor;
+import static universityfund.db.models.Donor.CATEGORY_NAMES;
 
 /**
  *
@@ -38,7 +39,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         address_text = new javax.swing.JTextArea();
         name_text = new javax.swing.JTextField();
-        category_combo = new javax.swing.JComboBox(createCategoryList());
+        category_combo = new javax.swing.JComboBox(CATEGORY_NAMES);
         year_text = new javax.swing.JTextField();
         save_button = new javax.swing.JButton();
         number_label = new javax.swing.JLabel();
@@ -297,10 +298,6 @@ public class AddDonorWindow extends javax.swing.JFrame {
             category_label.setForeground(Color.BLACK);
         }
         return valid;
-    }
-    
-    private String[] createCategoryList() {
-        return new String[] {"--------", "Alumna/Alumnus", "Administrator", "Freshman", "Junior", "Parent", "Senior", "Sophomore"};
     }
     
     private void saveDonor() {

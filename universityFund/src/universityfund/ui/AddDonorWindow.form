@@ -237,7 +237,7 @@
             <Property name="name" type="java.lang.String" value="category_combo" noResource="true"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(createCategoryList())"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(CATEGORY_NAMES)"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="year_text">
