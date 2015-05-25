@@ -70,6 +70,10 @@ public class ReportWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         rep_combo = new javax.swing.JComboBox();
@@ -373,14 +377,26 @@ public class ReportWindow extends javax.swing.JFrame {
         jLabel3.setText("Total pledges:");
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jLabel4.setText("Total gifts:");
+        jLabel4.setText("Total gifts and donations:");
         jLabel4.setName("jLabel4"); // NOI18N
 
         jLabel18.setText("Percentage of pledges:");
         jLabel18.setName("jLabel18"); // NOI18N
 
-        jLabel19.setText("Percentage of gifts:");
+        jLabel19.setText("Percentage of gifts and donations:");
         jLabel19.setName("jLabel19"); // NOI18N
+
+        jLabel20.setText(getSumGifts());
+        jLabel20.setName("jLabel20"); // NOI18N
+
+        jLabel21.setText(getPercentGifts());
+        jLabel21.setName("jLabel21"); // NOI18N
+
+        jLabel22.setText("Total amount raised for this month:");
+        jLabel22.setName("jLabel22"); // NOI18N
+
+        jLabel23.setText(getSumForThisMonth());
+        jLabel23.setName("jLabel23"); // NOI18N
 
         javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
         monthly_panel.setLayout(monthly_panelLayout);
@@ -394,10 +410,20 @@ public class ReportWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2))
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
+                    .addGroup(monthly_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel20))
                     .addComponent(jLabel18)
-                    .addComponent(jLabel19))
-                .addContainerGap(470, Short.MAX_VALUE))
+                    .addGroup(monthly_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21))
+                    .addGroup(monthly_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel23)))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         monthly_panelLayout.setVerticalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,10 +437,18 @@ public class ReportWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18)
                 .addGap(15, 15, 15)
-                .addComponent(jLabel4)
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Monthly Report", monthly_panel);
@@ -484,7 +518,9 @@ public class ReportWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -496,7 +532,7 @@ public class ReportWindow extends javax.swing.JFrame {
         return getMonthForInt(cal.get(Calendar.MONTH));
     }
     
-    String getMonthForInt(int num) {
+    public String getMonthForInt(int num) {
         String month = "wrong";
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
@@ -511,6 +547,37 @@ public class ReportWindow extends javax.swing.JFrame {
         return em.createQuery(
            "SELECT SUM (f.amount) FROM Funding f "
         ).getSingleResult().toString();
+    }
+
+    public String getSumGifts(){
+        EntityManager em = DbHelper.getEntityManager();
+        return em.createNativeQuery(
+              "SELECT SUM(AMOUNT) " +
+                "FROM FUNDING JOIN DONATES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
+                "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
+                "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
+        ).setParameter(1, java.time.Year.now().getValue()).
+                setParameter(2, java.time.MonthDay.now().
+                        getMonthValue()).getSingleResult().toString();
+    }
+    
+    public String getSumForThisMonth(){
+        EntityManager em = DbHelper.getEntityManager();
+        return em.createNativeQuery(
+              "SELECT SUM(AMOUNT) " +
+                "FROM FUNDING " +
+                "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
+                "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
+        ).setParameter(1, java.time.Year.now().getValue()).
+                setParameter(2, java.time.MonthDay.now().
+                        getMonthValue()).getSingleResult().toString();
+    }
+    
+    public String getPercentGifts(){
+        String donations = getSumGifts();
+        String all = getSum();
+        
+        return (Integer.valueOf(donations)/Integer.valueOf(all))*100 + "%";
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -579,6 +646,10 @@ public class ReportWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
