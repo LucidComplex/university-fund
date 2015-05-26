@@ -57,19 +57,6 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable(new MembersCategoryTableModel());
         jLabel11 = new javax.swing.JLabel();
-        monthly_panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         rep_combo = new javax.swing.JComboBox(getReps());
@@ -98,6 +85,19 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         name_text = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        monthly_panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("REPORTS");
@@ -162,6 +162,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jTable2.setName("jTable2"); // NOI18N
         jScrollPane2.setViewportView(jTable2);
 
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText(getSum());
         jLabel11.setName("jLabel11"); // NOI18N
 
@@ -172,7 +174,9 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(annual_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addGroup(annual_panelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
                     .addGroup(annual_panelLayout.createSequentialGroup()
                         .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(annual_panelLayout.createSequentialGroup()
@@ -195,8 +199,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                                 .addComponent(jLabel9)
                                 .addGap(44, 44, 44)
                                 .addComponent(eachDonor_button)))
-                        .addGap(0, 136, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(123, 146, Short.MAX_VALUE))))
         );
         annual_panelLayout.setVerticalGroup(
             annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,111 +226,6 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         );
 
         jTabbedPane1.addTab("Annual Report to Donors", annual_panel);
-
-        monthly_panel.setBackground(new java.awt.Color(255, 255, 255));
-        monthly_panel.setName("monthly_panel"); // NOI18N
-
-        jLabel1.setText("Month of:");
-        jLabel1.setName("jLabel1"); // NOI18N
-
-        jLabel2.setText(getMonth()
-        );
-        jLabel2.setName("jLabel2"); // NOI18N
-
-        jLabel3.setText("Total pledges:");
-        jLabel3.setName("jLabel3"); // NOI18N
-
-        jLabel4.setText("Total gifts and donations:");
-        jLabel4.setName("jLabel4"); // NOI18N
-
-        jLabel18.setText("Percentage of pledges:");
-        jLabel18.setName("jLabel18"); // NOI18N
-
-        jLabel19.setText("Percentage of gifts and donations:");
-        jLabel19.setName("jLabel19"); // NOI18N
-
-        jLabel20.setText(getSumGifts());
-        jLabel20.setName("jLabel20"); // NOI18N
-
-        jLabel21.setText(getPercentGifts());
-        jLabel21.setName("jLabel21"); // NOI18N
-
-        jLabel22.setText("Total amount raised for this month:");
-        jLabel22.setName("jLabel22"); // NOI18N
-
-        jLabel23.setText(getSumForThisMonth());
-        jLabel23.setName("jLabel23"); // NOI18N
-
-        jLabel27.setText(getSumPledges());
-        jLabel27.setName("jLabel27"); // NOI18N
-
-        jLabel28.setText(getPercentPledges());
-        jLabel28.setName("jLabel28"); // NOI18N
-
-        javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
-        monthly_panel.setLayout(monthly_panelLayout);
-        monthly_panelLayout.setHorizontalGroup(
-            monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(monthly_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(monthly_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
-                    .addGroup(monthly_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel27))
-                    .addGroup(monthly_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel20))
-                    .addGroup(monthly_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28))
-                    .addGroup(monthly_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
-                    .addGroup(monthly_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23)))
-                .addContainerGap(383, Short.MAX_VALUE))
-        );
-        monthly_panelLayout.setVerticalGroup(
-            monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(monthly_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel27))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel28))
-                .addGap(15, 15, 15)
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23))
-                .addContainerGap(190, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Monthly Report", monthly_panel);
 
         class_panel.setBackground(new java.awt.Color(255, 255, 255));
         class_panel.setName("class_panel"); // NOI18N
@@ -359,13 +257,14 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(class_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(class_panelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(class_panelLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 290, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(275, 300, Short.MAX_VALUE))))
         );
         class_panelLayout.setVerticalGroup(
             class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,6 +517,119 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         );
 
         jTabbedPane1.addTab("Solicitation Letters", sol_panel);
+
+        monthly_panel.setBackground(new java.awt.Color(255, 255, 255));
+        monthly_panel.setName("monthly_panel"); // NOI18N
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Month of:");
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(getMonth()
+        );
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Total pledges:");
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Total gifts and donations:");
+        jLabel4.setName("jLabel4"); // NOI18N
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Percentage of pledges:");
+        jLabel18.setName("jLabel18"); // NOI18N
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Percentage of gifts and donations:");
+        jLabel19.setName("jLabel19"); // NOI18N
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText(getSumGifts());
+        jLabel20.setName("jLabel20"); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText(getPercentGifts());
+        jLabel21.setName("jLabel21"); // NOI18N
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Total amount raised for this month:");
+        jLabel22.setName("jLabel22"); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText(getSumForThisMonth());
+        jLabel23.setName("jLabel23"); // NOI18N
+
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText(getSumPledges());
+        jLabel27.setName("jLabel27"); // NOI18N
+
+        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText(getPercentPledges());
+        jLabel28.setName("jLabel28"); // NOI18N
+
+        javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
+        monthly_panel.setLayout(monthly_panelLayout);
+        monthly_panelLayout.setHorizontalGroup(
+            monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+        );
+        monthly_panelLayout.setVerticalGroup(
+            monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(monthly_panelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Monthly Report", monthly_panel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

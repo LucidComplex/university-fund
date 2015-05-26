@@ -31,7 +31,7 @@ public class Funding extends Model implements Serializable, myEntity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     
-    private int amount;
+    private float amount;
     private int completedPayments;
     private String creditCardNumber;;
     private Date dateFunded;
@@ -41,7 +41,7 @@ public class Funding extends Model implements Serializable, myEntity {
         return Funding.getCircle(getAmount());
     }
     
-    public static String getCircle(int amount) {
+    public static String getCircle(float amount) {
         for (int ii = 50000, jj = 0; jj < 10; ii /= 2, jj++) {
             if (amount / ii >= 1 && amount >= 100)
                 return CIRCLE_GROUPS[jj];
@@ -68,14 +68,14 @@ public class Funding extends Model implements Serializable, myEntity {
     /**
      * @return the amount
      */
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
     /**
      * @param amount the amount to set
      */
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
@@ -135,7 +135,7 @@ public class Funding extends Model implements Serializable, myEntity {
         this.numberOfPayments = numberOfPayments;
     }
     
-    public static Funding createFunding(int amount) {
+    public static Funding createFunding(float amount) {
         Funding funding = new Funding();
         funding.setAmount(amount);
         funding.setCompletedPayments(1);
@@ -145,7 +145,7 @@ public class Funding extends Model implements Serializable, myEntity {
         return funding;
     }
     
-    public static Funding createFunding(int amount, int numberOfPayments) {
+    public static Funding createFunding(float amount, int numberOfPayments) {
         Funding funding = createFunding(amount);
         funding.setNumberOfPayments(numberOfPayments);
         funding.save();
