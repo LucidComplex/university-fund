@@ -6,6 +6,7 @@
 package universityfund.ui.tablemodels;
 
 import javax.persistence.EntityManager;
+import universityfund.Utility;
 import universityfund.db.DbHelper;
 
 /**
@@ -32,8 +33,10 @@ public class CategoryTotalsTableModel extends TotalsTableModel {
                             + "FROM (SELECT FUNDINGID, DONORID FROM PLEDGES "
                             + "UNION SELECT FUNDINGID, DONORID FROM DONATES) A "
                             + "JOIN DONOR ON A.DONORID = DONOR.ID "
-                            + "WHERE DONOR.CATEGORY = ?1)"
-            ).setParameter(1, category).getSingleResult();
+                            + "WHERE DONOR.CATEGORY = ?1) AND DATEFUNDED "
+                            + "BETWEEN ?2 AND ?3"
+            ).setParameter(1, category).setParameter(2, Utility.getBeginDate())
+                    .setParameter(3, Utility.getEndDate()).getSingleResult();
             if (result == null)
                 total = 0;
             else
