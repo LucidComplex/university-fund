@@ -18,12 +18,12 @@ import universityfund.db.models.Funding;
  *
  * @author MiriamMarie
  */
-public class DonationWindow extends javax.swing.JFrame implements UI {
+public class AddDonationWindow extends javax.swing.JFrame implements UI {
     private Donor selectedDonor;
     /**
      * Creates new form DonationWindow
      */
-    public DonationWindow() {
+    public AddDonationWindow() {
         initComponents();
         selectedDonor = null;
     }
