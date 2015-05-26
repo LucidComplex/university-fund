@@ -255,6 +255,7 @@ public class AddDonorWindow extends javax.swing.JFrame {
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
        if (check()) {
            saveDonor();
+           new SuccessWindow().setVisible(true);
            dispose();
        }
     }//GEN-LAST:event_save_buttonActionPerformed

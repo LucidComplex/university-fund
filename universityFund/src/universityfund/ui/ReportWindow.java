@@ -5,13 +5,16 @@
  */
 package universityfund.ui;
 
+import java.awt.event.ItemEvent;
 import java.text.DateFormatSymbols;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
+import universityfund.ui.tablemodels.ContactListTableModel;
 import universityfund.ui.tablemodels.MembersCategoryTableModel;
 
 /**
@@ -20,6 +23,7 @@ import universityfund.ui.tablemodels.MembersCategoryTableModel;
  */
 public class ReportWindow extends javax.swing.JFrame implements UI {
     Donor selectedDonor;
+    Donor selectRep;
     /**
      * Creates new form ReportWindown
      */
@@ -66,9 +70,9 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel28 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        rep_combo = new javax.swing.JComboBox();
+        rep_combo = new javax.swing.JComboBox(getReps());
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        contactList_table = new javax.swing.JTable(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
         sol_panel = new javax.swing.JPanel();
         solicit_button = new javax.swing.JButton();
         thanks_button = new javax.swing.JButton();
@@ -324,24 +328,22 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel5.setText("Class Representative:");
         jLabel5.setName("jLabel5"); // NOI18N
 
-        rep_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         rep_combo.setName("rep_combo"); // NOI18N
+        rep_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rep_comboItemStateChanged(evt);
+            }
+        });
+        rep_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep_comboActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setName("jTable1"); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        contactList_table.setName("contactList_table"); // NOI18N
+        jScrollPane1.setViewportView(contactList_table);
 
         javax.swing.GroupLayout class_panelLayout = new javax.swing.GroupLayout(class_panel);
         class_panel.setLayout(class_panelLayout);
@@ -624,6 +626,15 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Object[] getReps(){
+        List <Donor> classReps;
+        EntityManager em = DbHelper.getEntityManager();
+        classReps = em.createQuery(
+                "SELECT d.representative FROM ClassRepresentative d"          
+        ).getResultList();
+        return classReps.toArray() ;        
+    }
+    
     public String getMonth(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(Date.from(Instant.now()));
@@ -642,21 +653,27 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     
     public String getSum(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createQuery(
+        Object sum = em.createQuery(
            "SELECT SUM (f.amount) FROM Funding f "
-        ).getSingleResult().toString();
+        ).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getSumPledges(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createNativeQuery(
+        Object sum =  em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
                 "FROM FUNDING JOIN PLEDGES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
-                        getMonthValue()).getSingleResult().toString();
+                        getMonthValue()).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getPercentPledges(){
@@ -668,26 +685,32 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
 
     public String getSumGifts(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createNativeQuery(
+        Object sum = em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
                 "FROM FUNDING JOIN DONATES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
-                        getMonthValue()).getSingleResult().toString();
+                        getMonthValue()).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getSumForThisMonth(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createNativeQuery(
+        Object sum = em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
                 "FROM FUNDING " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
-                        getMonthValue()).getSingleResult().toString();
+                        getMonthValue()).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getPercentGifts(){
@@ -727,9 +750,22 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         new SampleForm().setVisible(true);
     }//GEN-LAST:event_form_buttonActionPerformed
 
+    private void rep_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep_comboActionPerformed
+
+    private void rep_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rep_comboItemStateChanged
+        // TODO add your handling code here:
+        
+        if(evt.getStateChange()==ItemEvent.SELECTED){
+            contactList_table.setModel(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
+        }
+    }//GEN-LAST:event_rep_comboItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
     private javax.swing.JPanel class_panel;
+    private javax.swing.JTable contactList_table;
     private javax.swing.JButton eachCategory_button;
     private javax.swing.JButton eachClass_button;
     private javax.swing.JButton eachDonor_button;
@@ -769,7 +805,6 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;

@@ -132,6 +132,7 @@ public class DeleteDonorWindow extends javax.swing.JFrame implements UI {
         // TODO add your handling code here:
         if(check()){
             deleteDonor();
+            new SuccessWindow().setVisible(true);
             this.dispose();
         }            
     }//GEN-LAST:event_delete_buttonActionPerformed

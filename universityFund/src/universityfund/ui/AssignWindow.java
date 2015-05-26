@@ -136,6 +136,8 @@ public class AssignWindow extends javax.swing.JFrame {
 
     private void assign_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assign_buttonActionPerformed
         assignClassRepresentative();
+        new SuccessWindow().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_assign_buttonActionPerformed
     
     private void assignClassRepresentative() {

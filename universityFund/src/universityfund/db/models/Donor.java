@@ -206,4 +206,8 @@ public class Donor extends Model implements Serializable, myEntity {
         this.pk = id;
     }
     
+    public String toString() {
+        return name;
+    }
+    
 }
