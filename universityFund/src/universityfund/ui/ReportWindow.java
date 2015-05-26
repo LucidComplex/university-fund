@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
+import universityfund.ui.tablemodels.MembersCategoryTableModel;
 
 /**
  *
@@ -48,7 +49,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         eachDonor_button = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable(new MembersCategoryTableModel());
         jLabel11 = new javax.swing.JLabel();
         monthly_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -147,17 +148,6 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jTable2.setName("jTable2"); // NOI18N
         jScrollPane2.setViewportView(jTable2);
 
