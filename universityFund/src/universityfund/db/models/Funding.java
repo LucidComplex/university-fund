@@ -164,11 +164,13 @@ public class Funding extends Model implements Serializable, myEntity {
         this.id = funding.getId();
     }
     
-    public float getRemainingBalance() {
-        return (numberOfPayments - completedPayments) * getAmountPerPayment();
+    public int getRemainingPayments() {
+        return numberOfPayments - completedPayments;
     }
     
     public float getAmountPerPayment() {
+        if (numberOfPayments == completedPayments)
+            return 0;
         return amount / numberOfPayments;
     }
 }
