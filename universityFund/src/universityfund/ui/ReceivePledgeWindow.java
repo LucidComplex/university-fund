@@ -8,6 +8,7 @@ package universityfund.ui;
 import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
+import universityfund.db.models.Funding;
 import universityfund.db.models.FundingId;
 import universityfund.db.models.Pledges;
 
@@ -41,6 +42,8 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
         set_button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         confirm_button = new javax.swing.JButton();
+        info_text = new javax.swing.JLabel();
+        amount_to_receive_text = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("RECEIVE PLEDGE");
@@ -72,6 +75,10 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
             }
         });
 
+        info_text.setText("Amount to Receive:");
+
+        amount_to_receive_text.setText("0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,7 +96,12 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addContainerGap()
+                        .addComponent(info_text)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amount_to_receive_text))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
                         .addComponent(confirm_button)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -105,7 +117,11 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(set_button)
                         .addComponent(jLabel3)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(info_text)
+                    .addComponent(amount_to_receive_text))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirm_button)
                 .addContainerGap())
         );
@@ -137,7 +153,9 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
     }//GEN-LAST:event_confirm_buttonActionPerformed
 
     public void receivePledge(){
-        //TODO code
+        Funding funding = selectedPledge.getFunding();
+        funding.setCompletedPayments(funding.getCompletedPayments() + 1);
+        funding.save();
     } 
     
     public boolean valid(){
@@ -147,13 +165,21 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
             id_label.setForeground(Color.RED);
         } else
             id_label.setForeground(Color.BLACK);
+        if (Float.valueOf(amount_to_receive_text.getText()) == 0) {
+            valid = false;
+            amount_to_receive_text.setForeground(Color.RED);
+        } else {
+            amount_to_receive_text.setForeground(Color.BLACK);
+        }
         return valid;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amount_to_receive_text;
     private javax.swing.JButton confirm_button;
     private javax.swing.JLabel id_label;
     private javax.swing.JLabel id_text;
+    private javax.swing.JLabel info_text;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -166,5 +192,6 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
         long[] ids = (long[]) intent;
         selectedPledge = em.find(Pledges.class, new FundingId(ids[0],ids[1]));
         id_text.setText(String.valueOf(selectedPledge.getFunding().getId()));
+        amount_to_receive_text.setText(String.valueOf(selectedPledge.getFunding().getAmountPerPayment()));
     }
 }
