@@ -319,13 +319,14 @@ public class ModifyDonorWindow extends javax.swing.JFrame implements UI {
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         if(valid()){
             updateDonor();
+            new SuccessWindow().setVisible(true);
             dispose();            
         }
     }//GEN-LAST:event_save_buttonActionPerformed
 
     public boolean valid(){
         boolean valid = true;
-        if(name_text.getText().isEmpty()){
+        if(nameSelected_text.getText().isEmpty()){
             name_label.setForeground(Color.RED);
             valid = false;
         } else {

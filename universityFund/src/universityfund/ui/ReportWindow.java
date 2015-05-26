@@ -22,6 +22,7 @@ import universityfund.ui.tablemodels.MembersCategoryTableModel;
  */
 public class ReportWindow extends javax.swing.JFrame implements UI {
     Donor selectedDonor;
+    Donor selectRep;
     /**
      * Creates new form ReportWindown
      */
@@ -327,6 +328,11 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel5.setName("jLabel5"); // NOI18N
 
         rep_combo.setName("rep_combo"); // NOI18N
+        rep_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep_comboActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
@@ -626,15 +632,12 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     }// </editor-fold>//GEN-END:initComponents
 
     public Object[] getReps(){
-        List <String> classReps;
+        List <Donor> classReps;
         EntityManager em = DbHelper.getEntityManager();
-        classReps = em.createNativeQuery(
-                "SELECT NAME "
-                        + "FROM CLASSREPRESENTATIVE JOIN DONOR "
-                        + "ON REPRESENTATIVE_ID = DONOR.ID "
-                
+        classReps = em.createQuery(
+                "SELECT d.representative FROM ClassRepresentative d"          
         ).getResultList();
-        return classReps.toArray();        
+        return classReps.toArray() ;        
     }
     
     public String getMonth(){
@@ -751,6 +754,10 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     private void form_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_form_buttonActionPerformed
         new SampleForm().setVisible(true);
     }//GEN-LAST:event_form_buttonActionPerformed
+
+    private void rep_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep_comboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
