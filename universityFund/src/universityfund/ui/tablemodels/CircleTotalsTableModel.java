@@ -39,13 +39,13 @@ public class CircleTotalsTableModel extends TotalsTableModel{
                 "end", Utility.getEndDate()
         ).getResultList();
         
-        Map<String, Integer> circleMap = new HashMap<>();
+        Map<String, Float> circleMap = new HashMap<>();
         for (String group : Funding.CIRCLE_GROUPS) {
-            circleMap.put(group, 0);
+            circleMap.put(group, 0f);
         }
         
         for (Funding f : funding) {
-            Integer temp = circleMap.get(f.getCircle());
+            Float temp = circleMap.get(f.getCircle());
             System.out.println(temp);
             if (temp == null) {
                 circleMap.put(f.getCircle(), f.getAmount());
