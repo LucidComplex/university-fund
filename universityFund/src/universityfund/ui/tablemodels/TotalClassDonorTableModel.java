@@ -39,7 +39,8 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
         };
         SortedMap<Integer, SortedMap<String, Integer>> classTotals = new TreeMap<>(intComparator);
         for (Donor d : donorList) {
-            int total = (int) em.createNativeQuery(
+            int total;
+            Object result = em.createNativeQuery(
                     "SELECT SUM(AMOUNT) "
                   + "FROM FUNDING WHERE ID IN ("
                       + "SELECT FUNDINGID "
@@ -54,6 +55,7 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
             ).setParameter(1, d.getId())
                     .setParameter(2, Utility.getBeginDate())
                     .setParameter(3, Utility.getEndDate()).getSingleResult();
+            total = (result == null) ? 0 : (int) result;
             String circle = Funding.getCircle(total);
             SortedMap<String, Integer> circleMap = classTotals.get(d.getGraduationYear());
             if (circleMap == null) 
@@ -76,13 +78,14 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
         int ii = 0;
         int jj;
         for (Entry<Integer, SortedMap<String, Integer>> entry : classTotals.entrySet()) {
-            jj = 0;
-            dataArray[ii][jj++] = entry.getKey();
             for (Entry<String, Integer> entry2 : entry.getValue().entrySet()) {
+                jj = 0;
                 dataArray[ii][jj++] = entry.getKey();
-                dataArray[ii][jj] = entry.getValue();
+                dataArray[ii][jj++] = entry2.getKey();
+                dataArray[ii++][jj] = entry2.getValue();
             }
         }
+        
     }
     
     @Override

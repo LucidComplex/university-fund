@@ -5,7 +5,6 @@
  */
 package universityfund.ui.tablemodels;
 
-import java.time.YearMonth;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 
@@ -26,12 +25,19 @@ public class CategoryTotalsTableModel extends TotalsTableModel {
         int jj = 0;
         for (Object category : rows) {
             dataArray[ii][jj++] = category;
-            int total = (int) em.createNativeQuery(
-                    "SELECT SUM(AMOUNT) FROM FUNDING JOIN DONATES ON "
-                            + "FUNDINGID = FUNDING.ID JOIN DONOR ON "
-                            + "DONORID = DONOR.ID "
-                            + "WHERE DONOR.CATEGORY = ?1"
+            int total;
+            Object result = em.createNativeQuery(
+                    "SELECT SUM(AMOUNT) FROM FUNDING "
+                            + "WHERE ID IN (SELECT FUNDINGID "
+                            + "FROM (SELECT FUNDINGID, DONORID FROM PLEDGES "
+                            + "UNION SELECT FUNDINGID, DONORID FROM DONATES) A "
+                            + "JOIN DONOR ON A.DONORID = DONOR.ID "
+                            + "WHERE DONOR.CATEGORY = ?1)"
             ).setParameter(1, category).getSingleResult();
+            if (result == null)
+                total = 0;
+            else
+                total = (int) result;
             dataArray[ii++][jj--] = total;
         }
         em.close();
