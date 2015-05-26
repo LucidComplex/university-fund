@@ -68,11 +68,10 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
             classTotals.put(d.getGraduationYear(), circleMap);
         }
         
-        int temp = 0;
+        int row = classTotals.size();
         for (Entry<Integer, SortedMap<String, Integer>> entry : classTotals.entrySet()) {
-            temp += entry.getValue().size();
+            row += entry.getValue().size() - 1;
         }
-        int row = classTotals.size() * temp;
         dataArray = new Object[row][columnNames.length];
         
         int ii = 0;
