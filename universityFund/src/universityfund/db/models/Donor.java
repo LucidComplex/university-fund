@@ -23,8 +23,8 @@ import javax.persistence.Transient;
 public class Donor extends Model implements Serializable, myEntity {
     private static final long serialVersionUID = 5685414599899853806L;
     public static final String[] CATEGORY_NAMES = {
-        "--------", "Alumna/Alumnus", "Administrator", "Freshman", "Junior",
-        "Parent", "Senior", "Sophomore"
+        "--------", "Administrator", "Alumna/Alumnus", "Corporation",
+        "Faculty", "Other", "Parent", "Senior", "Staff"
     };
     
     public Donor() {

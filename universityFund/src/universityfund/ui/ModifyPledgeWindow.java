@@ -7,7 +7,9 @@ package universityfund.ui;
 
 import java.awt.Color;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import universityfund.db.DbHelper;
+import universityfund.db.models.Donor;
 import universityfund.db.models.Funding;
 import universityfund.db.models.FundingId;
 import universityfund.db.models.Pledges;
@@ -387,12 +389,44 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
         }
         if(cc_box.isSelected())
             funding.setCreditCardNumber(cc_text.getText());
-        if(corpName_box.isSelected())
-            pledge.setCorporationName(corpName_text.getText());
-        if(corpAdd_box.isSelected())
-            pledge.setCorporationAddress(corpAdd_text.getText());
-        if(spouse_box.isSelected())
-            pledge.setNameOfSpouse(spouse_text.getText());
+        Donor matching = pledge.getMatchingDonor();
+        
+        if(corpName_box.isSelected()) {
+            if (matching == null && corpAdd_box.isSelected()) {
+                matching = new Donor();
+                matching.setAddress(corpAdd_text.getText());
+                matching.setCategory("Corporation");
+                matching.setName(corpName_text.getText());
+                matching.save();
+                pledge.setMatchingDonor(matching);
+            } else if (matching != null) {
+                matching.setName(corpName_text.getText());
+            }
+        }
+        if(corpAdd_box.isSelected()) {
+            if (matching == null && corpName_box.isSelected()) {
+                matching = new Donor();
+                matching.setAddress(corpAdd_text.getText());
+                matching.setCategory("Corporation");
+                matching.setName(corpName_text.getText());
+                matching.save();
+                pledge.setMatchingDonor(matching);
+            } else if (matching != null) {
+                matching.setAddress(corpAdd_text.getText());
+                matching.save();
+                pledge.setMatchingDonor(matching);
+            }
+            
+        }
+        if(spouse_box.isSelected() && !corpAdd_box.isSelected() && !corpName_box.isSelected()) {
+            if (matching == null) {
+                matching = new Donor();
+                matching.setCategory("Spouse");
+            }
+            matching.setName(spouse_box.getText());
+            matching.save();
+            pledge.setMatchingDonor(matching);
+        }
         pledge.save();
         funding.save();
     }
