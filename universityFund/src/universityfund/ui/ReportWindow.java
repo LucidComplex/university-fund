@@ -5,6 +5,7 @@
  */
 package universityfund.ui;
 
+import java.awt.event.ItemEvent;
 import java.text.DateFormatSymbols;
 import java.time.Instant;
 import java.util.Calendar;
@@ -12,8 +13,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
-import universityfund.db.models.ClassRepresentative;
 import universityfund.db.models.Donor;
+import universityfund.ui.tablemodels.ContactListTableModel;
 import universityfund.ui.tablemodels.MembersCategoryTableModel;
 
 /**
@@ -71,7 +72,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel5 = new javax.swing.JLabel();
         rep_combo = new javax.swing.JComboBox(getReps());
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        contactList_table = new javax.swing.JTable(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
         sol_panel = new javax.swing.JPanel();
         solicit_button = new javax.swing.JButton();
         thanks_button = new javax.swing.JButton();
@@ -328,6 +329,11 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel5.setName("jLabel5"); // NOI18N
 
         rep_combo.setName("rep_combo"); // NOI18N
+        rep_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rep_comboItemStateChanged(evt);
+            }
+        });
         rep_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rep_comboActionPerformed(evt);
@@ -336,19 +342,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setName("jTable1"); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        contactList_table.setName("contactList_table"); // NOI18N
+        jScrollPane1.setViewportView(contactList_table);
 
         javax.swing.GroupLayout class_panelLayout = new javax.swing.GroupLayout(class_panel);
         class_panel.setLayout(class_panelLayout);
@@ -759,9 +754,18 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         // TODO add your handling code here:
     }//GEN-LAST:event_rep_comboActionPerformed
 
+    private void rep_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rep_comboItemStateChanged
+        // TODO add your handling code here:
+        
+        if(evt.getStateChange()==ItemEvent.SELECTED){
+            contactList_table.setModel(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
+        }
+    }//GEN-LAST:event_rep_comboItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
     private javax.swing.JPanel class_panel;
+    private javax.swing.JTable contactList_table;
     private javax.swing.JButton eachCategory_button;
     private javax.swing.JButton eachClass_button;
     private javax.swing.JButton eachDonor_button;
@@ -801,7 +805,6 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
