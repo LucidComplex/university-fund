@@ -11,4 +11,5 @@ package universityfund.ui;
  */
 public interface UI {
     public void receiveIntent(Object intent);
+    
 }

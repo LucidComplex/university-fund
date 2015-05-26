@@ -5,17 +5,24 @@
  */
 package universityfund.ui;
 
+import java.awt.Color;
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
+import universityfund.db.models.Donates;
+import universityfund.db.models.FundingId;
+
 /**
  *
  * @author MiriamMarie
  */
-public class DeleteDonationWindow extends javax.swing.JFrame {
-
+public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
+    private Donates selectedDonation;
     /**
      * Creates new form DeleteDonation
      */
     public DeleteDonationWindow() {
         initComponents();
+        selectedDonation = null;
     }
 
     /**
@@ -43,7 +50,7 @@ public class DeleteDonationWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("Delete Donation");
 
-        id_label.setText("Donation ID:");
+        id_label.setText("Funding ID:");
 
         donation_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -55,6 +62,11 @@ public class DeleteDonationWindow extends javax.swing.JFrame {
         });
 
         delete_button.setText("Confirm Delete");
+        delete_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*");
@@ -113,43 +125,33 @@ public class DeleteDonationWindow extends javax.swing.JFrame {
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
         // TODO add your handling code here:
-        new SelectDonationWindow().setVisible(true);
+        new SelectDonationWindow(this).setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
+        // TODO add your handling code here:
+        if(check()){
+            deleteDonation();
+            new SuccessWindow().setVisible(true);
+            this.dispose();
         }
-        //</editor-fold>
-        //</editor-fold>
+        
+    }//GEN-LAST:event_delete_buttonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeleteDonationWindow().setVisible(true);
-            }
-        });
+    public void deleteDonation(){
+        Donates donation = selectedDonation;
+        donation.delete();
+    }
+    
+    private boolean check(){
+        boolean valid = true;
+        if(donation_text.getText().isEmpty()) {
+            id_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            id_label.setForeground(Color.BLACK);
+        }
+        return valid;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -161,4 +163,12 @@ public class DeleteDonationWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton set_button;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void receiveIntent(Object intent) {
+        EntityManager em = DbHelper.getEntityManager();
+        long [] ids = (long[]) intent;
+        selectedDonation = em.find(Donates.class, new FundingId(ids[0], ids[1]));
+        donation_text.setText(String.valueOf(selectedDonation.getId()));
+    }
 }

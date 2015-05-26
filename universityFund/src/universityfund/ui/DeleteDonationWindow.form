@@ -97,7 +97,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="id_label">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Donation ID:"/>
+            <Property name="text" type="java.lang.String" value="Funding ID:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="donation_text">
@@ -121,6 +121,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirm Delete"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delete_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>

@@ -23,7 +23,7 @@ public class SelectDonationTableModel extends AbstractTableModel{
     public SelectDonationTableModel(){
         EntityManager em = DbHelper.getEntityManager();
         donationList = em.createNativeQuery(
-                "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, FUNDING.AMOUNT "
+                "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, FUNDING.AMOUNT, DONOR.ID "
                         + "FROM FUNDING JOIN DONATES "
                         + "ON FUNDINGID = FUNDING.ID "
                         + "JOIN DONOR "
@@ -49,6 +49,14 @@ public class SelectDonationTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int i, int i1) {
         return donationList.get(i)[i1].toString();
+    }
+    
+    public long getFundingIdByRowIndex(int selectedRow){
+        return (long) donationList.get(selectedRow)[0];
+    }
+    
+    public long getDonorIdByRowIndex(int selectedRow){
+        return (long) donationList.get(selectedRow)[4];
     }
     
 }
