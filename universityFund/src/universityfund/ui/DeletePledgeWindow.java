@@ -35,7 +35,8 @@ public class DeletePledgeWindow extends javax.swing.JFrame {
         delete_button = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("DELETE PLEDGE");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -113,6 +114,7 @@ public class DeletePledgeWindow extends javax.swing.JFrame {
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
         // TODO add your handling code here:
+        new SelectPledgeWindow().setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
     /**

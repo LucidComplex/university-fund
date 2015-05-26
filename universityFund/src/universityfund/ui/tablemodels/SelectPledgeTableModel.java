@@ -9,22 +9,20 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.table.AbstractTableModel;
 import universityfund.db.DbHelper;
-import universityfund.db.models.Donates;
-import universityfund.db.models.Funding;
 
 /**
  *
  * @author MiriamMarie
  */
-public class SelectDonationTableModel extends AbstractTableModel{
+public class SelectPledgeTableModel extends AbstractTableModel{
+    List<Object[]> pledgeList;
     String [] columnNames = {"Funding ID", "Donor Name", 
                                 "Date Funded", "Amount"};
-    List <Object[]> donationList;
-    public SelectDonationTableModel(){
+    public SelectPledgeTableModel(){
         EntityManager em = DbHelper.getEntityManager();
-        donationList = em.createNativeQuery(
+        pledgeList = em.createNativeQuery(
                 "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, FUNDING.AMOUNT "
-                        + "FROM FUNDING JOIN DONATES "
+                        + "FROM FUNDING JOIN PLEDGES "
                         + "ON FUNDINGID = FUNDING.ID "
                         + "JOIN DONOR "
                         + "ON DONORID = DONOR.ID"
@@ -34,7 +32,7 @@ public class SelectDonationTableModel extends AbstractTableModel{
     
     @Override
     public int getRowCount() {
-        return donationList.size();
+        return pledgeList.size();
     }
 
     @Override
@@ -48,7 +46,7 @@ public class SelectDonationTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int i, int i1) {
-        return donationList.get(i)[i1].toString();
+        return pledgeList.get(i)[i1].toString();
     }
     
 }

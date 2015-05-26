@@ -130,6 +130,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         deletePledge_button.setText("Delete");
         deletePledge_button.setName("deletePledge_button"); // NOI18N
+        deletePledge_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePledge_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Pledge");
@@ -141,9 +146,19 @@ public class MainWindow extends javax.swing.JFrame {
 
         modifyPledge_button.setText("Modify");
         modifyPledge_button.setName("modifyPledge_button"); // NOI18N
+        modifyPledge_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyPledge_buttonActionPerformed(evt);
+            }
+        });
 
         deleteDonation_button.setText("Delete");
         deleteDonation_button.setName("deleteDonation_button"); // NOI18N
+        deleteDonation_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDonation_buttonActionPerformed(evt);
+            }
+        });
 
         modifyDonation_button.setText("Modify");
         modifyDonation_button.setName("modifyDonation_button"); // NOI18N
@@ -276,6 +291,20 @@ public class MainWindow extends javax.swing.JFrame {
     private void addDonation_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDonation_buttonActionPerformed
         new AddDonationWindow().setVisible(true);
     }//GEN-LAST:event_addDonation_buttonActionPerformed
+
+    private void deletePledge_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePledge_buttonActionPerformed
+        // TODO add your handling code here:
+        new DeletePledgeWindow().setVisible(true);
+    }//GEN-LAST:event_deletePledge_buttonActionPerformed
+
+    private void modifyPledge_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyPledge_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifyPledge_buttonActionPerformed
+
+    private void deleteDonation_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDonation_buttonActionPerformed
+        // TODO add your handling code here:
+        new DeleteDonationWindow().setVisible(true);
+    }//GEN-LAST:event_deleteDonation_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation_button;

@@ -5,6 +5,8 @@
  */
 package universityfund.ui;
 
+import universityfund.ui.tablemodels.SelectPledgeTableModel;
+
 /**
  *
  * @author MiriamMarie
@@ -30,7 +32,7 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        pledge_table = new javax.swing.JTable();
+        pledge_table = new javax.swing.JTable(new SelectPledgeTableModel());
         select_button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -38,21 +40,11 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SELECT PLEDGE");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        pledge_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(pledge_table);
 
         select_button.setText("Select Pledge");

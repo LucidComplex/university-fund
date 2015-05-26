@@ -252,6 +252,9 @@
             <Property name="text" type="java.lang.String" value="Delete"/>
             <Property name="name" type="java.lang.String" value="deletePledge_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePledge_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -272,12 +275,18 @@
             <Property name="text" type="java.lang.String" value="Modify"/>
             <Property name="name" type="java.lang.String" value="modifyPledge_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyPledge_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="deleteDonation_button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete"/>
             <Property name="name" type="java.lang.String" value="deleteDonation_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteDonation_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="modifyDonation_button">
           <Properties>

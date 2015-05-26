@@ -5,6 +5,8 @@
  */
 package universityfund.ui;
 
+import universityfund.ui.tablemodels.SelectDonationTableModel;
+
 /**
  *
  * @author MiriamMarie
@@ -29,27 +31,17 @@ public class SelectDonationWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        donation_table = new javax.swing.JTable();
+        donation_table = new javax.swing.JTable(new SelectDonationTableModel());
         select_button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         date_text = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SELECT DONATION");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        donation_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(donation_table);
 
         select_button.setText("Select Donation");
@@ -62,7 +54,7 @@ public class SelectDonationWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("Donation Selection");
 
-        jLabel3.setText("Input Date:");
+        jLabel3.setText("Input Donor Name:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -9,12 +9,12 @@ package universityfund.ui;
  *
  * @author MiriamMarie
  */
-public class DeleteDonation extends javax.swing.JFrame {
+public class DeleteDonationWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form DeleteDonation
      */
-    public DeleteDonation() {
+    public DeleteDonationWindow() {
         initComponents();
     }
 
@@ -35,7 +35,8 @@ public class DeleteDonation extends javax.swing.JFrame {
         delete_button = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("DELETE DONATION");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -112,6 +113,7 @@ public class DeleteDonation extends javax.swing.JFrame {
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
         // TODO add your handling code here:
+        new SelectDonationWindow().setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
     /**
@@ -131,20 +133,21 @@ public class DeleteDonation extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteDonation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteDonationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteDonation().setVisible(true);
+                new DeleteDonationWindow().setVisible(true);
             }
         });
     }
