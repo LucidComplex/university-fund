@@ -28,13 +28,14 @@ public class CategoryTotalsTableModel extends TotalsTableModel {
             dataArray[ii][jj++] = category;
             int total;
             Object result = em.createNativeQuery(
-                    "SELECT SUM(AMOUNT) FROM FUNDING "
-                            + "WHERE ID IN (SELECT FUNDINGID "
-                            + "FROM (SELECT FUNDINGID, DONORID FROM PLEDGES "
+                    "SELECT SUM((FUNDING.AMOUNT / FUNDING.NUMBEROFPAYMENTS) * "
+                            + "(FUNDING.COMPLETEDPAYMENTS)) FROM FUNDING "
+                            + "WHERE ID IN (SELECT FUNDINGID FROM "
+                            + "(SELECT FUNDINGID, DONORID FROM PLEDGES "
                             + "UNION SELECT FUNDINGID, DONORID FROM DONATES) A "
                             + "JOIN DONOR ON A.DONORID = DONOR.ID "
-                            + "WHERE DONOR.CATEGORY = ?1) AND DATEFUNDED "
-                            + "BETWEEN ?2 AND ?3"
+                            + "WHERE CATEGORY = ?1) AND DATEFUNDED BETWEEN "
+                            + "?2 AND ?3"
             ).setParameter(1, category).setParameter(2, Utility.getBeginDate())
                     .setParameter(3, Utility.getEndDate()).getSingleResult();
             if (result == null)
