@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 @IdClass(FundingId.class)
-public class Pledges extends Model implements Serializable {
+public class Pledges extends Model implements Serializable, myEntity{
     
     public Pledges() {
         this.classType = Pledges.class;
@@ -44,6 +44,10 @@ public class Pledges extends Model implements Serializable {
     @Override
     public void setPK() {
         this.pk = new FundingId(donor.getId(), funding.getId());
+    }
+    
+    public long getId(){
+        return fundingId;
     }
 
     /**
@@ -116,6 +120,15 @@ public class Pledges extends Model implements Serializable {
      */
     public void setNameOfSpouse(String nameOfSpouse) {
         this.nameOfSpouse = nameOfSpouse;
+    }
+
+    @Override
+    public void load(Object entity) {
+        Pledges en = (Pledges) entity;
+        this.donor = en.getDonor();
+        this.donorId = en.getDonor().getId();
+        this.funding = en.getFunding();
+        this.fundingId = en.getFunding().getId();
     }
     
 }

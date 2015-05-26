@@ -21,7 +21,7 @@ public class SelectPledgeTableModel extends AbstractTableModel{
     public SelectPledgeTableModel(){
         EntityManager em = DbHelper.getEntityManager();
         pledgeList = em.createNativeQuery(
-                "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, FUNDING.AMOUNT "
+                "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, FUNDING.AMOUNT, DONOR.ID "
                         + "FROM FUNDING JOIN PLEDGES "
                         + "ON FUNDINGID = FUNDING.ID "
                         + "JOIN DONOR "
@@ -48,5 +48,15 @@ public class SelectPledgeTableModel extends AbstractTableModel{
     public Object getValueAt(int i, int i1) {
         return pledgeList.get(i)[i1].toString();
     }
+    
+    public long getFundingIdByRowIndex(int selectedRow){
+        return (long) pledgeList.get(selectedRow)[0];
+    }
+    
+    public long getDonorIdByRowIndex(int selectedRow){
+        return (long) pledgeList.get(selectedRow)[4];
+    }
+    
+    
     
 }
