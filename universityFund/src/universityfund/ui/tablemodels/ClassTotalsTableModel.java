@@ -20,6 +20,7 @@ public class ClassTotalsTableModel extends TotalsTableModel {
         rows = em.createQuery(
                 "SELECT DISTINCT d.graduationYear FROM Donor d"
         ).getResultList();
+        em.close();
         dataArray = new Object[rows.size()][columnNames.length];
         int ii = 0;
         int jj = 0;

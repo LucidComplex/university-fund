@@ -44,13 +44,13 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
                   + "FROM FUNDING WHERE ID IN ("
                       + "SELECT FUNDINGID "
                       + "FROM DONATES "
-                      + "WHERE DONORID = :1 "
+                      + "WHERE DONORID = ?1 "
                       + "UNION "
                       + "SELECT FUNDINGID "
                       + "FROM PLEDGES "
-                      + "WHERE DONORID = :1"
+                      + "WHERE DONORID = ?1"
                   + ") "
-                  + "AND DATEFUNDED BETWEEN :2 AND :3"
+                  + "AND DATEFUNDED BETWEEN ?2 AND ?3"
             ).setParameter(1, d.getId())
                     .setParameter(2, Utility.getBeginDate())
                     .setParameter(3, Utility.getEndDate()).getSingleResult();
@@ -83,6 +83,11 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
                 dataArray[ii][jj] = entry.getValue();
             }
         }
+    }
+    
+    @Override
+    public int getRowCount() {
+        return dataArray.length;
     }
     
 }

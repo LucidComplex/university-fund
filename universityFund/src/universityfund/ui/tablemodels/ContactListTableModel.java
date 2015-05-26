@@ -18,6 +18,10 @@ import universityfund.db.models.Donor;
 public class ContactListTableModel extends AbstractTableModel
 {
     List <Donor> memberList;
+    
+    public ContactListTableModel() {
+    }
+    
     public ContactListTableModel(Donor donor){
         EntityManager em = DbHelper.getEntityManager();
         memberList = em.createNativeQuery(
