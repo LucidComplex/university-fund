@@ -103,8 +103,11 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="1"/>
+            </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Add Donation"/>
+            <Property name="text" type="java.lang.String" value="Donation Information"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="name_label">

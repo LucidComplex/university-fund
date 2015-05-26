@@ -45,7 +45,8 @@ public class ModifyDonationWindow extends javax.swing.JFrame implements UI{
         update_button = new javax.swing.JButton();
         amount_box = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("UPDATE DONATION");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

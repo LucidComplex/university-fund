@@ -53,8 +53,9 @@ public class AddDonationWindow extends javax.swing.JFrame implements UI {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add Donation");
+        jLabel1.setText("Donation Information");
 
         name_label.setText("Name:");
 
