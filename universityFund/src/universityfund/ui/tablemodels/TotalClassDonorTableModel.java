@@ -6,8 +6,10 @@
 package universityfund.ui.tablemodels;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import javax.persistence.EntityManager;
@@ -64,6 +66,23 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
             classTotals.put(d.getGraduationYear(), circleMap);
         }
         
+        int temp = 0;
+        for (Entry<Integer, SortedMap<String, Integer>> entry : classTotals.entrySet()) {
+            temp += entry.getValue().size();
+        }
+        int row = classTotals.size() * temp;
+        dataArray = new Object[row][columnNames.length];
+        
+        int ii = 0;
+        int jj;
+        for (Entry<Integer, SortedMap<String, Integer>> entry : classTotals.entrySet()) {
+            jj = 0;
+            dataArray[ii][jj++] = entry.getKey();
+            for (Entry<String, Integer> entry2 : entry.getValue().entrySet()) {
+                dataArray[ii][jj++] = entry.getKey();
+                dataArray[ii][jj] = entry.getValue();
+            }
+        }
     }
     
 }
