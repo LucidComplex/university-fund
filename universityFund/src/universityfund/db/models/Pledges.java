@@ -129,6 +129,9 @@ public class Pledges extends Model implements Serializable, myEntity{
         this.donorId = en.getDonor().getId();
         this.funding = en.getFunding();
         this.fundingId = en.getFunding().getId();
+        this.corporationName = en.getCorporationName();
+        this.corporationAddress = en.getCorporationAddress();
+        this.nameOfSpouse = en.getNameOfSpouse();
     }
     
 }

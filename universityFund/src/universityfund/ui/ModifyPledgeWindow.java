@@ -183,6 +183,7 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
 
         number_box.setBackground(new java.awt.Color(255, 255, 255));
         number_box.setText("No. of Payments:");
+        number_box.setEnabled(false);
         number_box.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 number_boxActionPerformed(evt);
@@ -415,7 +416,7 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
 
     private void number_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number_boxActionPerformed
         // TODO add your handling code here:
-        if(number_box.isSelected()) 
+        if(number_box.isSelected())
             number_spinner.setEnabled(true);
         else number_spinner.setEnabled(false);
     }//GEN-LAST:event_number_boxActionPerformed
