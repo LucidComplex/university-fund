@@ -5,7 +5,6 @@
  */
 package universityfund.ui.tablemodels;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,11 +25,7 @@ public class CircleTotalsTableModel extends TotalsTableModel{
         columnNames = new String[] {"Donor Circle", "Total Amount Raised"};
         rows = new ArrayList<>();
         EntityManager em = DbHelper.getEntityManager();
-        LocalDate now = java.time.LocalDate.now();
-        int year = now.getYear();
-        if (now.getMonthValue() <= 6) {
-            year -= 1;
-        }
+        
         List<Funding> funding = em.createQuery(
                 "SELECT f FROM Funding f WHERE f.dateFunded BETWEEN :begin AND :end"
         ).setParameter(
@@ -38,7 +33,7 @@ public class CircleTotalsTableModel extends TotalsTableModel{
         ).setParameter(
                 "end", Utility.getEndDate()
         ).getResultList();
-        
+        em.close();
         Map<String, Float> circleMap = new HashMap<>();
         for (String group : Funding.CIRCLE_GROUPS) {
             circleMap.put(group, 0f);
@@ -46,11 +41,11 @@ public class CircleTotalsTableModel extends TotalsTableModel{
         
         for (Funding f : funding) {
             Float temp = circleMap.get(f.getCircle());
-            System.out.println(temp);
+            float fund = f.getAmount() - (f.getAmountPerPayment() * f.getRemainingPayments());
             if (temp == null) {
-                circleMap.put(f.getCircle(), f.getAmount());
+                circleMap.put(f.getCircle(), fund);
             } else {
-                circleMap.put(f.getCircle(), temp + f.getAmount());
+                circleMap.put(f.getCircle(), temp + fund);
             }
         }
         

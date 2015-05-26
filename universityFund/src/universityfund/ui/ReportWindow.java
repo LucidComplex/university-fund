@@ -274,7 +274,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                     .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -434,7 +434,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                     .addComponent(name2_text))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(form_button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel16)
@@ -525,7 +525,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel1.setText("Month of:");
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText(getMonth()
@@ -533,7 +533,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel2.setName("jLabel2"); // NOI18N
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Total pledges:");
+        jLabel3.setText("Total pledges (Received):");
         jLabel3.setName("jLabel3"); // NOI18N
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -548,13 +548,13 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel19.setText("Percentage of gifts and donations:");
         jLabel19.setName("jLabel19"); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(102, 102, 102));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText(getSumGifts());
         jLabel20.setName("jLabel20"); // NOI18N
 
-        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText(getPercentGifts());
@@ -564,19 +564,19 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel22.setText("Total amount raised for this month:");
         jLabel22.setName("jLabel22"); // NOI18N
 
-        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(102, 102, 102));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText(getSumForThisMonth());
         jLabel23.setName("jLabel23"); // NOI18N
 
-        jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText(getSumPledges());
         jLabel27.setName("jLabel27"); // NOI18N
 
-        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText(getPercentPledges());
@@ -597,16 +597,16 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
         );
         monthly_panelLayout.setVerticalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(monthly_panelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -626,7 +626,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Monthly Report", monthly_panel);
@@ -682,24 +682,26 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     
     public String getSumPledges(){
         EntityManager em = DbHelper.getEntityManager();
-        Object sum =  em.createNativeQuery(
-              "SELECT SUM(AMOUNT) " +
-                "FROM FUNDING JOIN PLEDGES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
-                "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
-                "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
+        Object[] sum =  (Object[]) em.createNativeQuery(
+              "SELECT SUM(AMOUNT), "
+                      + "SUM(COMPLETEDPAYMENTS * (AMOUNT / NUMBEROFPAYMENTS)) "
+                      + "FROM FUNDING WHERE ID IN ("
+                      + "SELECT FUNDINGID FROM PLEDGES) "
+                      + "AND YEAR(DATEFUNDED) = ?1 AND MONTH(DATEFUNDED) = ?2"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
                         getMonthValue()).getSingleResult();
-        if (sum==null)
+        if (sum[0]==null)
             return "0";
-        else return sum.toString();
+        String pledges = sum[0].toString();
+        return pledges.concat(" (" + sum[1] + ")");
     }
     
     public String getPercentPledges(){
         String pledges = getSumPledges();
         String all = getSum();
-        return String.format("%.2f", ((Double.valueOf(pledges)/
-                                        Double.valueOf(all))*100))+"%";
+        return String.format("%.2f", ((Float.valueOf(pledges.split("\\(")[0])/
+                                        Float.valueOf(all))*100))+"%";
     }
 
     public String getSumGifts(){
@@ -720,10 +722,12 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     public String getSumForThisMonth(){
         EntityManager em = DbHelper.getEntityManager();
         Object sum = em.createNativeQuery(
-              "SELECT SUM(AMOUNT) " +
-                "FROM FUNDING " +
-                "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
-                "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
+              "SELECT SUM(COMPLETEDPAYMENTS * (AMOUNT / NUMBEROFPAYMENTS)) "
+                      + "FROM FUNDING WHERE ID IN (SELECT FUNDINGID FROM ("
+                      + "SELECT FUNDINGID, DONORID FROM DONATES "
+                      + "UNION SELECT FUNDINGID, DONORID FROM PLEDGES"
+                      + ") A JOIN DONOR ON DONORID = ID) "
+                      + "AND YEAR(DATEFUNDED) = ?1 AND MONTH(DATEFUNDED) = ?2"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
                         getMonthValue()).getSingleResult();

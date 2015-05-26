@@ -434,20 +434,64 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
         Funding funding;
         if (deffered_rButton.isSelected())
             funding = Funding.createFunding(
-                    Integer.valueOf(amount_text.getText()),
+                    Float.valueOf(amount_text.getText()),
                     (int) number_spinner.getValue()
             );
         else
             funding = Funding.createFunding(
-                    Integer.valueOf(amount_text.getText())
+                    Float.valueOf(amount_text.getText())
             );
         pledge.setFunding(funding);
+        Donor matcher;
+        EntityManager em =DbHelper.getEntityManager();
         if (corpName_text.isEnabled() && corpName_text.getText().trim().length() != 0) {
-            pledge.setCorporationAddress(corpAdd_text.getText());
-            pledge.setCorporationName(corpName_text.getText());
-        } else {
-            pledge.setNameOfSpouse(spouse_text.getText());
+            try {
+                matcher = em.createQuery(
+                        "SELECT d FROM Donor d "
+                                + "WHERE d.address = :address AND d.name = :name",
+                        Donor.class).setParameter(
+                                "address", corpAdd_text.getText()
+                        ).setParameter(
+                                "name", corpName_text.getText()
+                        ).getSingleResult();
+            } catch (Exception e) {
+                matcher = new Donor();
+            }
+            
+            matcher.setAddress(corpAdd_text.getText());
+            matcher.setName(corpName_text.getText());
+            matcher.setCategory("Corporation");
+            matcher.save();
+            pledge.setMatchingDonor(matcher);
+            createPledge(matcher);
+        } else if (spouse_text.isEnabled() && spouse_text.getText().trim().length() != 0){
+            try {
+            matcher = em.createQuery(
+                    "SELECT d FROM Donor d "
+                            + "WHERE d.category = 'Spouse' "
+                            + "AND d.name = :name",
+                    Donor.class).setParameter(
+                            "name", corpName_text.getText()
+                    ).getSingleResult();
+            } catch (Exception e) {
+                matcher = new Donor();
+            }
+            if (matcher == null)
+                matcher = new Donor();
+            matcher.setCategory("Spouse");
+            matcher.setName(spouse_text.getText());
+            matcher.save();
+            pledge.setMatchingDonor(matcher);
+            createPledge(matcher);
         }
+        pledge.save();
+        
+    }
+    
+    private void createPledge(Donor matcher) {
+        Pledges pledge = new Pledges();
+        pledge.setDonor(matcher);
+        pledge.setFunding(Funding.createFunding(Float.valueOf(amount_text.getText()), 1));
         pledge.save();
     }
     

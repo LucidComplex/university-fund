@@ -6,11 +6,13 @@
 package universityfund.db.models;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -29,6 +31,13 @@ public class Pledges extends Model implements Serializable, myEntity{
     @Id
     private long fundingId;
     
+    @Column(nullable=true)
+    private Long matchingDonorId;
+    
+    @OneToOne
+    @JoinColumn(name="matchingDonorId", updatable=false, insertable=false)
+    private Donor matchingDonor;
+    
     @ManyToOne
     @JoinColumn(name="donorId", updatable=false, insertable=false)
     private Donor donor;
@@ -37,9 +46,6 @@ public class Pledges extends Model implements Serializable, myEntity{
     @JoinColumn(name="fundingId", updatable=false, insertable=false)
     private Funding funding;
     
-    private String corporationAddress;
-    private String corporationName;
-    private String nameOfSpouse;
 
     @Override
     public void setPK() {
@@ -80,48 +86,6 @@ public class Pledges extends Model implements Serializable, myEntity{
         this.fundingId = funding.getId();
     }
 
-    /**
-     * @return the corporationAddress
-     */
-    public String getCorporationAddress() {
-        return corporationAddress;
-    }
-
-    /**
-     * @param corporationAddress the corporationAddress to set
-     */
-    public void setCorporationAddress(String corporationAddress) {
-        this.corporationAddress = corporationAddress;
-    }
-
-    /**
-     * @return the corporationName
-     */
-    public String getCorporationName() {
-        return corporationName;
-    }
-
-    /**
-     * @param corporationName the corporationName to set
-     */
-    public void setCorporationName(String corporationName) {
-        this.corporationName = corporationName;
-    }
-
-    /**
-     * @return the nameOfSpouse
-     */
-    public String getNameOfSpouse() {
-        return nameOfSpouse;
-    }
-
-    /**
-     * @param nameOfSpouse the nameOfSpouse to set
-     */
-    public void setNameOfSpouse(String nameOfSpouse) {
-        this.nameOfSpouse = nameOfSpouse;
-    }
-
     @Override
     public void load(Object entity) {
         Pledges en = (Pledges) entity;
@@ -129,9 +93,23 @@ public class Pledges extends Model implements Serializable, myEntity{
         this.donorId = en.getDonor().getId();
         this.funding = en.getFunding();
         this.fundingId = en.getFunding().getId();
-        this.corporationName = en.getCorporationName();
-        this.corporationAddress = en.getCorporationAddress();
-        this.nameOfSpouse = en.getNameOfSpouse();
+        this.matchingDonor = en.getMatchingDonor();
+        this.matchingDonorId = en.getMatchingDonor().getId();
+    }
+
+    /**
+     * @return the matchingDonor
+     */
+    public Donor getMatchingDonor() {
+        return matchingDonor;
+    }
+
+    /**
+     * @param matchingDonor the matchingDonor to set
+     */
+    public void setMatchingDonor(Donor matchingDonor) {
+        this.matchingDonor = matchingDonor;
+        matchingDonorId = matchingDonor.getId();
     }
     
 }
