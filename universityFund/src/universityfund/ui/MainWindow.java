@@ -303,7 +303,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_deletePledge_buttonActionPerformed
 
     private void modifyPledge_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyPledge_buttonActionPerformed
-        // TODO add your handling code here:
+        new ModifyPledgeWindow().setVisible(true);
     }//GEN-LAST:event_modifyPledge_buttonActionPerformed
 
     private void deleteDonation_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDonation_buttonActionPerformed

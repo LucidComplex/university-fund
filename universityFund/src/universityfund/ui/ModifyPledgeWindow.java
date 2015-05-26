@@ -8,6 +8,7 @@ package universityfund.ui;
 import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
+import universityfund.db.models.Funding;
 import universityfund.db.models.FundingId;
 import universityfund.db.models.Pledges;
 
@@ -34,6 +35,8 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        payment_group = new javax.swing.ButtonGroup();
+        method_group = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         id_label = new javax.swing.JLabel();
@@ -47,7 +50,7 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
         corpAdd_text = new javax.swing.JTextArea();
         spouse_text = new javax.swing.JTextField();
         update_button = new javax.swing.JButton();
-        deffered_rButton = new javax.swing.JRadioButton();
+        deferred_rButton = new javax.swing.JRadioButton();
         card_rButton = new javax.swing.JRadioButton();
         cash_rButton = new javax.swing.JRadioButton();
         single_rButton = new javax.swing.JRadioButton();
@@ -62,7 +65,8 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
         corpAdd_box = new javax.swing.JCheckBox();
         spouse_box = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("UPDATE PLEDGE");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,30 +95,15 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
         jLabel3.setText("*");
 
         corpName_text.setEnabled(false);
-        corpName_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                corpName_textKeyTyped(evt);
-            }
-        });
 
         corpAdd_text.setColumns(20);
         corpAdd_text.setLineWrap(true);
         corpAdd_text.setRows(5);
         corpAdd_text.setWrapStyleWord(true);
         corpAdd_text.setEnabled(false);
-        corpAdd_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                corpAdd_textKeyTyped(evt);
-            }
-        });
         corpAdd_panel.setViewportView(corpAdd_text);
 
         spouse_text.setEnabled(false);
-        spouse_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                spouse_textKeyTyped(evt);
-            }
-        });
 
         update_button.setText("Update");
         update_button.addActionListener(new java.awt.event.ActionListener() {
@@ -123,31 +112,45 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
             }
         });
 
-        deffered_rButton.setBackground(new java.awt.Color(255, 255, 255));
-        deffered_rButton.setText("Deffered Payment");
-        deffered_rButton.setEnabled(false);
+        deferred_rButton.setBackground(new java.awt.Color(255, 255, 255));
+        payment_group.add(deferred_rButton);
+        deferred_rButton.setText("Deferred Payment");
+        deferred_rButton.setEnabled(false);
+        deferred_rButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deferred_rButtonActionPerformed(evt);
+            }
+        });
 
         card_rButton.setBackground(new java.awt.Color(255, 255, 255));
+        method_group.add(card_rButton);
         card_rButton.setText("Credit Card");
         card_rButton.setEnabled(false);
-        card_rButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                card_rButtonItemStateChanged(evt);
+        card_rButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                card_rButtonActionPerformed(evt);
             }
         });
 
         cash_rButton.setBackground(new java.awt.Color(255, 255, 255));
+        method_group.add(cash_rButton);
         cash_rButton.setText("Cash");
         cash_rButton.setEnabled(false);
-        cash_rButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cash_rButtonItemStateChanged(evt);
+        cash_rButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cash_rButtonActionPerformed(evt);
             }
         });
 
         single_rButton.setBackground(new java.awt.Color(255, 255, 255));
+        payment_group.add(single_rButton);
         single_rButton.setText("Single Payment");
         single_rButton.setEnabled(false);
+        single_rButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                single_rButtonActionPerformed(evt);
+            }
+        });
 
         number_spinner.setModel(new javax.swing.SpinnerNumberModel(2, 2, 12, 1));
         number_spinner.setEnabled(false);
@@ -156,27 +159,67 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
 
         amount_box.setBackground(new java.awt.Color(255, 255, 255));
         amount_box.setText("Amount:");
+        amount_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amount_boxActionPerformed(evt);
+            }
+        });
 
         payment_box.setBackground(new java.awt.Color(255, 255, 255));
-        payment_box.setText("Kind of Payment:");
+        payment_box.setText("Mode of Payment:");
+        payment_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payment_boxActionPerformed(evt);
+            }
+        });
 
         method_box.setBackground(new java.awt.Color(255, 255, 255));
         method_box.setText("Method:");
+        method_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                method_boxActionPerformed(evt);
+            }
+        });
 
         number_box.setBackground(new java.awt.Color(255, 255, 255));
         number_box.setText("No. of Payments:");
+        number_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                number_boxActionPerformed(evt);
+            }
+        });
 
         cc_box.setBackground(new java.awt.Color(255, 255, 255));
         cc_box.setText("CC#:");
+        cc_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cc_boxActionPerformed(evt);
+            }
+        });
 
         corpName_box.setBackground(new java.awt.Color(255, 255, 255));
         corpName_box.setText("Corporation Name:");
+        corpName_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                corpName_boxActionPerformed(evt);
+            }
+        });
 
         corpAdd_box.setBackground(new java.awt.Color(255, 255, 255));
         corpAdd_box.setText("Corporation Address:");
+        corpAdd_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                corpAdd_boxActionPerformed(evt);
+            }
+        });
 
         spouse_box.setBackground(new java.awt.Color(255, 255, 255));
         spouse_box.setText("Name of Spouse:");
+        spouse_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spouse_boxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,7 +234,7 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
                             .addComponent(payment_box)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(deffered_rButton)
+                                    .addComponent(deferred_rButton)
                                     .addComponent(number_box))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +304,7 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
                 .addComponent(payment_box)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deffered_rButton)
+                    .addComponent(deferred_rButton)
                     .addComponent(single_rButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -313,29 +356,120 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
         new SelectPledgeWindow(this).setVisible(true);
     }//GEN-LAST:event_select_buttonActionPerformed
 
-    private void corpName_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpName_textKeyTyped
-
-    }//GEN-LAST:event_corpName_textKeyTyped
-
-    private void corpAdd_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpAdd_textKeyTyped
-
-    }//GEN-LAST:event_corpAdd_textKeyTyped
-
-    private void spouse_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spouse_textKeyTyped
-
-    }//GEN-LAST:event_spouse_textKeyTyped
-
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
-
+        if(valid()){
+            updatePledge();
+            new SuccessWindow().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_update_buttonActionPerformed
 
-    private void card_rButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_card_rButtonItemStateChanged
+    public void updatePledge(){
+        Pledges pledge = selectedPledge;
+        Funding funding = selectedPledge.getFunding();
+        if(amount_box.isSelected())
+            funding.setAmount(Integer.valueOf(amount_text.getText()));
+        if(payment_box.isSelected()){
+            if(deferred_rButton.isSelected())
+                funding.setNumberOfPayments(2);
+            else if(single_rButton.isSelected())
+                funding.setNumberOfPayments(1);                
+        }
+        if(number_box.isSelected()){
+            funding.setNumberOfPayments((int)number_spinner.getValue());
+        }
+        if(method_box.isSelected()){
+            if(cash_rButton.isSelected())
+                funding.setCreditCardNumber(null);
+            if(card_rButton.isSelected())
+                funding.setCreditCardNumber(cc_text.getText());
+        }
+        if(cc_box.isSelected())
+            funding.setCreditCardNumber(cc_text.getText());
+        if(corpName_box.isSelected())
+            pledge.setCorporationName(corpName_text.getText());
+        if(corpAdd_box.isSelected())
+            pledge.setCorporationAddress(corpAdd_text.getText());
+        if(spouse_box.isSelected())
+            pledge.setNameOfSpouse(spouse_text.getText());
+        pledge.save();
+        funding.save();
+    }
+    
+    private void amount_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amount_boxActionPerformed
+        // TODO add your handling code here:
+        if(amount_box.isSelected())
+            amount_text.setEnabled(true);
+        else amount_text.setEnabled(false);
+    }//GEN-LAST:event_amount_boxActionPerformed
 
-    }//GEN-LAST:event_card_rButtonItemStateChanged
+    private void payment_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment_boxActionPerformed
+        if(payment_box.isSelected()){
+            deferred_rButton.setEnabled(true);
+            single_rButton.setEnabled(true);
+        } else {
+            deferred_rButton.setEnabled(false);
+            single_rButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_payment_boxActionPerformed
 
-    private void cash_rButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cash_rButtonItemStateChanged
+    private void number_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number_boxActionPerformed
+        // TODO add your handling code here:
+        if(number_box.isSelected()) 
+            number_spinner.setEnabled(true);
+        else number_spinner.setEnabled(false);
+    }//GEN-LAST:event_number_boxActionPerformed
 
-    }//GEN-LAST:event_cash_rButtonItemStateChanged
+    private void method_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_method_boxActionPerformed
+        // TODO add your handling code here:
+        if(method_box.isSelected()){
+            cash_rButton.setEnabled(true);
+            card_rButton.setEnabled(true);
+        } else {
+            cash_rButton.setEnabled(false);
+            card_rButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_method_boxActionPerformed
+
+    private void cc_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cc_boxActionPerformed
+        if(cc_box.isSelected())
+            cc_text.setEnabled(true);
+        else cc_text.setEnabled(false);
+    }//GEN-LAST:event_cc_boxActionPerformed
+
+    private void corpName_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corpName_boxActionPerformed
+        if(corpName_box.isSelected())
+            corpName_text.setEnabled(true);
+        else corpName_text.setEnabled(false);
+    }//GEN-LAST:event_corpName_boxActionPerformed
+
+    private void corpAdd_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corpAdd_boxActionPerformed
+        if(corpAdd_box.isSelected())
+            corpAdd_text.setEnabled(true);
+        else corpAdd_text.setEnabled(false);
+    }//GEN-LAST:event_corpAdd_boxActionPerformed
+
+    private void spouse_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spouse_boxActionPerformed
+        if(spouse_box.isSelected())
+            spouse_text.setEnabled(true);
+        else spouse_text.setEnabled(false);
+    }//GEN-LAST:event_spouse_boxActionPerformed
+
+    private void single_rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_single_rButtonActionPerformed
+        number_box.setEnabled(false);
+    }//GEN-LAST:event_single_rButtonActionPerformed
+
+    private void deferred_rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deferred_rButtonActionPerformed
+        number_box.setEnabled(true);
+    }//GEN-LAST:event_deferred_rButtonActionPerformed
+
+    private void cash_rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cash_rButtonActionPerformed
+        cc_box.setEnabled(false);
+    }//GEN-LAST:event_cash_rButtonActionPerformed
+
+    private void card_rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card_rButtonActionPerformed
+        cc_box.setEnabled(true);
+    }//GEN-LAST:event_card_rButtonActionPerformed
 
     public boolean valid(){
         boolean valid = true;
@@ -358,7 +492,7 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JTextArea corpAdd_text;
     private javax.swing.JCheckBox corpName_box;
     private javax.swing.JTextField corpName_text;
-    private javax.swing.JRadioButton deffered_rButton;
+    private javax.swing.JRadioButton deferred_rButton;
     private javax.swing.JLabel id_label;
     private javax.swing.JLabel id_text;
     private javax.swing.JLabel jLabel1;
@@ -366,9 +500,11 @@ public class ModifyPledgeWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JCheckBox method_box;
+    private javax.swing.ButtonGroup method_group;
     private javax.swing.JCheckBox number_box;
     private javax.swing.JSpinner number_spinner;
     private javax.swing.JCheckBox payment_box;
+    private javax.swing.ButtonGroup payment_group;
     private javax.swing.JButton select_button;
     private javax.swing.JRadioButton single_rButton;
     private javax.swing.JCheckBox spouse_box;
