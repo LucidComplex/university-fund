@@ -17,12 +17,12 @@ import universityfund.db.models.Pledges;
  *
  * @author MiriamMarie
  */
-public class PledgeWindow extends javax.swing.JFrame implements UI{
+public class AddPledgeWindow extends javax.swing.JFrame implements UI{
     Donor selectedDonor;
     /**
      * Creates new form PledgeWindow
      */
-    public PledgeWindow() {
+    public AddPledgeWindow() {
         initComponents();
         selectedDonor = null;
     }
