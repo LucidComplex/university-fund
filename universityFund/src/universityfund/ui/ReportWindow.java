@@ -12,6 +12,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
 import universityfund.ui.tablemodels.ContactListTableModel;
@@ -72,7 +74,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel5 = new javax.swing.JLabel();
         rep_combo = new javax.swing.JComboBox(getReps());
         jScrollPane1 = new javax.swing.JScrollPane();
-        contactList_table = new javax.swing.JTable(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
+        contactList_table = new javax.swing.JTable(createTableModel());
         sol_panel = new javax.swing.JPanel();
         solicit_button = new javax.swing.JButton();
         thanks_button = new javax.swing.JButton();
@@ -149,6 +151,11 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
 
         jButton6.setText("Proceed>>");
         jButton6.setName("jButton6"); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
@@ -502,7 +509,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(invitation_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4)
                     .addGroup(invitation_panelLayout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -720,6 +727,10 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         
     }
     
+    private TableModel createTableModel() {
+        return new DefaultTableModel();
+    }
+    
     private void solicit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicit_buttonActionPerformed
         new MessageSent().setVisible(true);
     }//GEN-LAST:event_solicit_buttonActionPerformed
@@ -761,6 +772,10 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             contactList_table.setModel(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
         }
     }//GEN-LAST:event_rep_comboItemStateChanged
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new TotalClassDonorWindow().setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;

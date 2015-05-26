@@ -38,8 +38,12 @@ public class Funding extends Model implements Serializable, myEntity {
     private int numberOfPayments;
     
     public String getCircle() {
+        return Funding.getCircle(getAmount());
+    }
+    
+    public static String getCircle(int amount) {
         for (int ii = 50000, jj = 0; jj < 10; ii /= 2, jj++) {
-            if (getAmount() / ii >= 1 && getAmount() >= 100)
+            if (amount / ii >= 1 && amount >= 100)
                 return CIRCLE_GROUPS[jj];
         }
         return "N/A";
