@@ -8,22 +8,21 @@ package universityfund.ui;
 import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
-import universityfund.db.models.Donates;
-import universityfund.db.models.Funding;
 import universityfund.db.models.FundingId;
+import universityfund.db.models.Pledges;
 
 /**
  *
  * @author MiriamMarie
  */
-public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
-    private Donates selectedDonation;
+public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
+    Pledges selectedPledge;
     /**
-     * Creates new form DeleteDonation
+     * Creates new form ReceivePaymentWindow
      */
-    public DeleteDonationWindow() {
+    public ReceivePledgeWindow() {
         initComponents();
-        selectedDonation = null;
+        selectedPledge = null;
     }
 
     /**
@@ -38,23 +37,22 @@ public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         id_label = new javax.swing.JLabel();
-        donation_text = new javax.swing.JLabel();
+        id_text = new javax.swing.JLabel();
         set_button = new javax.swing.JButton();
-        delete_button = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        confirm_button = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("DELETE DONATION");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Delete Donation");
+        jLabel1.setText("Receive Payment");
 
-        id_label.setText("Funding ID:");
+        id_label.setText("Pledge ID:");
 
-        donation_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        id_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         set_button.setText("Set...");
         set_button.addActionListener(new java.awt.event.ActionListener() {
@@ -63,38 +61,31 @@ public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
             }
         });
 
-        delete_button.setText("Confirm Delete");
-        delete_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delete_buttonActionPerformed(evt);
-            }
-        });
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("*");
 
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("*");
+        confirm_button.setText("Confirm");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(id_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(donation_text, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(id_text, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(set_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(delete_button)
-                .addGap(121, 121, 121))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(confirm_button)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,14 +93,16 @@ public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(id_label)
-                    .addComponent(donation_text, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(set_button)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(delete_button)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(id_label)
+                        .addComponent(id_text, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(set_button)
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addComponent(confirm_button)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,44 +120,27 @@ public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
-        // TODO add your handling code here:
-        new SelectDonationWindow(this).setVisible(true);
+        if(valid()){
+            
+        }
     }//GEN-LAST:event_set_buttonActionPerformed
 
-    private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
-        // TODO add your handling code here:
-        if(check()){
-            deleteDonation();
-            new SuccessWindow().setVisible(true);
-            this.dispose();
-        }
-        
-    }//GEN-LAST:event_delete_buttonActionPerformed
-
-    public void deleteDonation(){
-        Donates donation = selectedDonation;
-        Funding funding = donation.getFunding();
-        donation.delete();
-        funding.delete();
-    }
-    
-    private boolean check(){
+    public boolean valid(){
         boolean valid = true;
-        if(donation_text.getText().isEmpty()) {
-            id_label.setForeground(Color.RED);
+        if(id_text.getText().isEmpty()){
             valid = false;
-        } else {
+            id_label.setForeground(Color.RED);
+        } else
             id_label.setForeground(Color.BLACK);
-        }
         return valid;
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton delete_button;
-    private javax.swing.JLabel donation_text;
+    private javax.swing.JButton confirm_button;
     private javax.swing.JLabel id_label;
+    private javax.swing.JLabel id_text;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton set_button;
     // End of variables declaration//GEN-END:variables
@@ -172,8 +148,8 @@ public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
     @Override
     public void receiveIntent(Object intent) {
         EntityManager em = DbHelper.getEntityManager();
-        long [] ids = (long[]) intent;
-        selectedDonation = em.find(Donates.class, new FundingId(ids[0], ids[1]));
-        donation_text.setText(String.valueOf(selectedDonation.getId()));
+        long[] ids = (long[]) intent;
+        selectedPledge = em.find(Pledges.class, new FundingId(ids[0],ids[1]));
+        id_text.setText(String.valueOf(selectedPledge.getFunding().getId()));
     }
 }
