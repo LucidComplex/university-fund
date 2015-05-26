@@ -9,15 +9,12 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
-import universityfund.db.models.Donates;
 import universityfund.db.models.Funding;
-import universityfund.db.models.Pledges;
 
 /**
  *
@@ -67,20 +64,5 @@ public class CircleTotalsTableModel extends TotalsTableModel{
             System.out.println(circleMap.get((String) circleName));
         }        
     }
-     
-    private int getTotalDonations(Collection<Donates> funding) {
-        int total = 0;
-        for (Donates donation : funding) {
-            total += donation.getFunding().getAmount();
-        }
-        return total;
-    }
     
-    private int getTotalPledges(Collection<Pledges> funding) {
-        int total = 0;
-        for (Pledges donation : funding) {
-            total += donation.getFunding().getAmount();
-        }
-        return total;
-    }
 }
