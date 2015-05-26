@@ -26,7 +26,7 @@ public class CategoryTotalsTableModel extends TotalsTableModel {
         int jj = 0;
         for (Object category : rows) {
             dataArray[ii][jj++] = category;
-            int total;
+            float total;
             Object result = em.createNativeQuery(
                     "SELECT SUM((FUNDING.AMOUNT / FUNDING.NUMBEROFPAYMENTS) * "
                             + "(FUNDING.COMPLETEDPAYMENTS)) FROM FUNDING "
@@ -41,7 +41,7 @@ public class CategoryTotalsTableModel extends TotalsTableModel {
             if (result == null)
                 total = 0;
             else
-                total = (int) result;
+                total = ((Double) result).floatValue();
             dataArray[ii++][jj--] = total;
         }
         em.close();

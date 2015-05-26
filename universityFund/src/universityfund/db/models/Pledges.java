@@ -6,6 +6,7 @@
 package universityfund.db.models;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -30,7 +31,8 @@ public class Pledges extends Model implements Serializable, myEntity{
     @Id
     private long fundingId;
     
-    private long matchingDonorId;
+    @Column(nullable=true)
+    private Long matchingDonorId;
     
     @OneToOne
     @JoinColumn(name="matchingDonorId", updatable=false, insertable=false)
@@ -91,6 +93,8 @@ public class Pledges extends Model implements Serializable, myEntity{
         this.donorId = en.getDonor().getId();
         this.funding = en.getFunding();
         this.fundingId = en.getFunding().getId();
+        this.matchingDonor = en.getMatchingDonor();
+        this.matchingDonorId = en.getMatchingDonor().getId();
     }
 
     /**

@@ -36,9 +36,9 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
                 return o1 - o2;
             }
         };
-        SortedMap<Integer, SortedMap<String, Integer>> classTotals = new TreeMap<>(intComparator);
+        SortedMap<Integer, SortedMap<String, Float>> classTotals = new TreeMap<>(intComparator);
         for (Donor d : donorList) {
-            int total;
+            float total;
             Object[] result = (Object[]) em.createNativeQuery(
                     "SELECT SUM(AMOUNT), "
                             + "SUM((NUMBEROFPAYMENTS - COMPLETEDPAYMENTS) "
@@ -55,11 +55,11 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
             if (result == null) {
                 continue;
             }
-            total = (result[0] == null) ? 0 : (int) result[0];
+            total = (result[0] == null) ? 0 : ((Double) result[0]).floatValue();
             System.out.println(result[0]);
             String circle = Funding.getCircle(total);
-            total -= (result[1] == null) ? 0 : (int) result[1];
-            SortedMap<String, Integer> circleMap = classTotals.get(d.getGraduationYear());
+            total -= (result[1] == null) ? 0 : ((Double) result[1]).floatValue();
+            SortedMap<String, Float> circleMap = classTotals.get(d.getGraduationYear());
             if (circleMap == null) 
                 circleMap = new TreeMap<>();
             else {
@@ -71,15 +71,15 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
         }
         
         int row = classTotals.size();
-        for (Entry<Integer, SortedMap<String, Integer>> entry : classTotals.entrySet()) {
+        for (Entry<Integer, SortedMap<String, Float>> entry : classTotals.entrySet()) {
             row += entry.getValue().size() - 1;
         }
         dataArray = new Object[row][columnNames.length];
         
         int ii = 0;
         int jj;
-        for (Entry<Integer, SortedMap<String, Integer>> entry : classTotals.entrySet()) {
-            for (Entry<String, Integer> entry2 : entry.getValue().entrySet()) {
+        for (Entry<Integer, SortedMap<String, Float>> entry : classTotals.entrySet()) {
+            for (Entry<String, Float> entry2 : entry.getValue().entrySet()) {
                 jj = 0;
                 dataArray[ii][jj++] = entry.getKey();
                 dataArray[ii][jj++] = entry2.getKey();

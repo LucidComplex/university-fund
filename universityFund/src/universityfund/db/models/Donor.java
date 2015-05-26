@@ -42,7 +42,7 @@ public class Donor extends Model implements Serializable, myEntity {
     private String category;
     private String contactNumber;
     private String email;
-    private int graduationYear;
+    private Integer graduationYear;
     private String name;
     
     @OneToMany(mappedBy="donor")
