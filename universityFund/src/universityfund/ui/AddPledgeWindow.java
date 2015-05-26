@@ -434,12 +434,12 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
         Funding funding;
         if (deffered_rButton.isSelected())
             funding = Funding.createFunding(
-                    Integer.valueOf(amount_text.getText()),
+                    Float.valueOf(amount_text.getText()),
                     (int) number_spinner.getValue()
             );
         else
             funding = Funding.createFunding(
-                    Integer.valueOf(amount_text.getText())
+                    Float.valueOf(amount_text.getText())
             );
         pledge.setFunding(funding);
         if (corpName_text.isEnabled() && corpName_text.getText().trim().length() != 0) {
