@@ -39,23 +39,26 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
         SortedMap<Integer, SortedMap<String, Integer>> classTotals = new TreeMap<>(intComparator);
         for (Donor d : donorList) {
             int total;
-            Object result = em.createNativeQuery(
-                    "SELECT SUM(AMOUNT) "
-                  + "FROM FUNDING WHERE ID IN ("
-                      + "SELECT FUNDINGID "
-                      + "FROM DONATES "
-                      + "WHERE DONORID = ?1 "
-                      + "UNION "
-                      + "SELECT FUNDINGID "
-                      + "FROM PLEDGES "
-                      + "WHERE DONORID = ?1"
-                  + ") "
-                  + "AND DATEFUNDED BETWEEN ?2 AND ?3"
+            Object[] result = (Object[]) em.createNativeQuery(
+                    "SELECT SUM(AMOUNT), "
+                            + "SUM((NUMBEROFPAYMENTS - COMPLETEDPAYMENTS) "
+                            + "* (AMOUNT / NUMBEROFPAYMENTS)) FROM FUNDING "
+                            + "WHERE ID IN (SELECT FUNDINGID FROM ("
+                            + "SELECT FUNDINGID, DONORID FROM DONATES "
+                            + "UNION SELECT FUNDINGID, DONORID FROM PLEDGES"
+                            + ") A JOIN DONOR ON DONORID = ID "
+                            + "WHERE DONORID = ?1) AND DATEFUNDED "
+                            + "BETWEEN ?2 AND ?3"
             ).setParameter(1, d.getId())
                     .setParameter(2, Utility.getBeginDate())
                     .setParameter(3, Utility.getEndDate()).getSingleResult();
-            total = (result == null) ? 0 : (int) result;
+            if (result == null) {
+                continue;
+            }
+            total = (result[0] == null) ? 0 : (int) result[0];
+            System.out.println(result[0]);
             String circle = Funding.getCircle(total);
+            total -= (result[1] == null) ? 0 : (int) result[1];
             SortedMap<String, Integer> circleMap = classTotals.get(d.getGraduationYear());
             if (circleMap == null) 
                 circleMap = new TreeMap<>();
