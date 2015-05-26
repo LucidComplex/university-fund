@@ -9,8 +9,10 @@ import java.text.DateFormatSymbols;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
+import universityfund.db.models.ClassRepresentative;
 import universityfund.db.models.Donor;
 import universityfund.ui.tablemodels.MembersCategoryTableModel;
 
@@ -66,7 +68,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel28 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        rep_combo = new javax.swing.JComboBox();
+        rep_combo = new javax.swing.JComboBox(getReps());
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         sol_panel = new javax.swing.JPanel();
@@ -324,7 +326,6 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel5.setText("Class Representative:");
         jLabel5.setName("jLabel5"); // NOI18N
 
-        rep_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         rep_combo.setName("rep_combo"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
@@ -624,6 +625,18 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Object[] getReps(){
+        List <String> classReps;
+        EntityManager em = DbHelper.getEntityManager();
+        classReps = em.createNativeQuery(
+                "SELECT NAME "
+                        + "FROM CLASSREPRESENTATIVE JOIN DONOR "
+                        + "ON REPRESENTATIVE_ID = DONOR.ID "
+                
+        ).getResultList();
+        return classReps.toArray();        
+    }
+    
     public String getMonth(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(Date.from(Instant.now()));
@@ -642,21 +655,27 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     
     public String getSum(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createQuery(
+        Object sum = em.createQuery(
            "SELECT SUM (f.amount) FROM Funding f "
-        ).getSingleResult().toString();
+        ).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getSumPledges(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createNativeQuery(
+        Object sum =  em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
                 "FROM FUNDING JOIN PLEDGES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
-                        getMonthValue()).getSingleResult().toString();
+                        getMonthValue()).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getPercentPledges(){
@@ -668,26 +687,32 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
 
     public String getSumGifts(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createNativeQuery(
+        Object sum = em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
                 "FROM FUNDING JOIN DONATES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
-                        getMonthValue()).getSingleResult().toString();
+                        getMonthValue()).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getSumForThisMonth(){
         EntityManager em = DbHelper.getEntityManager();
-        return em.createNativeQuery(
+        Object sum = em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
                 "FROM FUNDING " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).
                 setParameter(2, java.time.MonthDay.now().
-                        getMonthValue()).getSingleResult().toString();
+                        getMonthValue()).getSingleResult();
+        if (sum==null)
+            return "0";
+        else return sum.toString();
     }
     
     public String getPercentGifts(){
