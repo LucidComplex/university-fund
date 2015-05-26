@@ -8,7 +8,7 @@ package universityfund.ui;
 import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
-import universityfund.db.models.Donates;
+import universityfund.db.models.Funding;
 import universityfund.db.models.FundingId;
 import universityfund.db.models.Pledges;
 
@@ -141,7 +141,9 @@ public class DeletePledgeWindow extends javax.swing.JFrame implements UI {
 
     public void deletePledge(){
         Pledges pledge = selectedPledge;
+        Funding funding = pledge.getFunding();
         pledge.delete();
+        funding.delete();
     }
     
     private boolean check(){

@@ -524,7 +524,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(form_button)
-                .addGap(42, 42, 42))
+                .addGap(34, 34, 34))
         );
         invitation_panelLayout.setVerticalGroup(
             invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

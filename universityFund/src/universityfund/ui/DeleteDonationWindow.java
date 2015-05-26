@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donates;
+import universityfund.db.models.Funding;
 import universityfund.db.models.FundingId;
 
 /**
@@ -140,7 +141,9 @@ public class DeleteDonationWindow extends javax.swing.JFrame implements UI {
 
     public void deleteDonation(){
         Donates donation = selectedDonation;
+        Funding funding = donation.getFunding();
         donation.delete();
+        funding.delete();
     }
     
     private boolean check(){
