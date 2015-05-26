@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
+import universityfund.Utility;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Funding;
 
@@ -33,9 +34,9 @@ public class CircleTotalsTableModel extends TotalsTableModel{
         List<Funding> funding = em.createQuery(
                 "SELECT f FROM Funding f WHERE f.dateFunded BETWEEN :begin AND :end"
         ).setParameter(
-                "begin", Date.valueOf(String.format("%d-%d-%d", year, 7, 1))
+                "begin", Utility.getBeginDate()
         ).setParameter(
-                "end", Date.valueOf(String.format("%d-%d-%d", year + 1, 6, 30))
+                "end", Utility.getEndDate()
         ).getResultList();
         
         Map<String, Integer> circleMap = new HashMap<>();

@@ -5,9 +5,8 @@
  */
 package universityfund;
 
-import java.util.Collection;
-import universityfund.db.models.Donates;
-import universityfund.db.models.Pledges;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,19 +14,20 @@ import universityfund.db.models.Pledges;
  */
 public class Utility {
     
-    public static int getTotalDonations(Collection<Donates> funding) {
-        int total = 0;
-        for (Donates donation : funding) {
-            total += donation.getFunding().getAmount();
+    private static int decideYear() {
+        LocalDate now = java.time.LocalDate.now();
+        int year = now.getYear();
+        if (now.getMonthValue() <= 6) {
+            year -= 1;
         }
-        return total;
+        return year;
     }
     
-    public static int getTotalPledges(Collection<Pledges> funding) {
-        int total = 0;
-        for (Pledges donation : funding) {
-            total += donation.getFunding().getAmount();
-        }
-        return total;
+    public static Date getBeginDate() {
+        return Date.valueOf(LocalDate.of(decideYear(), 7, 1));
+    }
+    
+    public static Date getEndDate() {
+        return Date.valueOf(LocalDate.of(decideYear() + 1, 6, 30));
     }
 }
