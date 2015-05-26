@@ -725,7 +725,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     }//GEN-LAST:event_solicit_buttonActionPerformed
 
     private void eachDonor_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachDonor_buttonActionPerformed
-        // TODO add your handling code here:
+        new TotalEachDonorCircle().setVisible(true);
     }//GEN-LAST:event_eachDonor_buttonActionPerformed
 
     private void eachCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachCategory_buttonActionPerformed
