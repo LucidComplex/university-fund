@@ -162,6 +162,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         modifyDonation_button.setText("Modify");
         modifyDonation_button.setName("modifyDonation_button"); // NOI18N
+        modifyDonation_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyDonation_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -305,6 +310,11 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         new DeleteDonationWindow().setVisible(true);
     }//GEN-LAST:event_deleteDonation_buttonActionPerformed
+
+    private void modifyDonation_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyDonation_buttonActionPerformed
+        // TODO add your handling code here:
+        new ModifyDonationWindow().setVisible(true);
+    }//GEN-LAST:event_modifyDonation_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDonation_button;
