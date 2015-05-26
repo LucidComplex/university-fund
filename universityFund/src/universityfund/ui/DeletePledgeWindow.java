@@ -5,17 +5,25 @@
  */
 package universityfund.ui;
 
+import java.awt.Color;
+import javax.persistence.EntityManager;
+import universityfund.db.DbHelper;
+import universityfund.db.models.Donates;
+import universityfund.db.models.FundingId;
+import universityfund.db.models.Pledges;
+
 /**
  *
  * @author MiriamMarie
  */
-public class DeletePledgeWindow extends javax.swing.JFrame {
-
+public class DeletePledgeWindow extends javax.swing.JFrame implements UI {
+    private Pledges selectedPledge;
     /**
      * Creates new form DeletePledgeWindow
      */
     public DeletePledgeWindow() {
         initComponents();
+        selectedPledge = null;
     }
 
     /**
@@ -55,6 +63,11 @@ public class DeletePledgeWindow extends javax.swing.JFrame {
         });
 
         delete_button.setText("Confirm Delete");
+        delete_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*");
@@ -114,10 +127,35 @@ public class DeletePledgeWindow extends javax.swing.JFrame {
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
         // TODO add your handling code here:
-        new SelectPledgeWindow().setVisible(true);
+        new SelectPledgeWindow(this).setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
+    private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
+        // TODO add your handling code here:
+        if(check()){
+            deletePledge();
+            new SuccessWindow().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_delete_buttonActionPerformed
 
+    public void deletePledge(){
+        Pledges pledge = selectedPledge;
+        pledge.delete();
+    }
+    
+    private boolean check(){
+        boolean valid = true;
+        if(pledge_text.getText().isEmpty()) {
+            id_label.setForeground(Color.RED);
+            valid = false;
+        } else {
+            id_label.setForeground(Color.BLACK);
+        }
+        return valid;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delete_button;
     private javax.swing.JLabel id_label;
@@ -127,4 +165,14 @@ public class DeletePledgeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel pledge_text;
     private javax.swing.JButton set_button;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void receiveIntent(Object intent) {
+        EntityManager em = DbHelper.getEntityManager();
+        long [] ids = (long[]) intent;
+        System.out.println(ids[0]);
+        System.out.println(ids[1]);
+        selectedPledge = em.find(Pledges.class, new FundingId(ids[0], ids[1]));
+        pledge_text.setText(String.valueOf(selectedPledge.getId()));
+    }
 }

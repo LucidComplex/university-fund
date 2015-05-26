@@ -5,6 +5,8 @@
  */
 package universityfund.ui;
 
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 import universityfund.ui.tablemodels.SelectPledgeTableModel;
 
 /**
@@ -12,12 +14,15 @@ import universityfund.ui.tablemodels.SelectPledgeTableModel;
  * @author MiriamMarie
  */
 public class SelectPledgeWindow extends javax.swing.JFrame {
-
+    private UI parent;
+    private TableRowSorter<SelectPledgeTableModel> sorter;
+    
     /**
      * Creates new form SelectPledgeWindow
      */
-    public SelectPledgeWindow() {
+    public SelectPledgeWindow(UI parent) {
         initComponents();
+        this.parent = parent;
     }
 
     /**
@@ -33,10 +38,11 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pledge_table = new javax.swing.JTable(new SelectPledgeTableModel());
+        filterTable();
         select_button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        date_text = new javax.swing.JTextField();
+        name_text = new javax.swing.JTextField();
 
         jLabel2.setText("jLabel2");
 
@@ -57,7 +63,13 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("Pledge Selection");
 
-        jLabel3.setText("Input Date:");
+        jLabel3.setText("Input Donor Name:");
+
+        name_text.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                name_textKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,8 +85,8 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(date_text)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(name_text)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +96,7 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(date_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -110,50 +122,35 @@ public class SelectPledgeWindow extends javax.swing.JFrame {
 
     private void select_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_buttonActionPerformed
         // TODO add your handling code here:
+        SelectPledgeTableModel model = (SelectPledgeTableModel)
+                                pledge_table.getModel();
+        long selectedFundingId = model.getFundingIdByRowIndex
+                                (pledge_table.getSelectedRow());
+        long selectedDonorId = model.getDonorIdByRowIndex
+                                (pledge_table.getSelectedRow());
+        long [] intent = {selectedDonorId,selectedFundingId};
+        parent.receiveIntent(intent);
+        this.dispose();
     }//GEN-LAST:event_select_buttonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectPledgeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectPledgeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectPledgeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectPledgeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void name_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_name_textKeyTyped
+        // TODO add your handling code here:
+        sorter.setRowFilter(RowFilter.regexFilter(name_text.getText(), 0));
+    }//GEN-LAST:event_name_textKeyTyped
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SelectPledgeWindow().setVisible(true);
-            }
-        });
+    private void filterTable(){
+        sorter = new TableRowSorter<>(
+                (SelectPledgeTableModel)pledge_table.getModel());
+        pledge_table.setRowSorter(sorter);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField date_text;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField name_text;
     private javax.swing.JTable pledge_table;
     private javax.swing.JButton select_button;
     // End of variables declaration//GEN-END:variables
