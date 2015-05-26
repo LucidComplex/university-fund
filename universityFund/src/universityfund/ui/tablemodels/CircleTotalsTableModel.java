@@ -5,8 +5,19 @@
  */
 package universityfund.ui.tablemodels;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import universityfund.db.DbHelper;
+import universityfund.db.models.Donates;
+import universityfund.db.models.Funding;
+import universityfund.db.models.Pledges;
 
 /**
  *
@@ -15,25 +26,61 @@ import universityfund.db.DbHelper;
 public class CircleTotalsTableModel extends TotalsTableModel{
     public CircleTotalsTableModel(){
         columnNames = new String[] {"Donor Circle", "Total Amount Raised"};
+        rows = new ArrayList<>();
         EntityManager em = DbHelper.getEntityManager();
-        rows = em.createNativeQuery(
-                "SELECT * " +
-                "FROM FUNDING JOIN DONATES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
-                "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
-                "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
+        LocalDate now = java.time.LocalDate.now();
+        int year = now.getYear();
+        if (now.getMonthValue() <= 6) {
+            year -= 1;
+        }
+        List<Funding> funding = em.createQuery(
+                "SELECT f FROM Funding f WHERE f.dateFunded BETWEEN :begin AND :end"
+        ).setParameter(
+                "begin", Date.valueOf(String.format("%d-%d-%d", year, 7, 1))
+        ).setParameter(
+                "end", Date.valueOf(String.format("%d-%d-%d", year + 1, 6, 30))
         ).getResultList();
+        
+        Map<String, Integer> circleMap = new HashMap<>();
+        for (String group : Funding.CIRCLE_GROUPS) {
+            circleMap.put(group, 0);
+        }
+        
+        for (Funding f : funding) {
+            Integer temp = circleMap.get(f.getCircle());
+            System.out.println(temp);
+            if (temp == null) {
+                circleMap.put(f.getCircle(), f.getAmount());
+            } else {
+                circleMap.put(f.getCircle(), temp + f.getAmount());
+            }
+        }
+        
+        rows.addAll(Arrays.asList(Funding.CIRCLE_GROUPS));
+        
         dataArray = new Object[rows.size()][columnNames.length];
         int ii = 0;
         int jj = 0;
-        for (Object category : rows) {
-            dataArray[ii][jj++] = category;
-            int total = (int) em.createNativeQuery(
-                    "SELECT SUM(AMOUNT) FROM FUNDING JOIN DONATES ON "
-                            + "FUNDINGID = FUNDING.ID JOIN DONOR ON "
-                            + "DONORID = DONOR.ID "
-                            + "WHERE DONOR.GRADUATIONYEAR = ?1"
-            ).setParameter(1, category).getSingleResult();
-            dataArray[ii++][jj--] = total;
+        for (Object circleName : rows) {
+            dataArray[ii][jj++] = circleName;
+            dataArray[ii++][jj--] = circleMap.get((String) circleName);
+            System.out.println(circleMap.get((String) circleName));
         }        
+    }
+     
+    private int getTotalDonations(Collection<Donates> funding) {
+        int total = 0;
+        for (Donates donation : funding) {
+            total += donation.getFunding().getAmount();
+        }
+        return total;
+    }
+    
+    private int getTotalPledges(Collection<Pledges> funding) {
+        int total = 0;
+        for (Pledges donation : funding) {
+            total += donation.getFunding().getAmount();
+        }
+        return total;
     }
 }

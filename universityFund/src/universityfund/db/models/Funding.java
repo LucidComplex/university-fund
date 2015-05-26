@@ -18,6 +18,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class Funding extends Model implements Serializable, myEntity {
+    public static final String[] CIRCLE_GROUPS = {
+            "President's", "Platinum", "Diamond", "Golden", "Silver",
+            "Porcelain", "Crystal", "Ivory", "Lace", "Silk", "N/A"
+    };
     
     public Funding() {
         this.classType = Funding.class;
@@ -34,15 +38,11 @@ public class Funding extends Model implements Serializable, myEntity {
     private int numberOfPayments;
     
     public String getCircle() {
-        String[] circleGroups = {
-            "President's", "Platinum", "Diamond", "Golden", "Silver",
-            "Porcelain", "Crystal", "Ivory", "Lace", "Silk"
-        };
         for (int ii = 50000, jj = 0; jj < 10; ii /= 2, jj++) {
             if (getAmount() / ii >= 1 && getAmount() >= 100)
-                return circleGroups[jj] + " Circle";
+                return CIRCLE_GROUPS[jj];
         }
-        return "";
+        return "N/A";
     }
     
     public boolean isComplete() {
