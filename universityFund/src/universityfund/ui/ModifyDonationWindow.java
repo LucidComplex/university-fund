@@ -50,6 +50,7 @@ public class ModifyDonationWindow extends javax.swing.JFrame implements UI{
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Modify Donation");
 
@@ -77,6 +78,7 @@ public class ModifyDonationWindow extends javax.swing.JFrame implements UI{
             }
         });
 
+        amount_box.setBackground(new java.awt.Color(255, 255, 255));
         amount_box.setText("Amount:");
         amount_box.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,11 +102,11 @@ public class ModifyDonationWindow extends javax.swing.JFrame implements UI{
                         .addComponent(setButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(amount_box)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(amount_text, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amount_text, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(12, 12, 12))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(update_button)
@@ -128,7 +130,7 @@ public class ModifyDonationWindow extends javax.swing.JFrame implements UI{
                     .addComponent(amount_box))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(update_button)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

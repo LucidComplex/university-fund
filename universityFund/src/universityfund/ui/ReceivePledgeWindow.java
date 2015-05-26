@@ -42,7 +42,8 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
         jLabel3 = new javax.swing.JLabel();
         confirm_button = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("RECEIVE PLEDGE");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -65,6 +66,11 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
         jLabel3.setText("*");
 
         confirm_button.setText("Confirm");
+        confirm_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirm_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,15 +100,14 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(id_label)
-                        .addComponent(id_text, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_text, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_label)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(set_button)
                         .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
                 .addComponent(confirm_button)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,11 +125,21 @@ public class ReceivePledgeWindow extends javax.swing.JFrame implements UI{
     }// </editor-fold>//GEN-END:initComponents
 
     private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
-        if(valid()){
-            
-        }
+        new SelectPledgeWindow(this).setVisible(true);
     }//GEN-LAST:event_set_buttonActionPerformed
 
+    private void confirm_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_buttonActionPerformed
+        if(valid()){
+            receivePledge();
+            new SuccessWindow().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_confirm_buttonActionPerformed
+
+    public void receivePledge(){
+        //TODO code
+    } 
+    
     public boolean valid(){
         boolean valid = true;
         if(id_text.getText().isEmpty()){

@@ -163,7 +163,7 @@ public class AddDonationWindow extends javax.swing.JFrame implements UI {
         Donates donates = new Donates();
         donates.setDonor(selectedDonor);
         donates.setFunding(
-                Funding.createFunding(Integer.valueOf(amount_text.getText()))
+                Funding.createFunding(Float.valueOf(amount_text.getText()))
         );
         donates.save();
     }
