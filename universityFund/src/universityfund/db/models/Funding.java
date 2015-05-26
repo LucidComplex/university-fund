@@ -147,6 +147,7 @@ public class Funding extends Model implements Serializable, myEntity {
     
     public static Funding createFunding(float amount, int numberOfPayments) {
         Funding funding = createFunding(amount);
+        funding.setCompletedPayments(0);
         funding.setNumberOfPayments(numberOfPayments);
         funding.save();
         return funding;
