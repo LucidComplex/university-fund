@@ -17,11 +17,14 @@ import universityfund.db.DbHelper;
 public class SelectPledgeTableModel extends AbstractTableModel{
     List<Object[]> pledgeList;
     String [] columnNames = {"Funding ID", "Donor Name", 
-                                "Date Funded", "Amount"};
+                                "Date Funded", "Amount", "Remaining Balance"};
     public SelectPledgeTableModel(){
         EntityManager em = DbHelper.getEntityManager();
         pledgeList = em.createNativeQuery(
-                "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, FUNDING.AMOUNT, DONOR.ID "
+                "SELECT FUNDING.ID, DONOR.NAME, FUNDING.DATEFUNDED, "
+                        + "FUNDING.AMOUNT, "
+                        + "(AMOUNT / NUMBEROFPAYMENTS * "
+                        + "(NUMBEROFPAYMENTS - COMPLETEDPAYMENTS)), DONOR.ID "
                         + "FROM FUNDING JOIN PLEDGES "
                         + "ON FUNDINGID = FUNDING.ID "
                         + "JOIN DONOR "
@@ -37,7 +40,7 @@ public class SelectPledgeTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return columnNames.length;
     }
     
     public String getColumnName(int i){
@@ -50,11 +53,11 @@ public class SelectPledgeTableModel extends AbstractTableModel{
     }
     
     public long getFundingIdByRowIndex(int selectedRow){
-        return (long) pledgeList.get(selectedRow)[0];
+        return ((long) pledgeList.get(selectedRow)[0]);
     }
     
     public long getDonorIdByRowIndex(int selectedRow){
-        return (long) pledgeList.get(selectedRow)[4];
+        return (long) pledgeList.get(selectedRow)[columnNames.length];
     }
     
     

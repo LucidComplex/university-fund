@@ -62,14 +62,9 @@ public class SelectDonationWindow extends javax.swing.JFrame {
 
         jLabel3.setText("Input Donation ID:");
 
-        name_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                name_textActionPerformed(evt);
-            }
-        });
         name_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                name_textKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                name_textKeyReleased(evt);
             }
         });
 
@@ -134,14 +129,9 @@ public class SelectDonationWindow extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_select_buttonActionPerformed
 
-    private void name_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_name_textActionPerformed
-
-    private void name_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_name_textKeyTyped
-        // TODO add your handling code here:
+    private void name_textKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_name_textKeyReleased
         sorter.setRowFilter(RowFilter.regexFilter(name_text.getText(), 0));
-    }//GEN-LAST:event_name_textKeyTyped
+    }//GEN-LAST:event_name_textKeyReleased
 
     private void filterTable(){
         sorter = new TableRowSorter<>(

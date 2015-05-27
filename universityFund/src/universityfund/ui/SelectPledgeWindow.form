@@ -130,7 +130,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="name_text">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="name_textKeyTyped"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="name_textKeyReleased"/>
           </Events>
         </Component>
       </SubComponents>
