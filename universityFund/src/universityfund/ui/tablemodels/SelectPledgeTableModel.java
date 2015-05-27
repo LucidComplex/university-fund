@@ -59,7 +59,5 @@ public class SelectPledgeTableModel extends AbstractTableModel{
     public long getDonorIdByRowIndex(int selectedRow){
         return (long) pledgeList.get(selectedRow)[columnNames.length];
     }
-    
-    
-    
+
 }

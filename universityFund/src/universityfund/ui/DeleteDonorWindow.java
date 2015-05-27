@@ -7,6 +7,8 @@ package universityfund.ui;
 
 import java.awt.Color;
 import javax.persistence.EntityManager;
+import javax.persistence.RollbackException;
+import javax.swing.JOptionPane;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
 
@@ -132,9 +134,13 @@ public class DeleteDonorWindow extends javax.swing.JFrame implements UI {
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
         // TODO add your handling code here:
         if(check()){
-            deleteDonor();
-            new SuccessWindow().setVisible(true);
-            this.dispose();
+            try {
+                deleteDonor();
+                new SuccessWindow().setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Cannot delete donor with pledge or donation.");
+            }
         }            
     }//GEN-LAST:event_delete_buttonActionPerformed
 
