@@ -56,9 +56,8 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
                 continue;
             }
             total = (result[0] == null) ? 0 : ((Double) result[0]).floatValue();
-            System.out.println(result[0]);
-            String circle = Funding.getCircle(total);
             total -= (result[1] == null) ? 0 : ((Double) result[1]).floatValue();
+            String circle = Funding.getCircle(total);
             SortedMap<String, Float> circleMap = classTotals.get(d.getGraduationYear());
             if (circleMap == null) 
                 circleMap = new TreeMap<>();
@@ -81,7 +80,11 @@ public class TotalClassDonorTableModel extends TotalsTableModel {
         for (Entry<Integer, SortedMap<String, Float>> entry : classTotals.entrySet()) {
             for (Entry<String, Float> entry2 : entry.getValue().entrySet()) {
                 jj = 0;
-                dataArray[ii][jj++] = entry.getKey();
+                if (entry.getKey() == 0) {
+                    dataArray[ii][jj++] = "N/A";
+                } else {
+                    dataArray[ii][jj++] = entry.getKey();
+                }
                 dataArray[ii][jj++] = entry2.getKey();
                 dataArray[ii++][jj] = entry2.getValue();
             }

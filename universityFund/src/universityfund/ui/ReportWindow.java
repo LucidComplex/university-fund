@@ -14,6 +14,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import universityfund.Utility;
 import universityfund.db.DbHelper;
 import universityfund.db.models.Donor;
 import universityfund.ui.tablemodels.ContactListTableModel;
@@ -712,8 +713,11 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     public String getSum(){
         EntityManager em = DbHelper.getEntityManager();
         Object sum = em.createQuery(
-           "SELECT SUM (f.amount) FROM Funding f "
-        ).getSingleResult();
+           "SELECT SUM(f.completedPayments * (f.amount / f.numberOfPayments)) "
+                   + "FROM Funding f WHERE f.dateFunded BETWEEN "
+                   + ":begin AND :end"
+        ).setParameter("begin", Utility.getBeginDate())
+                .setParameter("end", Utility.getEndDate()).getSingleResult();
         if (sum==null)
             return "0";
         else return sum.toString();
@@ -731,7 +735,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 setParameter(2, java.time.MonthDay.now().
                         getMonthValue()).getSingleResult();
         if (sum[0]==null)
-            return "0";
+            return "0 (0)";
+        
         String pledges = sum[0].toString();
         return pledges.concat(" (" + sum[1] + ")");
     }
@@ -739,7 +744,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     public String getPercentPledges(){
         String pledges = getSumPledges();
         String all = getSum();
-        return String.format("%.2f", ((Float.valueOf(pledges.split("\\(")[0])/
+        return String.format("%.2f", ((Float.valueOf(pledges.split("[()]")[1])/
                                         Float.valueOf(all))*100))+"%";
     }
 
@@ -747,7 +752,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         EntityManager em = DbHelper.getEntityManager();
         Object sum = em.createNativeQuery(
               "SELECT SUM(AMOUNT) " +
-                "FROM FUNDING JOIN DONATES ON FUNDINGID = FUNDING.ID JOIN DONOR ON DONORID = DONOR.ID " +
+                "FROM FUNDING JOIN DONATES ON FUNDINGID = FUNDING.ID "
+                      + "JOIN DONOR ON DONORID = DONOR.ID " +
                 "WHERE ((YEAR(FUNDING.DATEFUNDED) = ?1 " +
                 "AND MONTH(FUNDING.DATEFUNDED) = ?2))"
         ).setParameter(1, java.time.Year.now().getValue()).

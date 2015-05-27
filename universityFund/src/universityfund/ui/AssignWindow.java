@@ -179,7 +179,8 @@ public class AssignWindow extends javax.swing.JFrame {
         EntityManager em = DbHelper.getEntityManager();
         yearSet.add("----");
         for (Donor d : em.createQuery("SELECT d FROM Donor d", Donor.class).getResultList()) {
-            yearSet.add(d.getGraduationYear());
+            if (d.getGraduationYear() != 0) 
+               yearSet.add(d.getGraduationYear());
         }
         em.close();
         return yearSet.toArray();

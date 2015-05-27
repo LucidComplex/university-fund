@@ -113,8 +113,8 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
         jLabel6.setText("Corporation Address:");
 
         corpName_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                corpName_textKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                corpName_textKeyReleased(evt);
             }
         });
 
@@ -123,8 +123,8 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
         corpAdd_text.setRows(5);
         corpAdd_text.setWrapStyleWord(true);
         corpAdd_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                corpAdd_textKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                corpAdd_textKeyReleased(evt);
             }
         });
         corpAdd_panel.setViewportView(corpAdd_text);
@@ -132,8 +132,8 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
         jLabel7.setText("Name of Spouse:");
 
         spouse_text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                spouse_textKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                spouse_textKeyReleased(evt);
             }
         });
 
@@ -396,30 +396,6 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
         }
     }//GEN-LAST:event_card_rButtonItemStateChanged
 
-    private void spouse_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spouse_textKeyTyped
-        if (spouse_text.getText().trim().length() == 0) {
-            corpName_text.setEnabled(true);
-            corpAdd_text.setEnabled(true);
-        } else {
-            corpName_text.setEnabled(false);
-            corpAdd_text.setEnabled(false);
-        }
-    }//GEN-LAST:event_spouse_textKeyTyped
-
-    private void corpName_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpName_textKeyTyped
-        spouse_text.setEnabled(
-                corpName_text.getText().trim().length() == 0
-                        && corpAdd_text.getText().trim().length() == 0
-        );
-    }//GEN-LAST:event_corpName_textKeyTyped
-
-    private void corpAdd_textKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpAdd_textKeyTyped
-        spouse_text.setEnabled(
-                corpAdd_text.getText().trim().length() == 0
-                        && corpName_text.getText().trim().length() == 0
-        );
-    }//GEN-LAST:event_corpAdd_textKeyTyped
-
     private void cash_rButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cash_rButtonItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             cc_text.setEnabled(false);
@@ -427,6 +403,31 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
             cc_text.setEnabled(true);
         }
     }//GEN-LAST:event_cash_rButtonItemStateChanged
+
+    private void spouse_textKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spouse_textKeyReleased
+
+        corpAdd_text.setEnabled(
+                spouse_text.getText().trim().length()==0
+        );
+        corpName_text.setEnabled(
+                spouse_text.getText().trim().length()==0
+        );
+        
+    }//GEN-LAST:event_spouse_textKeyReleased
+
+    private void corpAdd_textKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpAdd_textKeyReleased
+        spouse_text.setEnabled(
+                corpAdd_text.getText().trim().length() == 0
+                        && corpName_text.getText().trim().length() == 0
+        );
+    }//GEN-LAST:event_corpAdd_textKeyReleased
+
+    private void corpName_textKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corpName_textKeyReleased
+        spouse_text.setEnabled(
+                corpName_text.getText().trim().length() == 0
+                        && corpAdd_text.getText().trim().length() == 0
+        );
+    }//GEN-LAST:event_corpName_textKeyReleased
     
     private void createPledge() {
         Pledges pledge = new Pledges();
@@ -439,7 +440,7 @@ public class AddPledgeWindow extends javax.swing.JFrame implements UI{
             );
         else
             funding = Funding.createFunding(
-                    Float.valueOf(amount_text.getText())
+                    Float.valueOf(amount_text.getText()), 1
             );
         pledge.setFunding(funding);
         Donor matcher;

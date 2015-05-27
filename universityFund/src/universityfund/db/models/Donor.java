@@ -132,7 +132,7 @@ public class Donor extends Model implements Serializable, myEntity {
      * @return the graduationYear
      */
     public int getGraduationYear() {
-        return graduationYear;
+        return (graduationYear == null) ? 0 : graduationYear;
     }
 
     /**
