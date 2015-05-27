@@ -43,20 +43,20 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        annual_panel = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        eachClass_button = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        eachCategory_button = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        eachDonor_button = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable(new MembersCategoryTableModel());
-        jLabel11 = new javax.swing.JLabel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        annual_panel2 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        eachClass_button2 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        eachCategory_button2 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        eachDonor_button2 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable(new MembersCategoryTableModel());
+        jLabel23 = new javax.swing.JLabel();
         class_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         rep_combo = new javax.swing.JComboBox(getReps());
@@ -66,166 +66,165 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         solicit_button = new javax.swing.JButton();
         thanks_button = new javax.swing.JButton();
         thank_panel = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         name1_text = new javax.swing.JLabel();
         invitation_panel = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jLabel27 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
         form_button = new javax.swing.JButton();
         name2_text = new javax.swing.JLabel();
         set_button = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         name_text = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         monthly_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("REPORTS");
         setName("Form"); // NOI18N
         setResizable(false);
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        jTabbedPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane3.setName("jTabbedPane1"); // NOI18N
 
-        annual_panel.setBackground(new java.awt.Color(255, 255, 255));
-        annual_panel.setName("annual_panel"); // NOI18N
+        annual_panel2.setBackground(new java.awt.Color(255, 255, 255));
+        annual_panel2.setName("annual_panel"); // NOI18N
 
-        jLabel6.setText("Total Amount Raised:");
-        jLabel6.setName("jLabel6"); // NOI18N
+        jLabel18.setText("Total Amount Raised:");
+        jLabel18.setName("jLabel6"); // NOI18N
 
-        eachClass_button.setText("Proceed>>");
-        eachClass_button.setName("eachClass_button"); // NOI18N
-        eachClass_button.addActionListener(new java.awt.event.ActionListener() {
+        eachClass_button2.setText("Proceed>>");
+        eachClass_button2.setName("eachClass_button"); // NOI18N
+        eachClass_button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eachClass_buttonActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Total for each class:");
-        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel19.setText("Total for each class:");
+        jLabel19.setName("jLabel7"); // NOI18N
 
-        jLabel8.setText("Total for each category:");
-        jLabel8.setName("jLabel8"); // NOI18N
+        jLabel20.setText("Total for each category:");
+        jLabel20.setName("jLabel8"); // NOI18N
 
-        eachCategory_button.setText("Proceed>>");
-        eachCategory_button.setName("eachCategory_button"); // NOI18N
-        eachCategory_button.addActionListener(new java.awt.event.ActionListener() {
+        eachCategory_button2.setText("Proceed>>");
+        eachCategory_button2.setName("eachCategory_button"); // NOI18N
+        eachCategory_button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eachCategory_buttonActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Total for each donor circle:");
-        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel21.setText("Total for each donor circle:");
+        jLabel21.setName("jLabel9"); // NOI18N
 
-        jLabel10.setText("Class total for each donor circle:");
-        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel22.setText("Class total for each donor circle:");
+        jLabel22.setName("jLabel10"); // NOI18N
 
-        eachDonor_button.setText("Proceed>>");
-        eachDonor_button.setName("eachDonor_button"); // NOI18N
-        eachDonor_button.addActionListener(new java.awt.event.ActionListener() {
+        eachDonor_button2.setText("Proceed>>");
+        eachDonor_button2.setName("eachDonor_button"); // NOI18N
+        eachDonor_button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eachDonor_buttonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Proceed>>");
-        jButton6.setName("jButton6"); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setText("Proceed>>");
+        jButton8.setName("jButton6"); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        jScrollPane2.setName("jScrollPane2"); // NOI18N
+        jScrollPane4.setName("jScrollPane2"); // NOI18N
 
-        jTable2.setName("jTable2"); // NOI18N
-        jScrollPane2.setViewportView(jTable2);
+        jTable4.setName("jTable2"); // NOI18N
+        jScrollPane4.setViewportView(jTable4);
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText(getSum());
-        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setText(getSum());
+        jLabel23.setName("jLabel11"); // NOI18N
 
-        javax.swing.GroupLayout annual_panelLayout = new javax.swing.GroupLayout(annual_panel);
-        annual_panel.setLayout(annual_panelLayout);
-        annual_panelLayout.setHorizontalGroup(
-            annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(annual_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout annual_panel2Layout = new javax.swing.GroupLayout(annual_panel2);
+        annual_panel2.setLayout(annual_panel2Layout);
+        annual_panel2Layout.setHorizontalGroup(
+            annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(annual_panel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(annual_panelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(annual_panelLayout.createSequentialGroup()
-                        .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(annual_panelLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                .addGroup(annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(annual_panel2Layout.createSequentialGroup()
+                        .addGroup(annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(annual_panel2Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11))
-                            .addGroup(annual_panelLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(jLabel23))
+                            .addGroup(annual_panel2Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(eachCategory_button)
+                                .addComponent(eachCategory_button2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel10)
+                                .addComponent(jLabel22)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6))
-                            .addGroup(annual_panelLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(jButton8))
+                            .addGroup(annual_panel2Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
                                 .addGap(24, 24, 24)
-                                .addComponent(eachClass_button)
+                                .addComponent(eachClass_button2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel9)
+                                .addComponent(jLabel21)
                                 .addGap(44, 44, 44)
-                                .addComponent(eachDonor_button)))
-                        .addGap(123, 146, Short.MAX_VALUE))))
+                                .addComponent(eachDonor_button2)))
+                        .addGap(0, 254, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        annual_panelLayout.setVerticalGroup(
-            annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, annual_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+        annual_panel2Layout.setVerticalGroup(
+            annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, annual_panel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel11))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(eachClass_button)
-                    .addComponent(jLabel9)
-                    .addComponent(eachDonor_button))
+                .addGroup(annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(eachClass_button2)
+                    .addComponent(jLabel21)
+                    .addComponent(eachDonor_button2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(annual_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eachCategory_button)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10)
-                    .addComponent(jButton6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(annual_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eachCategory_button2)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel22)
+                    .addComponent(jButton8))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Annual Report to Donors", annual_panel);
+        jTabbedPane3.addTab("Annual Report to Donors", annual_panel2);
 
         class_panel.setBackground(new java.awt.Color(255, 255, 255));
         class_panel.setName("class_panel"); // NOI18N
@@ -257,14 +256,13 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(class_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(class_panelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                    .addComponent(jScrollPane1)
                     .addGroup(class_panelLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rep_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(275, 300, Short.MAX_VALUE))))
+                        .addGap(0, 408, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         class_panelLayout.setVerticalGroup(
             class_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +276,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Class Rep Contact List", class_panel);
+        jTabbedPane3.addTab("Class Rep Contact List", class_panel);
 
         sol_panel.setBackground(new java.awt.Color(255, 255, 255));
         sol_panel.setName("sol_panel"); // NOI18N
@@ -303,10 +301,10 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         thank_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         thank_panel.setName("thank_panel"); // NOI18N
 
-        jLabel12.setText("Dear");
-        jLabel12.setName("jLabel12"); // NOI18N
+        jLabel24.setText("Dear");
+        jLabel24.setName("jLabel12"); // NOI18N
 
-        jScrollPane3.setName("jScrollPane3"); // NOI18N
+        jScrollPane5.setName("jScrollPane3"); // NOI18N
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -317,13 +315,13 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setBorder(null);
         jTextArea1.setName("jTextArea1"); // NOI18N
-        jScrollPane3.setViewportView(jTextArea1);
+        jScrollPane5.setViewportView(jTextArea1);
 
-        jLabel13.setText("Yours truly,");
-        jLabel13.setName("jLabel13"); // NOI18N
+        jLabel25.setText("Yours truly,");
+        jLabel25.setName("jLabel13"); // NOI18N
 
-        jLabel14.setText("Suzanne Hayes");
-        jLabel14.setName("jLabel14"); // NOI18N
+        jLabel26.setText("Suzanne Hayes");
+        jLabel26.setName("jLabel14"); // NOI18N
 
         name1_text.setText(" ");
         name1_text.setName("name1_text"); // NOI18N
@@ -336,16 +334,16 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 .addContainerGap()
                 .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(thank_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(name1_text)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thank_panelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         thank_panelLayout.setVerticalGroup(
@@ -353,14 +351,14 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(thank_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(thank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                    .addComponent(jLabel24)
                     .addComponent(name1_text))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
+                .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
+                .addComponent(jLabel26)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -368,10 +366,10 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         invitation_panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         invitation_panel.setName("invitation_panel"); // NOI18N
 
-        jLabel15.setText("Dear ");
-        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel27.setText("Dear ");
+        jLabel27.setName("jLabel15"); // NOI18N
 
-        jScrollPane4.setName("jScrollPane4"); // NOI18N
+        jScrollPane6.setName("jScrollPane4"); // NOI18N
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
@@ -382,13 +380,13 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jTextArea2.setWrapStyleWord(true);
         jTextArea2.setBorder(null);
         jTextArea2.setName("jTextArea2"); // NOI18N
-        jScrollPane4.setViewportView(jTextArea2);
+        jScrollPane6.setViewportView(jTextArea2);
 
-        jLabel16.setText("Yours truly,");
-        jLabel16.setName("jLabel16"); // NOI18N
+        jLabel28.setText("Yours truly,");
+        jLabel28.setName("jLabel16"); // NOI18N
 
-        jLabel17.setText("Suzanne Hayes");
-        jLabel17.setName("jLabel17"); // NOI18N
+        jLabel29.setText("Suzanne Hayes");
+        jLabel29.setName("jLabel17"); // NOI18N
 
         form_button.setText("View Attached Form");
         form_button.setName("form_button"); // NOI18N
@@ -408,38 +406,35 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(invitation_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                     .addGroup(invitation_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(name2_text)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(form_button, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invitation_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(form_button)
-                .addGap(34, 34, 34))
         );
         invitation_panelLayout.setVerticalGroup(
             invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(invitation_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(invitation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
+                    .addComponent(jLabel27)
                     .addComponent(name2_text))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(form_button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17)
+                .addComponent(form_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel29)
                 .addContainerGap())
         );
 
@@ -451,18 +446,18 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             }
         });
 
-        jLabel24.setText("Recipient:");
-        jLabel24.setName("jLabel24"); // NOI18N
+        jLabel30.setText("Recipient:");
+        jLabel30.setName("jLabel24"); // NOI18N
 
         name_text.setText(" ");
         name_text.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         name_text.setName("name_text"); // NOI18N
 
-        jLabel25.setText("Sample Thanking Letter");
-        jLabel25.setName("jLabel25"); // NOI18N
+        jLabel31.setText("Sample Thanking Letter");
+        jLabel31.setName("jLabel25"); // NOI18N
 
-        jLabel26.setText("Sample Solicitation Letter");
-        jLabel26.setName("jLabel26"); // NOI18N
+        jLabel32.setText("Sample Solicitation Letter");
+        jLabel32.setName("jLabel26"); // NOI18N
 
         javax.swing.GroupLayout sol_panelLayout = new javax.swing.GroupLayout(sol_panel);
         sol_panel.setLayout(sol_panelLayout);
@@ -471,23 +466,20 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sol_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(sol_panelLayout.createSequentialGroup()
-                        .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel24)
-                            .addComponent(set_button)
-                            .addComponent(thanks_button, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(solicit_button))
-                        .addGap(0, 9, Short.MAX_VALUE)))
-                .addGap(8, 8, 8)
+                    .addComponent(jLabel30)
+                    .addComponent(set_button)
+                    .addComponent(thanks_button, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(solicit_button)
+                    .addComponent(name_text, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(thank_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26))
-                .addContainerGap())
+                    .addComponent(jLabel32)
+                    .addComponent(invitation_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(106, 106, 106))
         );
         sol_panelLayout.setVerticalGroup(
             sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,7 +487,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(sol_panelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel24)
+                        .addComponent(jLabel30)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(name_text)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -507,8 +499,8 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                     .addGroup(sol_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel26))
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel32))
                         .addGap(7, 7, 7)
                         .addGroup(sol_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(invitation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -516,7 +508,7 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Solicitation Letters", sol_panel);
+        jTabbedPane3.addTab("Solicitation Letters", sol_panel);
 
         monthly_panel.setBackground(new java.awt.Color(255, 255, 255));
         monthly_panel.setName("monthly_panel"); // NOI18N
@@ -540,64 +532,64 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         jLabel4.setText("Total gifts and donations:");
         jLabel4.setName("jLabel4"); // NOI18N
 
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Percentage of pledges:");
-        jLabel18.setName("jLabel18"); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("Percentage of pledges:");
+        jLabel33.setName("jLabel18"); // NOI18N
 
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Percentage of gifts and donations:");
-        jLabel19.setName("jLabel19"); // NOI18N
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setText("Percentage of gifts and donations:");
+        jLabel34.setName("jLabel19"); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText(getSumGifts());
-        jLabel20.setName("jLabel20"); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText(getSumGifts());
+        jLabel35.setName("jLabel20"); // NOI18N
 
-        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText(getPercentGifts());
-        jLabel21.setName("jLabel21"); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText(getPercentGifts());
+        jLabel36.setName("jLabel21"); // NOI18N
 
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Total amount raised for this month:");
-        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Total amount raised for this month:");
+        jLabel37.setName("jLabel22"); // NOI18N
 
-        jLabel23.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText(getSumForThisMonth());
-        jLabel23.setName("jLabel23"); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText(getSumForThisMonth());
+        jLabel38.setName("jLabel23"); // NOI18N
 
-        jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText(getSumPledges());
-        jLabel27.setName("jLabel27"); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText(getSumPledges());
+        jLabel39.setName("jLabel27"); // NOI18N
 
-        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText(getPercentPledges());
-        jLabel28.setName("jLabel28"); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText(getPercentPledges());
+        jLabel40.setName("jLabel28"); // NOI18N
 
         javax.swing.GroupLayout monthly_panelLayout = new javax.swing.GroupLayout(monthly_panel);
         monthly_panel.setLayout(monthly_panelLayout);
         monthly_panelLayout.setHorizontalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
         );
         monthly_panelLayout.setVerticalGroup(
             monthly_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -609,41 +601,88 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel18)
+                .addComponent(jLabel33)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel28)
+                .addComponent(jLabel40)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
+                .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel19)
+                .addComponent(jLabel34)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel21)
+                .addComponent(jLabel36)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel22)
+                .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel23)
+                .addComponent(jLabel38)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Monthly Report", monthly_panel);
+        jTabbedPane3.addTab("Monthly Report", monthly_panel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane3)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
+        // TODO add your handling code here:
+        new SelectDonorWindow(this).setVisible(true);
+    }//GEN-LAST:event_set_buttonActionPerformed
+
+    private void form_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_form_buttonActionPerformed
+        new SampleForm().setVisible(true);
+    }//GEN-LAST:event_form_buttonActionPerformed
+
+    private void thanks_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thanks_buttonActionPerformed
+        new MessageSent().setVisible(true);
+    }//GEN-LAST:event_thanks_buttonActionPerformed
+
+    private void solicit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicit_buttonActionPerformed
+        new MessageSent().setVisible(true);
+    }//GEN-LAST:event_solicit_buttonActionPerformed
+
+    private void rep_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep_comboActionPerformed
+
+    private void rep_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rep_comboItemStateChanged
+        // TODO add your handling code here:
+
+        if(evt.getStateChange()==ItemEvent.SELECTED){
+            contactList_table.setModel(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
+        }
+    }//GEN-LAST:event_rep_comboItemStateChanged
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new TotalClassDonorWindow().setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void eachDonor_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachDonor_buttonActionPerformed
+        new TotalEachDonorCircle().setVisible(true);
+    }//GEN-LAST:event_eachDonor_buttonActionPerformed
+
+    private void eachCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachCategory_buttonActionPerformed
+        new TotalEachCategoryWindow().setVisible(true);
+    }//GEN-LAST:event_eachCategory_buttonActionPerformed
+
+    private void eachClass_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachClass_buttonActionPerformed
+        new TotalEachClassWindow().setVisible(true);
+    }//GEN-LAST:event_eachClass_buttonActionPerformed
 
     public Object[] getReps(){
         List <Donor> classReps;
@@ -747,62 +786,26 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
         return new DefaultTableModel();
     }
     
-    private void solicit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicit_buttonActionPerformed
-        new MessageSent().setVisible(true);
-    }//GEN-LAST:event_solicit_buttonActionPerformed
-
-    private void eachDonor_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachDonor_buttonActionPerformed
-        new TotalEachDonorCircle().setVisible(true);
-    }//GEN-LAST:event_eachDonor_buttonActionPerformed
-
-    private void eachCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachCategory_buttonActionPerformed
-        new TotalEachCategoryWindow().setVisible(true);
-    }//GEN-LAST:event_eachCategory_buttonActionPerformed
-
-    private void eachClass_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eachClass_buttonActionPerformed
-        new TotalEachClassWindow().setVisible(true);
-    }//GEN-LAST:event_eachClass_buttonActionPerformed
-
-    private void thanks_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thanks_buttonActionPerformed
-        new MessageSent().setVisible(true);
-        
-    }//GEN-LAST:event_thanks_buttonActionPerformed
-
-    private void set_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_buttonActionPerformed
-        // TODO add your handling code here:
-        new SelectDonorWindow(this).setVisible(true);
-    }//GEN-LAST:event_set_buttonActionPerformed
-
-    private void form_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_form_buttonActionPerformed
-        new SampleForm().setVisible(true);
-    }//GEN-LAST:event_form_buttonActionPerformed
-
-    private void rep_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep_comboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rep_comboActionPerformed
-
-    private void rep_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rep_comboItemStateChanged
-        // TODO add your handling code here:
-        
-        if(evt.getStateChange()==ItemEvent.SELECTED){
-            contactList_table.setModel(new ContactListTableModel((Donor)rep_combo.getSelectedItem()));
-        }
-    }//GEN-LAST:event_rep_comboItemStateChanged
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        new TotalClassDonorWindow().setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel annual_panel;
+    private javax.swing.JPanel annual_panel1;
+    private javax.swing.JPanel annual_panel2;
     private javax.swing.JPanel class_panel;
     private javax.swing.JTable contactList_table;
     private javax.swing.JButton eachCategory_button;
+    private javax.swing.JButton eachCategory_button1;
+    private javax.swing.JButton eachCategory_button2;
     private javax.swing.JButton eachClass_button;
+    private javax.swing.JButton eachClass_button1;
+    private javax.swing.JButton eachClass_button2;
     private javax.swing.JButton eachDonor_button;
+    private javax.swing.JButton eachDonor_button1;
+    private javax.swing.JButton eachDonor_button2;
     private javax.swing.JButton form_button;
     private javax.swing.JPanel invitation_panel;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -824,8 +827,20 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -835,8 +850,14 @@ public class ReportWindow extends javax.swing.JFrame implements UI {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JPanel monthly_panel;
